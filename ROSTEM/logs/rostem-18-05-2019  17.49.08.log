@@ -1,0 +1,480 @@
+2019-05-18 17:49:09,022 INFO org.springframework.boot.StartupInfoLogger [main] Starting RostemApplication on ROgradi04 with PID 27156 (C:\ubb\rostem\ROSTEM\out\production\classes started by gradi in C:\ubb\rostem\ROSTEM)
+2019-05-18 17:49:09,027 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-05-18 17:49:09,028 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-05-18 17:49:11,986 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-18 17:49:12,136 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 130ms. Found 6 repository interfaces.
+2019-05-18 17:49:13,069 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$97d92722] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-18 17:49:13,638 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2019-05-18 17:49:13,660 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2019-05-18 17:49:13,671 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2019-05-18 17:49:13,672 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-05-18 17:49:13,680 INFO org.apache.juli.logging.DirectJDKLog [main] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Zulu\zulu-8\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;C:\Program Files\dotnet\;%M2_HOME%\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;C:\Program Files\dotnet\;%M2_HOME%\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\sy;C:\Users\gradi.CORPDOM\AppData\Local\Microsoft\WindowsApps;C:\Users\gradi.CORPDOM\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Zulu\zulu-8;-Xms512m -Xmx1524m;%M2_PATH%\bin;C:\work\apache-maven-3.3.9\bin;C:\Users\gradi.CORPDOM\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\JetBrains\PyCharm 2018.3.2\bin;C:\MinGW\bin;C:\GnuWin32\bin;C:\Users\gradi.CORPDOM\AppData\Roaming\npm;.]
+2019-05-18 17:49:13,986 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2019-05-18 17:49:13,987 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 4825 ms
+2019-05-18 17:49:14,238 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-05-18 17:49:14,406 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-05-18 17:49:14,546 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-05-18 17:49:14,633 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.7.Final}
+2019-05-18 17:49:14,636 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-05-18 17:49:14,925 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-05-18 17:49:15,379 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2019-05-18 17:49:15,767 INFO org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl [main] HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl.useContextualLobCreation(LobCreatorBuilderImpl.java:113)
+	at org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl.makeLobCreatorBuilder(LobCreatorBuilderImpl.java:54)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentImpl.<init>(JdbcEnvironmentImpl.java:271)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:114)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:904)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:935)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at rostem.configuration.JpaConfiguration.entityManagerFactory(JpaConfiguration.java:97)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$1f69f242.CGLIB$entityManagerFactory$1(<generated>)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$1f69f242$$FastClassBySpringCGLIB$$7b548820.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$1f69f242.entityManagerFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:367)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:110)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:662)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:479)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:312)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:131)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1648)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1400)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1244)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:857)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:760)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1154)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1244)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:857)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:760)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1154)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:846)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:863)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at rostem.RostemApplication.main(RostemApplication.java:12)
+Caused by: java.sql.SQLFeatureNotSupportedException: Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented.
+	at org.postgresql.Driver.notImplemented(Driver.java:688)
+	at org.postgresql.jdbc.PgConnection.createClob(PgConnection.java:1269)
+	... 103 common frames omitted
+2019-05-18 17:49:15,783 INFO org.hibernate.type.BasicTypeRegistry [main] HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@47829d6d
+2019-05-18 17:49:17,581 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-18 17:49:19,223 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-18 17:49:19,513 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-05-18 17:49:19,839 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53e4a19e, org.springframework.security.web.context.SecurityContextPersistenceFilter@30e2016a, org.springframework.security.web.header.HeaderWriterFilter@76fc5687, org.springframework.web.filter.CorsFilter@62360a68, org.springframework.security.web.authentication.logout.LogoutFilter@591e5fd4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@41f7c02d, org.springframework.security.web.session.ConcurrentSessionFilter@12608986, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@13404f75, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23a78c77, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@105ffc58, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1450ffa3, org.springframework.security.web.session.SessionManagementFilter@7434ee13, org.springframework.security.web.access.ExceptionTranslationFilter@5f1f0ee6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f6f0fe2]
+2019-05-18 17:49:20,221 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-18 17:49:20,735 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2019-05-18 17:49:20,793 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2019-05-18 17:49:20,874 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2019-05-18 17:49:21,323 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: getAllTutorialsForCategoryUsingGET_1
+2019-05-18 17:49:21,365 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2019-05-18 17:49:21,431 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path '/rostem'
+2019-05-18 17:49:21,435 INFO org.springframework.boot.StartupInfoLogger [main] Started RostemApplication in 13.646 seconds (JVM running for 18.315)
+2019-05-18 17:54:48,188 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-05-18 17:54:48,189 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-05-18 17:54:48,199 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 10 ms
+2019-05-18 17:54:48,258 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 17:54:48,302 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-1] HHH000397: Using ASTQueryTranslatorFactory
+2019-05-18 17:56:12,501 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:06:11,478 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:07:03,973 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:07:13,488 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:08:05,263 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:09:03,023 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:10:39,993 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:12:16,776 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:14:47,583 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:14:51,668 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:15:25,995 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-8] [ADMIN] Get all users
+2019-05-18 18:15:27,861 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:15:28,688 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:15:28,697 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Get all tutorial
+2019-05-18 18:15:29,219 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Get all tutorial
+2019-05-18 18:15:29,230 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Get all chapters.
+2019-05-18 18:15:30,379 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Get all tutorial
+2019-05-18 18:15:30,379 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Get all chapters.
+2019-05-18 18:15:31,007 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Get all tutorial
+2019-05-18 18:15:31,007 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:15:32,088 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:15:32,581 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-7] [ADMIN] Get all users
+2019-05-18 18:15:38,659 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:15:43,274 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:15:49,100 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:16:43,225 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:17:13,459 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:17:31,287 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:18:06,381 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-05-18 18:18:06,449 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Found user, all ok
+2019-05-18 18:18:06,540 WARN rostem.configuration.LoginHandlers.LoginFailureHanlder [http-nio-8080-exec-9] [WARNING] A login request failed with exception: Bad credentials
+2019-05-18 18:18:16,759 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-8] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-05-18 18:18:16,765 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-8] [loadUserByUsername] Found user, all ok
+2019-05-18 18:18:16,871 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-8] [INFO] A login request was successful
+2019-05-18 18:19:40,511 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-4] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-05-18 18:19:40,525 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-4] [loadUserByUsername] Found user, all ok
+2019-05-18 18:19:40,622 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-4] [INFO] A login request was successful
+2019-05-18 18:20:17,142 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-3] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-05-18 18:20:17,146 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-3] [loadUserByUsername] Found user, all ok
+2019-05-18 18:20:17,234 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-3] [INFO] A login request was successful
+2019-05-18 18:20:17,354 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] Get all users
+2019-05-18 18:20:22,302 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:21:05,524 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:21:23,183 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:22:58,771 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:23:14,263 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:23:20,040 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:23:22,519 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:23:30,705 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:23:58,411 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:24:09,415 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:24:14,851 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:24:17,757 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:24:19,880 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:25:32,550 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:25:37,864 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:26:16,465 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:26:18,621 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:26:24,656 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:26:27,634 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:26:36,060 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:26:38,002 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:27:47,939 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:27:54,214 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:28:05,390 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:28:08,573 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:28:10,483 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:28:27,374 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:28:31,170 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:28:59,189 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:29:40,413 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:29:43,205 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:29:45,966 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:30:15,284 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:36:57,601 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:49:15,561 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:49:22,465 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:49:24,149 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 25
+2019-05-18 18:49:25,668 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:49:26,448 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 18:49:27,431 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:49:28,146 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:49:29,255 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 18:49:29,938 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 24
+2019-05-18 18:49:31,003 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:50:46,765 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 18:50:48,182 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:52:01,628 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:52:17,517 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:52:42,063 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:52:50,356 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:53:02,850 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:53:07,834 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 18:53:09,139 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:53:25,423 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:54:12,256 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:54:27,342 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:55:55,858 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:56:48,634 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 18:56:50,259 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 18:57:09,198 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 18:57:10,236 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 25
+2019-05-18 18:57:14,999 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 18:58:42,761 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 18:59:13,665 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 18:59:15,390 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 18:59:20,155 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 18:59:29,477 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 19:00:56,631 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 19:00:58,718 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:01:03,787 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 19:01:04,818 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 24
+2019-05-18 19:01:05,934 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 19:01:06,587 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 25
+2019-05-18 19:01:07,450 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 19:01:08,151 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 26
+2019-05-18 19:01:09,191 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 19:01:28,514 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 19:01:36,567 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:01:38,287 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 19:01:38,900 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 25
+2019-05-18 19:01:39,861 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 19:01:40,474 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 26
+2019-05-18 19:01:41,440 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 19:01:42,189 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 27
+2019-05-18 19:01:43,273 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 19:02:02,333 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:02:03,421 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 19:02:25,375 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 19:02:50,804 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:03:25,625 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 19:04:55,566 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 19:05:19,673 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 19:05:24,382 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 19:05:29,988 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 19:05:44,228 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-05-18 19:05:52,326 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:00,030 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:12,691 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:21,266 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 19:09:22,115 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:23,077 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 19:09:24,085 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:25,311 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 19:09:26,395 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:09:28,083 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 19:09:29,330 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:12:27,263 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:13:46,030 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:14:11,300 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:14:20,524 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:19:04,366 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:19:14,542 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:19:42,531 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:19:47,069 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:20:02,221 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:20:10,460 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:20:51,998 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:20:58,168 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:21:16,120 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:21:22,372 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:21:56,840 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:23:42,168 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 19:23:43,428 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 24
+2019-05-18 19:23:48,014 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 19:23:48,882 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:26:03,588 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:26:06,978 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:26:22,058 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:26:47,551 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:26:50,927 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:27:00,592 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:27:22,440 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:27:26,191 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:27:38,202 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:30:43,157 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:31:16,542 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 19:31:18,322 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 3
+2019-05-18 19:36:15,089 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 3
+2019-05-18 19:36:45,256 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 3
+2019-05-18 19:36:50,264 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 19:42:07,912 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 19:44:57,791 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 19:46:07,948 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-05-18 19:46:12,542 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 19:46:13,589 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 19:46:14,416 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 19:46:15,031 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:15,874 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:16,490 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:17,944 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:18,891 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:19,414 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:19,925 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 19:46:20,798 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 19:46:22,293 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:22,837 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 19:46:23,390 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:23,834 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:24,542 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:25,076 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 19:46:26,090 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-05-18 19:46:27,228 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:46:28,162 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:46:29,416 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:46:31,143 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:47:21,125 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:49:10,718 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:49:22,906 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:49:24,544 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:49:42,132 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:49:42,907 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:49:45,334 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:49:49,843 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:49:57,413 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:49:59,487 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:50:46,315 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:50:50,159 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:50:58,047 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:50:58,921 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:51:00,683 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:51:02,048 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:51:22,778 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:51:23,390 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:52:37,672 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:54:43,587 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:54:59,011 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:55:02,369 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:04,603 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:05,246 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:07,229 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:07,642 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:10,398 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:20,811 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:55:21,787 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:23,056 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:24,441 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:28,865 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:29,502 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:30,125 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:30,704 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:40,313 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:55:41,304 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:55:44,481 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:55:48,169 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:56:20,441 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:56:26,658 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:56:29,450 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:57:26,931 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:57:27,665 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 19:57:38,419 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:57:39,487 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 19:57:54,646 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:59:44,594 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 19:59:47,161 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:00:12,645 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:00:13,619 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:00:18,550 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:00:20,435 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:01:09,598 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:01:10,658 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:01:20,409 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:02:11,614 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:02:52,333 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:02:52,937 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:02:55,773 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:02:57,065 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:05:16,525 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 20:05:21,925 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 20:05:22,872 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 20:05:23,570 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 20:05:24,576 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 20:05:25,592 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 20:05:26,199 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:27,571 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:28,068 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:32,356 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:32,770 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:33,255 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:33,746 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:34,309 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:34,835 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:35,295 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:41,200 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:05:41,859 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:06:16,528 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 20:06:17,409 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 20:06:18,546 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 9
+2019-05-18 20:06:19,125 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 20:06:20,047 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 10
+2019-05-18 20:06:20,697 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:06:27,342 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 11
+2019-05-18 20:06:28,865 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-05-18 20:06:29,635 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:06:30,243 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:06:32,184 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:06:33,340 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:06:34,686 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:08:11,815 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 20:08:44,155 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:08:46,192 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 20:08:47,327 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Trying to get all tutorials for category 23
+2019-05-18 20:08:48,401 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 20:08:49,325 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 25
+2019-05-18 20:08:50,340 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 20:08:51,239 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 26
+2019-05-18 20:08:52,347 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 20:08:53,461 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 27
+2019-05-18 20:08:55,071 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-05-18 20:08:56,298 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category 24
+2019-05-18 20:08:57,921 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-05-18 20:09:44,378 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-4] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-05-18 20:09:44,394 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-4] [loadUserByUsername] Found user, all ok
+2019-05-18 20:09:44,484 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-4] [INFO] A login request was successful
+2019-05-18 20:09:44,634 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-3] [ADMIN] Get all users
+2019-05-18 20:09:48,339 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-05-18 20:09:52,441 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 20:09:52,443 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Get all tutorial
+2019-05-18 20:10:12,880 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-05-18 20:10:18,561 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:10:21,527 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:10:25,036 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:24:58,984 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-05-18 20:25:05,374 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Trying to get all tutorials for category 24
+2019-05-18 20:25:07,977 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-05-18 20:25:14,377 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category 22
+2019-05-18 20:25:15,336 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:25:16,850 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 7
+2019-05-18 20:25:17,585 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:25:18,075 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 8
+2019-05-18 20:25:19,565 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
