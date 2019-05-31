@@ -40,13 +40,13 @@ public class TutorialService {
         return tutorialRepository.findAll().stream().map(TutorialMapper::map).collect(Collectors.toList());
     }
 
-    public List<ResponseTutorial> getTutorialsForCategory(Long id) {
-        logger.info("[TUTORIAL] Trying to get all tutorials for category " + id);
+    public List<ResponseTutorial> getTutorialsForCategory(String categoryName) {
+        logger.info("[TUTORIAL] Trying to get all tutorials for category " + categoryName);
 
-        if (!findCategoryById(id)) {
+        if (!findCategoryByName(categoryName)) {
             throw new RostemException(CATEGORY_NOT_FOUND);
         } else {
-            return categoryRepository.findCategoryById(id).get().getTutorials().stream()
+            return categoryRepository.findCategoryByName(categoryName).get().getTutorials().stream()
                     .map(TutorialMapper::map)
                     .collect(Collectors.toList());
         }
@@ -94,6 +94,10 @@ public class TutorialService {
             tutorial.setCategory(categoryRepository.findCategoryById(requestTutorial.getCategoryId()).get());
             return map(tutorialRepository.save(tutorial));
         }
+    }
+
+    private boolean findCategoryByName(String categoryName) {
+        return categoryRepository.findCategoryByName(categoryName).isPresent();
     }
 
     private boolean findCategoryById(Long id) {

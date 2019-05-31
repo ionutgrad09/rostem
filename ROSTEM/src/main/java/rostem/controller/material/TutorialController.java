@@ -36,10 +36,10 @@ public class TutorialController {
             @ApiResponse(code = 200, message = "The tutorials were returned."),
             @ApiResponse(code = 400, message = "The category does not exist.")
     })
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Response> getAllTutorialsForCategory(@PathVariable("id") Long id) {
+    @GetMapping(path = "/{categoryName}")
+    public ResponseEntity<Response> getAllTutorialsForCategory(@PathVariable("categoryName") String categoryName) {
         try {
-            List<ResponseTutorial> tutorials = tutorialService.getTutorialsForCategory(id);
+            List<ResponseTutorial> tutorials = tutorialService.getTutorialsForCategory(categoryName);
             return ResponseBuilder.encode(HttpStatus.OK, tutorials, 0, tutorials.size(), tutorials.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());

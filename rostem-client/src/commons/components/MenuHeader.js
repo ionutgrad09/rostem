@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { withRouter } from "react-router-dom";
 
 const styles = {
   root: {
@@ -22,7 +23,7 @@ const styles = {
   }
 };
 
-const stemAvatar = require("../../resources/greenStem.png");
+const stemAvatar = require("../../resources/blueStem.png");
 
 class MenuAppBar extends React.Component {
   constructor(props) {
@@ -46,6 +47,10 @@ class MenuAppBar extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  handleRostemIconClick = () => {
+    this.props.history.push("/categories");
+  };
+
   render() {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
@@ -61,6 +66,7 @@ class MenuAppBar extends React.Component {
               height="50"
               width="50"
               style={{ paddingRight: 20 }}
+              onClick={this.handleRostemIconClick.bind(this)}
             />
             <Typography variant="h6" color="primary" className={classes.grow}>
               {this.username}
@@ -104,4 +110,4 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withRouter(withStyles(styles)(MenuAppBar));

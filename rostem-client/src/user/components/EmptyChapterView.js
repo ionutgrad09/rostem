@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
-    width: 1050,
+    width: 910,
     height: 500,
     align: "center"
   }

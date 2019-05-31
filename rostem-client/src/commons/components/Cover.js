@@ -23,11 +23,11 @@ function Presentation(props) {
       justify="center"
       style={gridStyle}
     >
-      <Grid item xs={6}>
-        <Typography style={style} variant="h2" color="primary">
+      <Grid item xs={8}>
+        <Typography style={style} variant="h1" color="primary">
           LEARN ANYTHING.
         </Typography>
-        <Typography style={style} variant="h5" color="primary">
+        <Typography style={style} variant="h4" color="primary">
           Free e-learning platform.
         </Typography>
       </Grid>

@@ -1,8 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import MenuAppBar from "../../commons/components/MenuHeader";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
@@ -21,9 +19,8 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
-import { unstable_Box as Box } from "@material-ui/core/Box";
+import Box from "@material-ui/core/Box";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import EmptyChapterView from "./EmptyChapterView";
 import ChapterView from "./ChapterView";
@@ -38,7 +35,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: 25,
-    maxWidth: 400
+    maxWidth: 500
   },
   tutorials: {
     marginTop: 25
@@ -66,10 +63,7 @@ class TutorialsView extends React.Component {
       tutorials: [],
       shownTutorials: [],
       chapters: [],
-      selectedChapterName: "",
-      selectedChapterId: "",
-      selectedChapterDescription: "",
-      selectedChapterUrl: "",
+      selectedChapter: null,
       showChapter: false
     };
   }
@@ -96,9 +90,9 @@ class TutorialsView extends React.Component {
   }
 
   async getAllTutorials() {
-    const id = this.props.match.params.id;
+    const categoryName = this.props.match.params.categoryName;
     await axios
-      .get(rostemConstants.BASE_URL + "/tutorials/" + id)
+      .get(rostemConstants.BASE_URL + "/tutorials/" + categoryName)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -110,6 +104,10 @@ class TutorialsView extends React.Component {
           });
         }
       });
+  }
+
+  componentDidMount() {
+    this.getAllTutorials();
   }
 
   async getAllChapters(id) {
@@ -128,15 +126,12 @@ class TutorialsView extends React.Component {
   }
 
   handleChapterClick(id) {
-    const selectedChapter = this.state.chapters.find(function(chapter) {
+    const clickedChapter = this.state.chapters.find(function(chapter) {
       return chapter.id === id;
     });
     this.setState({
       showChapter: true,
-      selectedChapterId: selectedChapter.id,
-      selectedChapterName: selectedChapter.name,
-      selectedChapterDescription: selectedChapter.description,
-      selectedChapterUrl: selectedChapter.url
+      selectedChapter: clickedChapter
     });
   }
 
@@ -146,10 +141,6 @@ class TutorialsView extends React.Component {
       expanded: expanded ? id : false
     });
   };
-
-  componentDidMount() {
-    this.getAllTutorials();
-  }
 
   render() {
     const { classes } = this.props;
@@ -227,12 +218,7 @@ class TutorialsView extends React.Component {
             </div>
           </div>
           {this.state.showChapter ? (
-            <ChapterView
-              name={this.state.selectedChapterName}
-              description={this.state.selectedChapterDescription}
-              url={this.state.selectedChapterUrl}
-              id={this.state.selectedChapterId}
-            />
+            <ChapterView chapter={this.state.selectedChapter} />
           ) : (
             <EmptyChapterView />
           )}

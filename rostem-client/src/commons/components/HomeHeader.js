@@ -7,7 +7,7 @@ import RegisterDialog from "../../login/components/RegisterDialog";
 import { withRouter } from "react-router-dom";
 
 const titleStyle = { flex: 1 };
-const stemAvatar = require("../../resources/greenStem.png");
+const stemAvatar = require("../../resources/blueStem.png");
 
 class HomePage extends React.Component {
   render() {

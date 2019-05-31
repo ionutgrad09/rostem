@@ -7,13 +7,22 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import * as rostemConstants from "../../constants/constants.js";
 import axios from "axios";
-import { unstable_Box as Box } from "@material-ui/core/Box";
+import Box from "@material-ui/core/Box";
 import CategoryItem from "../components/CategoryItem.js";
+import RecentPosts from "./RecentPosts.js";
 
 const styles = theme => ({
   root: {
-    padding: 15,
-    maxWidth: 900
+    padding: 15
+  },
+  categoriesRoot: {
+    width: 900
+  },
+  wrapperBox: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    overflow: "hidden"
   },
   box: {
     display: "flex",
@@ -22,12 +31,11 @@ const styles = theme => ({
     overflow: "hidden"
   },
   search: {
-    marginTop: 25,
     marginLeft: 25,
     padding: "4px 4px 4px 4px",
     display: "flex",
     alignItems: "center",
-    maxWidth: 780
+    width: 780
   },
   input: {
     marginLeft: 8,
@@ -84,24 +92,29 @@ class CategoriesView extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Paper className={classes.search} elevation={1}>
-          <IconButton className={classes.iconButton} aria-label="Search">
-            <SearchIcon />
-          </IconButton>
-          <InputBase
-            onCclassName={classes.input}
-            placeholder="Search category..."
-            onChange={this.onSearchChange.bind(this)}
-          />
-        </Paper>
-        <Box className={classes.box} p={1} m={1}>
-          {this.state.shownCategories.map(category => (
-            <CategoryItem
-              id={category.id}
-              categoryName={category.name}
-              description={category.description}
-            />
-          ))}
+        <Box className={classes.wrapperBox} p={1} m={1}>
+          <div className={classes.categoriesRoot}>
+            <Paper className={classes.search} elevation={1}>
+              <IconButton className={classes.iconButton} aria-label="Search">
+                <SearchIcon />
+              </IconButton>
+              <InputBase
+                onCclassName={classes.input}
+                placeholder="Search category..."
+                onChange={this.onSearchChange.bind(this)}
+              />
+            </Paper>
+            <Box className={classes.box} p={1} m={1}>
+              {this.state.shownCategories.map(category => (
+                <CategoryItem
+                  id={category.id}
+                  categoryName={category.name}
+                  description={category.description}
+                />
+              ))}
+            </Box>
+          </div>
+          <RecentPosts />
         </Box>
       </div>
     );

@@ -11,10 +11,10 @@ import TutorialsView from "./user/components/TutorialsView";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#000000"
+      main: "#FFFFFF"
     },
     secondary: {
-      main: "#2B7548"
+      main: "#041643"
     }
   }
 });
@@ -25,7 +25,7 @@ const routing = (
       <Route exact path="/" component={App} />
       <Route path="/admin" component={AdminPanel} />
       <Route exact path="/categories" component={UserPage} />
-      <Route path="/categories/:id" component={TutorialsView} />
+      <Route path="/categories/:categoryName" component={TutorialsView} />
     </MuiThemeProvider>
   </Router>
 );
