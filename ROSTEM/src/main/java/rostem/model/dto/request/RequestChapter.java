@@ -18,6 +18,9 @@ public class RequestChapter implements Serializable {
     @Size(max = 255, message = "Description max size must be 255.")
     private String description;
 
+    @NotBlank(message = "You must provide a source for this chapter.")
+    private String url;
+
     public RequestChapter() {
     }
 }

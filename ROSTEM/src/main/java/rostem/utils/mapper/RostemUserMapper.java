@@ -9,7 +9,7 @@ public class RostemUserMapper {
         ResponseRostemUser responseRostemUser = new ResponseRostemUser();
         responseRostemUser.setEmail(rostemUser.getEmail());
         responseRostemUser.setUsername(rostemUser.getUsername());
-        responseRostemUser.setRegistrationDate(rostemUser.getRegistrationDate());
+        responseRostemUser.setRegistrationDate(rostemUser.getRegistrationDate().toString());
 
         return responseRostemUser;
     }

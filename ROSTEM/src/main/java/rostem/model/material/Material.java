@@ -20,14 +20,16 @@ public abstract class Material implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
     @NotNull
     @Size(max = 100)
-    @Column(unique = true)
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Size(max = 255)
+    @Column(name = "DESCRIPTION")
     private String description;
 
 }

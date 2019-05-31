@@ -80,7 +80,7 @@ export default class AddTutorial extends React.Component {
   addTutorial() {
     const { name, description, category } = this.state;
     axios
-      .post(rostemConstants.BASE_URL + "/admin/addTutorial", {
+      .post(rostemConstants.BASE_URL + "/admin/createTutorial", {
         name: name,
         description: description,
         categoryId: category

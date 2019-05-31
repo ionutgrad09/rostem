@@ -61,6 +61,4 @@ public class ChapterController {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
-
-
 }

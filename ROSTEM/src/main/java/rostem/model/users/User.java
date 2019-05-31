@@ -14,9 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 public class User implements Serializable {
     @Id
-    @Column(length = 128)
+    @Column(name = "EMAIL", length = 128)
     protected String email;
+
+    @Column(name = "PASSWORD")
     protected String password;
+
+    @Column(name = "USERNAME")
     protected String username;
 }
 

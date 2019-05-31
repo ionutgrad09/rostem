@@ -12,7 +12,7 @@ import rostem.model.users.RostemUser;
 
 @Entity
 @Data
-@Table(name = "categories")
+@Table(name = "CATEGORIES")
 public class Category extends Material {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")

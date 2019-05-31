@@ -10,6 +10,7 @@ public class ResponseChapter implements Serializable {
     private String tutorialName;
     private String name;
     private String description;
+    private String sourceUrl;
 
     public ResponseChapter(){
 

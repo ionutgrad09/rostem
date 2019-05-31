@@ -23,6 +23,7 @@ const styles = theme => ({
     minWidth: 1020
   },
   tableWrapper: {
+    marginLeft: 10,
     overflowX: "auto"
   }
 });

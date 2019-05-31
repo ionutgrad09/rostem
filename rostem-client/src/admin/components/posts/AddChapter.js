@@ -24,6 +24,7 @@ export default class AddChapter extends React.Component {
       errors: [],
       name: "",
       description: "",
+      url: "",
       tutorials: [],
       tutorial: ""
     };
@@ -36,6 +37,10 @@ export default class AddChapter extends React.Component {
 
   onDescriptionChange(e) {
     this.setState({ description: e.target.value });
+  }
+
+  onUrlChange(e) {
+    this.setState({ url: e.target.value });
   }
 
   onTutorialChange(e) {
@@ -77,12 +82,13 @@ export default class AddChapter extends React.Component {
   }
 
   addChapter() {
-    const { name, description, tutorial } = this.state;
+    const { url, name, description, tutorial } = this.state;
     axios
-      .post(rostemConstants.BASE_URL + "/admin/addChapter", {
+      .post(rostemConstants.BASE_URL + "/admin/createChapter", {
         name: name,
         description: description,
-        tutorialId: tutorial
+        tutorialId: tutorial,
+        url: url
       })
       .then(response => {
         if (response.status === false) {
@@ -104,6 +110,13 @@ export default class AddChapter extends React.Component {
     if (this.state.name === "") {
       this.setState({ showUniqueNameError: false });
       this.showValidationError("name", "Chapter's name can't be empty!");
+      shouldAdd = false;
+    }
+    if (this.state.url === "") {
+      this.showValidationError(
+        "url",
+        "You must provide a source for the chapter!"
+      );
       shouldAdd = false;
     }
     if (this.state.tutorial === "") {
@@ -128,13 +141,18 @@ export default class AddChapter extends React.Component {
 
   render() {
     let nameError = null,
-      tutorialError = null;
+      tutorialError = null,
+      urlError = null;
     const { tutorials } = this.state;
     for (let err of this.state.errors) {
       if (err.element === "name") {
         nameError = err.message;
-      } else if (err.element === "tutorial") {
+      }
+      if (err.element === "tutorial") {
         tutorialError = err.message;
+      }
+      if (err.element === "url") {
+        urlError = err.message;
       }
     }
 
@@ -166,13 +184,22 @@ export default class AddChapter extends React.Component {
                 : ""}
             </small>
             <TextField
-              id="standard-password-input"
+              id="custom-css-standard-input"
               label="Description"
               type="text"
               margin="normal"
               fullWidth
               onChange={this.onDescriptionChange.bind(this)}
             />
+            <TextField
+              id="custom-css-standard-input"
+              label="Source (URL)"
+              type="text"
+              margin="normal"
+              fullWidth
+              onChange={this.onUrlChange.bind(this)}
+            />
+            <small className="danger-error">{urlError ? urlError : ""}</small>
             <FormControl fullWidth>
               <InputLabel>Tutorial</InputLabel>
               <Select

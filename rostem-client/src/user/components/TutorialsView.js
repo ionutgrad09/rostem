@@ -23,8 +23,18 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
 import Divider from "@material-ui/core/Divider";
+import { unstable_Box as Box } from "@material-ui/core/Box";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import EmptyChapterView from "./EmptyChapterView";
+import ChapterView from "./ChapterView";
 
 const styles = theme => ({
+  box: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    overflow: "hidden"
+  },
   root: {
     flexGrow: 1,
     padding: 25,
@@ -33,8 +43,8 @@ const styles = theme => ({
   tutorials: {
     marginTop: 25
   },
-  chapterStyle: {
-    maxWidth: 400
+  details: {
+    display: "inline-flex"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -55,7 +65,12 @@ class TutorialsView extends React.Component {
       searchText: "",
       tutorials: [],
       shownTutorials: [],
-      chapters: []
+      chapters: [],
+      selectedChapterName: "",
+      selectedChapterId: "",
+      selectedChapterDescription: "",
+      selectedChapterUrl: "",
+      showChapter: false
     };
   }
 
@@ -112,6 +127,19 @@ class TutorialsView extends React.Component {
       });
   }
 
+  handleChapterClick(id) {
+    const selectedChapter = this.state.chapters.find(function(chapter) {
+      return chapter.id === id;
+    });
+    this.setState({
+      showChapter: true,
+      selectedChapterId: selectedChapter.id,
+      selectedChapterName: selectedChapter.name,
+      selectedChapterDescription: selectedChapter.description,
+      selectedChapterUrl: selectedChapter.url
+    });
+  }
+
   handleChange = id => (event, expanded) => {
     this.getAllChapters(id);
     this.setState({
@@ -129,68 +157,86 @@ class TutorialsView extends React.Component {
     return (
       <div>
         <MenuAppBar username="ROSTEM" />
-        <div className={classes.root}>
-          <Paper className={classes.search} elevation={1}>
-            <IconButton className={classes.iconButton} aria-label="Search">
-              <SearchIcon />
-            </IconButton>
-            <InputBase
-              onCclassName={classes.input}
-              placeholder="Search tutorial..."
-              onChange={this.onSearchChange.bind(this)}
-            />
-          </Paper>
-          <div className={classes.tutorials}>
-            <Grid item>
-              <div>
-                <List dense={false}>
-                  {this.state.shownTutorials.map(tutorial => (
-                    <div>
-                      <ExpansionPanel
-                        expanded={expanded === tutorial.id}
-                        onChange={this.handleChange(tutorial.id)}
-                      >
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                          <Typography className={classes.heading}>
-                            {tutorial.name}
-                          </Typography>
-                          <Typography className={classes.secondaryHeading}>
-                            {tutorial.description}
-                          </Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                          <List dense={true}>
-                            {this.state.chapters.length > 0 ? (
-                              this.state.chapters.map(chapter => {
-                                return (
-                                  <div>
+        <Box className={classes.box} p={1} m={1}>
+          <div className={classes.root}>
+            <Paper className={classes.search} elevation={1}>
+              <IconButton className={classes.iconButton} aria-label="Search">
+                <SearchIcon />
+              </IconButton>
+              <InputBase
+                onCclassName={classes.input}
+                placeholder="Search tutorial..."
+                onChange={this.onSearchChange.bind(this)}
+              />
+            </Paper>
+            <div className={classes.tutorials}>
+              <Grid item>
+                <div>
+                  <List dense={false}>
+                    {this.state.shownTutorials.map(tutorial => (
+                      <div>
+                        <ExpansionPanel
+                          expanded={expanded === tutorial.id}
+                          onChange={this.handleChange(tutorial.id)}
+                        >
+                          <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                          >
+                            <Typography className={classes.heading}>
+                              {tutorial.name}
+                            </Typography>
+                            <Typography className={classes.secondaryHeading}>
+                              {tutorial.description}
+                            </Typography>
+                          </ExpansionPanelSummary>
+                          <ExpansionPanelDetails>
+                            <List dense={true}>
+                              {this.state.chapters.length > 0 ? (
+                                this.state.chapters.map(chapter => {
+                                  return (
                                     <ListItem
-                                      className={classes.chapterStyle}
+                                      className={classes.details}
                                       button
+                                      divider
+                                      onClick={e =>
+                                        this.handleChapterClick(chapter.id)
+                                      }
                                     >
                                       <ListItemText
                                         primary={chapter.name}
                                         secondary={chapter.description}
                                       />
+                                      <ListItemIcon button>
+                                        <NavigateNextIcon />
+                                      </ListItemIcon>
                                     </ListItem>
-                                    <Divider />
-                                  </div>
-                                );
-                              })
-                            ) : (
-                              <div>No chapters for this tutorial!</div>
-                            )}
-                          </List>
-                        </ExpansionPanelDetails>
-                      </ExpansionPanel>
-                      <Divider />
-                    </div>
-                  ))}
-                </List>
-              </div>
-            </Grid>
+                                  );
+                                })
+                              ) : (
+                                <div>No chapters for this tutorial!</div>
+                              )}
+                            </List>
+                          </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                        <Divider />
+                      </div>
+                    ))}
+                  </List>
+                </div>
+              </Grid>
+            </div>
           </div>
-        </div>
+          {this.state.showChapter ? (
+            <ChapterView
+              name={this.state.selectedChapterName}
+              description={this.state.selectedChapterDescription}
+              url={this.state.selectedChapterUrl}
+              id={this.state.selectedChapterId}
+            />
+          ) : (
+            <EmptyChapterView />
+          )}
+        </Box>
       </div>
     );
   }

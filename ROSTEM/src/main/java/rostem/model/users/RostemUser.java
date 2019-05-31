@@ -1,12 +1,13 @@
 package rostem.model.users;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import rostem.model.material.Category;
@@ -14,15 +15,17 @@ import rostem.model.material.Category;
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "ROSTEM_USERS")
 public class RostemUser extends User {
 
-    protected String registrationDate;
+    @Column(name = "REGISTRATION_DATE")
+    protected Date registrationDate;
 
     @ManyToMany
     @JoinTable(
-            name = "user_categories",
-            joinColumns = @JoinColumn(name = "email"),
-            inverseJoinColumns = @JoinColumn(name = "id")
+            name = "USER_CATEGORIES",
+            joinColumns = @JoinColumn(name = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
     )
     private Set<Category> favoriteCategories;
 
@@ -32,7 +35,7 @@ public class RostemUser extends User {
         this.registrationDate = getCurrentDate();
     }
 
-    private String getCurrentDate(){
-        return new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+    private Date getCurrentDate() {
+        return new Date();
     }
 }

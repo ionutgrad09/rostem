@@ -53,7 +53,7 @@ export default class AddCategory extends React.Component {
   addCategory() {
     const { name, description } = this.state;
     axios
-      .post(rostemConstants.BASE_URL + "/admin/addCategory", {
+      .post(rostemConstants.BASE_URL + "/admin/createCategory", {
         name: name,
         description: description
       })

@@ -17,11 +17,11 @@ import org.hibernate.annotations.OnDeleteAction;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tutorials")
+@Table(name = "TUTORIALS")
 public class Tutorial extends Material {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category", nullable = false)
+    @JoinColumn(name = "CATEGORY_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 

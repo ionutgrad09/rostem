@@ -1,5 +1,7 @@
 package rostem.model.material;
 
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -16,14 +18,21 @@ import org.hibernate.annotations.OnDeleteAction;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "chapters")
+@Table(name = "CHAPTERS")
 public class Chapter extends Material {
 
     @Lob
+    @Column(name = "CONTENT")
     private String content;
 
+    @Column(name = "SOURCE_URL")
+    private String sourceUrl;
+
+    @Column(name = "CREATION_DATE")
+    private Date creationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tutorial", nullable = false)
+    @JoinColumn(name = "TUTORIAL_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Tutorial tutorial;
 }
