@@ -5,6 +5,8 @@ import static rostem.utils.ApiResponses.CHAPTER_NOT_FOUND;
 import static rostem.utils.ApiResponses.TUTORIAL_NOT_FOUND;
 import static rostem.utils.mapper.ChapterMapper.map;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
@@ -83,8 +85,9 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public ResponseChapter updateChapter(Long id, RequestChapter requestChapter) {
-        logger.info("[TUTORIAL] Trying to update tutorial " + id);
+        logger.info("[CHAPTER] Trying to update chapter " + id);
 
         if (!findChapterById(id)) {
             throw new RostemException(CHAPTER_NOT_FOUND);
@@ -95,6 +98,14 @@ public class ChapterService {
             return map(chapterRepository.save(chapter));
         }
     }
+
+    public List<ResponseChapter> getLatestChapters(int count) {
+        logger.info("[CHAPTER] Getting latest created chapters..");
+
+        return chapterRepository.findAllByOrderByCreationDateDesc().stream().limit(count).map(ChapterMapper::map)
+                .collect(Collectors.toList());
+    }
+
 
     private boolean findTutorialById(Long id) {
         return tutorialRepository.findTutorialById(id).isPresent();

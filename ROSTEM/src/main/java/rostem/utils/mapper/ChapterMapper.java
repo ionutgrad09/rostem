@@ -24,6 +24,7 @@ public class ChapterMapper {
         responseChapter.setDescription(chapter.getDescription());
         responseChapter.setTutorialName(chapter.getTutorial().getName());
         responseChapter.setSourceUrl(chapter.getSourceUrl());
+        responseChapter.setCreationDate(chapter.getCreationDate().toString());
 
         return responseChapter;
     }

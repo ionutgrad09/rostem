@@ -50,12 +50,26 @@ public class ChapterController {
             response = Response.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The chapters were returned."),
-            @ApiResponse(code = 400, message = "The tutorial does not exist.")
     })
     @GetMapping
     public ResponseEntity<Response> getAllChapters() {
         try {
             List<ResponseChapter> chapters = chapterService.getAllChapters();
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get latest chapters",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The latest chapters were returned."),
+    })
+    @GetMapping("/latest/{count}")
+    public ResponseEntity<Response> getLatestChapters(@PathVariable("count") int count) {
+        try {
+            List<ResponseChapter> chapters = chapterService.getLatestChapters(count);
             return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
