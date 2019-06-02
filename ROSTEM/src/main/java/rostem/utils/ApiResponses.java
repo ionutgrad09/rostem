@@ -40,6 +40,7 @@ public class ApiResponses {
      */
     public final static String USER_NOT_FOUND = "User not found.";
     public final static String USER_NOT_FOUND_FOR_CATEGORY = "User not found for the given category.";
+    public final static String USER_NOT_FOUND_FOR_CHAPTER = "User not found for the given chapter.";
 
 
     public final static String HTTP_REQUEST_INVALID_VALUE = "The request cannot be fulfilled due to bad syntax or invalid parameters.";

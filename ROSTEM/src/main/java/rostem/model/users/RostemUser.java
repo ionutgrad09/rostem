@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import rostem.model.material.Category;
+import rostem.model.material.Chapter;
 
 @Entity
 @NoArgsConstructor
@@ -28,6 +29,22 @@ public class RostemUser extends User {
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
     private Set<Category> favoriteCategories;
+
+    @ManyToMany
+    @JoinTable(
+            name = "USER_TODO",
+            joinColumns = @JoinColumn(name = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
+    )
+    private Set<Chapter> todoChapters;
+
+    @ManyToMany
+    @JoinTable(
+            name = "USER_DONE",
+            joinColumns = @JoinColumn(name = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
+    )
+    private Set<Chapter> doneChapters;
 
     public RostemUser(String email, String password, String username) {
 

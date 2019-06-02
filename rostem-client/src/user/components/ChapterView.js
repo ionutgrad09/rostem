@@ -5,6 +5,8 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import axios from "axios";
+import * as rostemConstants from "../../constants/constants.js";
 
 const styles = theme => ({
   boxRoot: {
@@ -28,13 +30,62 @@ class ChapterView extends React.Component {
     };
   }
 
+  async setActionTutorial(action) {
+    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const actionType = action;
+    const chapterId = this.props.chapter.id;
+
+    await axios
+      .post(rostemConstants.BASE_URL + "/chapters/mark", {
+        email: email,
+        chapterId: chapterId,
+        actionType: actionType
+      })
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error marking chapters");
+        }
+      });
+  }
+
+  async unsetActionTutorial(action) {
+    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const actionType = action;
+    const chapterId = this.props.chapter.id;
+
+    await axios
+      .post(rostemConstants.BASE_URL + "/chapters/unmark", {
+        email: email,
+        chapterId: chapterId,
+        actionType: actionType
+      })
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error unmarking chapters");
+        }
+      });
+  }
+
   handleChangeTODO = () => {
+    if (this.state.checkedTODO === true) {
+      this.unsetActionTutorial("TODO");
+    } else {
+      this.setActionTutorial("TODO");
+    }
+
     this.setState({
       checkedTODO: !this.state.checkedTODO
     });
   };
 
   handleChangeDONE = () => {
+    if (this.state.checkedDONE === true) {
+      this.unsetActionTutorial("DONE");
+    } else {
+      this.setActionTutorial("DONE");
+    }
     this.setState({
       checkedDONE: !this.state.checkedDONE
     });

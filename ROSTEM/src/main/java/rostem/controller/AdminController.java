@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ import rostem.utils.exception.RostemException;
 @RestController
 @Api("Controller used by the admin")
 @RequestMapping("/admin")
+@CrossOrigin
 public class AdminController {
 
     private final RostemUserService rostemUserService;
@@ -121,7 +123,7 @@ public class AdminController {
             @ApiResponse(code = 200, message = "The category was updated."),
             @ApiResponse(code = 400, message = "The category does not exist.")
     })
-    @PutMapping(path = "updateCategory/{id}")
+    @PutMapping(path = "/updateCategory/{id}")
     public ResponseEntity<Response> updateCategory(@PathVariable("id") Long id,
             @RequestBody RequestCategory requestCategory) {
         try {
@@ -169,7 +171,7 @@ public class AdminController {
             @ApiResponse(code = 200, message = "The chapter was updated."),
             @ApiResponse(code = 400, message = "The chapter does not exist.")
     })
-    @PutMapping(path = "updateChapter/{id}")
+    @PutMapping(path = "/updateChapter/{id}")
     public ResponseEntity<Response> updateChapter(@PathVariable("id") Long id,
             @RequestBody @Validated RequestChapter requestChapter) {
         try {
@@ -217,7 +219,7 @@ public class AdminController {
             @ApiResponse(code = 200, message = "The tutorial was updated."),
             @ApiResponse(code = 400, message = "The tutorial does not exist.")
     })
-    @PutMapping(path = "updateTutorial/{id}")
+    @PutMapping(path = "/updateTutorial/{id}")
     public ResponseEntity<Response> updateTutorial(@PathVariable("id") Long id,
             @RequestBody @Validated RequestTutorial requestTutorial) {
         try {

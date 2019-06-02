@@ -111,8 +111,14 @@ class TutorialsView extends React.Component {
   }
 
   async getAllChapters(id) {
+    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const tutorialId = id;
+
     await axios
-      .get(rostemConstants.BASE_URL + "/chapters/" + id)
+      .post(rostemConstants.BASE_URL + "/chapters/action", {
+        email: email,
+        tutorialId: tutorialId
+      })
       .then(result => {
         let res = result.data;
         if (res.status === "false") {

@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as AuthenticationActions from "../actions/AuthenticatonActions";
 import { withRouter } from "react-router-dom";
+import * as rostemConstants from "../../constants/constants";
 
 class LoginDialog extends React.Component {
   constructor(props) {
@@ -52,8 +53,12 @@ class LoginDialog extends React.Component {
     });
   }
 
-  success() {
-    this.props.history.push("/admin");
+  handleAdmin() {
+    this.props.history.replace("/admin");
+  }
+
+  handleUser(user) {
+    this.props.history.replace("/categories");
   }
 
   handleLoginResponse(response) {
@@ -61,12 +66,26 @@ class LoginDialog extends React.Component {
       console.log("error");
     } else {
       if (response.data.exception) {
-        console.log("Error: " + response.data.exception);
+        // console.log("Error: " + response.data.exception);
       } else {
-        if ((response.data.role = "ROLE_ADMIN")) {
-          this.success();
+        sessionStorage.setItem(
+          rostemConstants.USER_ROLE,
+          response.data.object.role
+        );
+        sessionStorage.setItem(
+          rostemConstants.USERNAME,
+          response.data.object.user.username
+        );
+        sessionStorage.setItem(
+          rostemConstants.EMAIL,
+          response.data.object.user.email
+        );
+        if (response.data.object.role === "ROLE_ADMIN") {
+          this.handleAdmin();
+        } else if (response.data.object.role === "ROLE_USER") {
+          this.handleUser();
         } else {
-          console.log("USER");
+          console.log("cant redirect");
         }
       }
     }

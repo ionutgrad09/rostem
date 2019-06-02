@@ -12,6 +12,8 @@ public class ResponseChapter implements Serializable {
     private String description;
     private String sourceUrl;
     private String creationDate;
+    private boolean isDone;
+    private boolean isTodo;
 
     public ResponseChapter(){
 

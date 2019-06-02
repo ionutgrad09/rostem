@@ -21,9 +21,9 @@ public final class RestAuthenticationEntryPoint implements AuthenticationEntryPo
             final HttpServletResponse response,
             final AuthenticationException authException) throws IOException, ServletException {
 
-        request.setAttribute("error",authException);
+        request.setAttribute("error", authException);
         RequestDispatcher dispatcher = request.getRequestDispatcher("login/returnerror");
-        dispatcher.forward(request,response);
+        dispatcher.forward(request, response);
     }
 
 }

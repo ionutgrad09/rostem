@@ -9,6 +9,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
+import * as rostemConstants from "../../constants/constants";
+import axios from "axios";
 
 const styles = {
   root: {
@@ -44,6 +46,9 @@ class MenuAppBar extends React.Component {
   };
 
   handleClose = () => {
+    axios.post(rostemConstants.BASE_URL + "/logout");
+    sessionStorage.removeItem(rostemConstants.USER_ROLE);
+    this.props.history.replace("/");
     this.setState({ anchorEl: null });
   };
 
@@ -55,7 +60,8 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
+    const user = sessionStorage.getItem(rostemConstants.USERNAME);
+    console.log(user);
     return (
       <div className={classes.root}>
         <AppBar color="secondary" position="static">
@@ -73,6 +79,13 @@ class MenuAppBar extends React.Component {
             </Typography>
             {auth && (
               <div>
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  className={classes.grow}
+                >
+                  {user}
+                </Typography>
                 <IconButton
                   aria-owns={open ? "menu-appbar" : undefined}
                   aria-haspopup="true"

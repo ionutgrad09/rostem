@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -26,6 +27,7 @@ import rostem.service.authentication.AuthenticationService;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan("rostem")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -88,11 +90,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .accessDeniedHandler(loginAccessDeniedHandler)
                     .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
-                .authorizeRequests()
-                    .antMatchers("/rostem/swagger-ui.html").permitAll()
-                    .antMatchers("/rostem/login").permitAll()
-                    .antMatchers("/rostem/admin/*").hasAuthority("ROLE_ADMIN")
-                    .antMatchers("/rostem/*").authenticated()
+                    .authorizeRequests()
+                    .antMatchers("/swagger-ui.html").permitAll()
+                    .antMatchers("/login").permitAll()
+                    //.antMatchers("/admin/*").hasAuthority("ROLE_ADMIN")
+                    .antMatchers("/").authenticated()
                 .and()
                     .formLogin()
                     .successHandler(successHandler)
@@ -125,9 +127,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration
                 .setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "HEAD", "DELETE", "PATCH", "PUT", "TRACE"));
         configuration.setAllowedHeaders(
-                Arrays.asList("Origin", "Content-Type", "Accept", "Authorization", "X-Request-With", "X-CLIENT-ID",
-                        "X-CLIENT-SECRET"));
-                        configuration.setAllowCredentials(true);
+                Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
