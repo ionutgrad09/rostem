@@ -1,7 +1,9 @@
 package rostem.model.users;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -9,13 +11,17 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import rostem.model.material.Category;
 import rostem.model.material.Chapter;
 
 @Entity
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = true)
+@ToString
 @Table(name = "ROSTEM_USERS")
 public class RostemUser extends User {
 
@@ -28,7 +34,7 @@ public class RostemUser extends User {
             joinColumns = @JoinColumn(name = "EMAIL"),
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
-    private Set<Category> favoriteCategories;
+    private List<Category> favoriteCategories;
 
     @ManyToMany
     @JoinTable(
@@ -36,7 +42,7 @@ public class RostemUser extends User {
             joinColumns = @JoinColumn(name = "EMAIL"),
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
-    private Set<Chapter> todoChapters;
+    private List<Chapter> todoChapters;
 
     @ManyToMany
     @JoinTable(
@@ -44,7 +50,7 @@ public class RostemUser extends User {
             joinColumns = @JoinColumn(name = "EMAIL"),
             inverseJoinColumns = @JoinColumn(name = "ID")
     )
-    private Set<Chapter> doneChapters;
+    private List<Chapter> doneChapters;
 
     public RostemUser(String email, String password, String username) {
 

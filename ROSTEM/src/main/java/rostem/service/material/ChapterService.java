@@ -8,7 +8,6 @@ import static rostem.utils.ApiResponses.USER_NOT_FOUND_FOR_CHAPTER;
 import static rostem.utils.mapper.ChapterMapper.map;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.slf4j.Logger;
@@ -17,13 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rostem.model.dto.request.RequestActionChapter;
 import rostem.model.dto.request.RequestChapter;
+import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
 import rostem.model.material.Chapter;
 import rostem.model.users.RostemUser;
 import rostem.repository.materials.ChapterRepository;
 import rostem.repository.materials.TutorialRepository;
 import rostem.repository.users.RostemUserRepository;
-import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.exception.RostemException;
 import rostem.utils.mapper.ChapterMapper;
 
@@ -71,7 +70,7 @@ public class ChapterService {
 
 
     private void markedAsDone(String email, List<ResponseChapter> responseChapters) {
-        Set<Chapter> doneChapters = rostemUserRepository.findByEmail(email).getDoneChapters();
+        List<Chapter> doneChapters = rostemUserRepository.findByEmail(email).getDoneChapters();
 
         for (ResponseChapter responseChapter : responseChapters) {
             for (Chapter chapter : doneChapters) {
@@ -83,7 +82,7 @@ public class ChapterService {
     }
 
     private void markedAsTodo(String email, List<ResponseChapter> responseChapters) {
-        Set<Chapter> todoChapters = rostemUserRepository.findByEmail(email).getTodoChapters();
+        List<Chapter> todoChapters = rostemUserRepository.findByEmail(email).getTodoChapters();
 
         for (ResponseChapter responseChapter : responseChapters) {
             for (Chapter chapter : todoChapters) {
@@ -120,10 +119,23 @@ public class ChapterService {
             if (!findChapterById(id)) {
                 throw new RostemException(CHAPTER_NOT_FOUND);
             } else {
+                Chapter chapter = chapterRepository.findChapterById(id).get();
+                deleteFromUserTodoAndDone(chapter);
                 chapterRepository.deleteById(id);
             }
         }
     }
+
+    private void deleteFromUserTodoAndDone(Chapter chapter) {
+        List<RostemUser> rostemUsers = rostemUserRepository.findAll();
+
+        for (RostemUser rostemUser : rostemUsers) {
+            rostemUser.getDoneChapters().remove(chapter);
+            rostemUser.getTodoChapters().remove(chapter);
+            rostemUserRepository.save(rostemUser);
+        }
+    }
+
 
     @Transactional
     public ResponseChapter updateChapter(Long id, RequestChapter requestChapter) {
@@ -139,11 +151,19 @@ public class ChapterService {
         }
     }
 
-    public List<ResponseChapter> getLatestChapters(int count) {
+    public List<ResponseChapter> getLatestChapters(RequestRecentPosts requestRecentPosts) {
         logger.info("[CHAPTER] Getting latest created chapters..");
 
-        return chapterRepository.findAllByOrderByCreationDateDesc().stream().limit(count).map(ChapterMapper::map)
+        List<ResponseChapter> responseChapters = chapterRepository.findAllByOrderByCreationDateDesc()
+                .stream()
+                .limit(requestRecentPosts.getCounter())
+                .map(ChapterMapper::map)
                 .collect(Collectors.toList());
+
+        markedAsDone(requestRecentPosts.getEmail(), responseChapters);
+        markedAsTodo(requestRecentPosts.getEmail(), responseChapters);
+
+        return responseChapters;
     }
 
     public void markChapterAsTodo(String email, Long id) {
@@ -204,7 +224,7 @@ public class ChapterService {
 
 
     private void deleteTodoChapterFromUser(Chapter chapter, RostemUser rostemUser) {
-        Set<Chapter> userTodoChapters = rostemUser.getTodoChapters();
+        List<Chapter> userTodoChapters = rostemUser.getTodoChapters();
         if (userTodoChapters.stream().anyMatch(x -> x.getId() == chapter.getId())) {
             userTodoChapters.remove(chapter);
             rostemUser.setTodoChapters(userTodoChapters);
@@ -215,7 +235,7 @@ public class ChapterService {
     }
 
     private void deleteUserFromTodoChapter(Chapter chapter, RostemUser rostemUser) {
-        Set<RostemUser> todoChaptersUser = chapter.getTodoUserList();
+        List<RostemUser> todoChaptersUser = chapter.getTodoUserList();
         if (todoChaptersUser.stream().anyMatch(x -> x.getEmail().equals(rostemUser.getEmail()))) {
             todoChaptersUser.remove(rostemUser);
             chapter.setTodoUserList(todoChaptersUser);
@@ -226,7 +246,7 @@ public class ChapterService {
     }
 
     private void deleteDoneChapterFromUser(Chapter chapter, RostemUser rostemUser) {
-        Set<Chapter> userDoneChapters = rostemUser.getDoneChapters();
+        List<Chapter> userDoneChapters = rostemUser.getDoneChapters();
         if (userDoneChapters.stream().anyMatch(x -> x.getId() == chapter.getId())) {
             userDoneChapters.remove(chapter);
             rostemUser.setDoneChapters(userDoneChapters);
@@ -237,7 +257,7 @@ public class ChapterService {
     }
 
     private void deleteUserFromDoneChapter(Chapter chapter, RostemUser rostemUser) {
-        Set<RostemUser> doneChaptersUser = chapter.getDoneUserList();
+        List<RostemUser> doneChaptersUser = chapter.getDoneUserList();
         if (doneChaptersUser.stream().anyMatch(x -> x.getEmail().equals(rostemUser.getEmail()))) {
             doneChaptersUser.remove(rostemUser);
             chapter.setDoneUserList(doneChaptersUser);

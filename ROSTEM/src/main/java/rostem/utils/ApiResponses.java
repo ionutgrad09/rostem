@@ -43,6 +43,13 @@ public class ApiResponses {
     public final static String USER_NOT_FOUND_FOR_CHAPTER = "User not found for the given chapter.";
 
 
+    /*
+     * TO_DO
+     */
+    public final static String CHAPTER_ALREADY_MARKED_AS_TODO = "The chapters is already marked as TODO.";
+    public final static String CHAPTER_ALREADY_MARKED_AS_DONE = "The chapters is already marked as DONE.";
+
+
     public final static String HTTP_REQUEST_INVALID_VALUE = "The request cannot be fulfilled due to bad syntax or invalid parameters.";
 
 }

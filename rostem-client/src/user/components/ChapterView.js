@@ -25,8 +25,8 @@ class ChapterView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkedTODO: false,
-      checkedDONE: false
+      checkedTODO: this.props.chapter.todo,
+      checkedDONE: this.props.chapter.done
     };
   }
 
@@ -49,6 +49,24 @@ class ChapterView extends React.Component {
       });
   }
 
+  unsetTodo() {
+    if (this.state.checkedTODO === true) {
+      this.unsetActionTutorial("TODO");
+      this.setState({
+        checkedTODO: false
+      });
+    }
+  }
+
+  unsetDone() {
+    if (this.state.checkedDONE === true) {
+      this.unsetActionTutorial("DONE");
+      this.setState({
+        checkedDONE: false
+      });
+    }
+  }
+
   async unsetActionTutorial(action) {
     const email = sessionStorage.getItem(rostemConstants.EMAIL);
     const actionType = action;
@@ -68,19 +86,27 @@ class ChapterView extends React.Component {
       });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      checkedTODO: nextProps.chapter.todo,
+      checkedDONE: nextProps.chapter.done
+    });
+  }
+
   handleChangeTODO = () => {
+    this.unsetDone();
     if (this.state.checkedTODO === true) {
       this.unsetActionTutorial("TODO");
     } else {
       this.setActionTutorial("TODO");
     }
-
     this.setState({
       checkedTODO: !this.state.checkedTODO
     });
   };
 
   handleChangeDONE = () => {
+    this.unsetTodo();
     if (this.state.checkedDONE === true) {
       this.unsetActionTutorial("DONE");
     } else {

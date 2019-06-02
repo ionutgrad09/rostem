@@ -32,8 +32,13 @@ class RecentPosts extends React.Component {
 
   async getRecentChapters() {
     const pageCount = 5;
+    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const body = {
+      counter: pageCount,
+      email: email
+    };
     await axios
-      .get(rostemConstants.BASE_URL + "/chapters/latest/" + pageCount)
+      .post(rostemConstants.BASE_URL + "/chapters/latest", body)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -80,7 +85,10 @@ class RecentPosts extends React.Component {
                         )
                       }
                     />
-                    <ChapterWrapper chapter={chapter} />
+                    <ChapterWrapper
+                      chapter={chapter}
+                      updatePosts={this.getRecentChapters.bind(this)}
+                    />
                   </ListItem>
                 );
               })

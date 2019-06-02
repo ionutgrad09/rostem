@@ -8,10 +8,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import rostem.model.users.RostemUser;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
+@ToString
 @Table(name = "CATEGORIES")
 public class Category extends Material {
 
@@ -19,5 +23,5 @@ public class Category extends Material {
     private List<Tutorial> tutorials;
 
     @ManyToMany(mappedBy = "favoriteCategories")
-    private Set<RostemUser> users;
+    private List<RostemUser> users;
 }

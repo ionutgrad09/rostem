@@ -24,6 +24,11 @@ import Box from "@material-ui/core/Box";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import EmptyChapterView from "./EmptyChapterView";
 import ChapterView from "./ChapterView";
+import PriorityHighRounded from "@material-ui/icons/PriorityHighRounded";
+import Fab from "@material-ui/core/Fab";
+import Tooltip from "@material-ui/core/Tooltip";
+import Icon from "@material-ui/core/Icon";
+import CheckBoxRounded from "@material-ui/icons/CheckBoxRounded";
 
 const styles = theme => ({
   box: {
@@ -42,6 +47,10 @@ const styles = theme => ({
   },
   details: {
     display: "inline-flex"
+  },
+
+  expansionPanelDetailsRoot: {
+    display: "list-item"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -186,7 +195,9 @@ class TutorialsView extends React.Component {
                               {tutorial.description}
                             </Typography>
                           </ExpansionPanelSummary>
-                          <ExpansionPanelDetails>
+                          <ExpansionPanelDetails
+                            className={classes.expansionPanelDetailsRoot}
+                          >
                             <List dense={true}>
                               {this.state.chapters.length > 0 ? (
                                 this.state.chapters.map(chapter => {
@@ -199,9 +210,20 @@ class TutorialsView extends React.Component {
                                         this.handleChapterClick(chapter.id)
                                       }
                                     >
+                                      {chapter.todo && (
+                                        <Tooltip title="TODO" aria-label="TODO">
+                                          <PriorityHighRounded color="secondary" />
+                                        </Tooltip>
+                                      )}
+                                      {chapter.done && (
+                                        <Tooltip title="DONE" aria-label="DONE">
+                                          <CheckBoxRounded color="secondary" />
+                                        </Tooltip>
+                                      )}
                                       <ListItemText
                                         primary={chapter.name}
                                         secondary={chapter.description}
+                                        style={{ marginLeft: 15 }}
                                       />
                                       <ListItemIcon button>
                                         <NavigateNextIcon />

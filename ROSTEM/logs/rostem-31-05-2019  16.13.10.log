@@ -1,3 +1,0 @@
-2019-05-31 16:13:10,337 INFO org.springframework.boot.StartupInfoLogger [main] Starting RostemApplication on ROgradi04 with PID 1124 (C:\ubb\licenta\rostem\ROSTEM\out\production\classes started by gradi in C:\ubb\licenta\rostem\ROSTEM)
-2019-05-31 16:13:10,343 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
-2019-05-31 16:13:10,344 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default

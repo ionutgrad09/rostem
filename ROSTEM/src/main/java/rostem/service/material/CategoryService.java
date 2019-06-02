@@ -135,7 +135,7 @@ public class CategoryService {
     }
 
     private void deleteCategoryFromUser(Category category, RostemUser rostemUser) {
-        Set<Category> userCategories = rostemUser.getFavoriteCategories();
+        List<Category> userCategories = rostemUser.getFavoriteCategories();
         if (userCategories.stream().anyMatch(x -> x.getId() == category.getId())) {
             userCategories.remove(category);
             rostemUser.setFavoriteCategories(userCategories);
@@ -146,7 +146,7 @@ public class CategoryService {
     }
 
     private void deleteUserFromCategory(Category category, RostemUser rostemUser) {
-        Set<RostemUser> categoriesUser = category.getUsers();
+        List<RostemUser> categoriesUser = category.getUsers();
         if (categoriesUser.stream().anyMatch(x -> x.getEmail().equals(rostemUser.getEmail()))) {
             categoriesUser.remove(rostemUser);
             category.setUsers(categoriesUser);

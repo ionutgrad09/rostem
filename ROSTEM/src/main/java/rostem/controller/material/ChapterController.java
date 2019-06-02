@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rostem.model.dto.request.RequestActionChapter;
+import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
 import rostem.service.material.ChapterService;
 import rostem.utils.ResponseBuilder.Response;
@@ -73,10 +74,10 @@ public class ChapterController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The latest chapters were returned."),
     })
-    @GetMapping("/latest/{count}")
-    public ResponseEntity<Response> getLatestChapters(@PathVariable("count") int count) {
+    @PostMapping("/latest")
+    public ResponseEntity<Response> getLatestChapters(@RequestBody RequestRecentPosts requestRecentPosts) {
         try {
-            List<ResponseChapter> chapters = chapterService.getLatestChapters(count);
+            List<ResponseChapter> chapters = chapterService.getLatestChapters(requestRecentPosts);
             return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
@@ -92,9 +93,9 @@ public class ChapterController {
     public ResponseEntity<Response> markChapter(@RequestBody RequestActionChapter requestActionChapter) {
         try {
             if (requestActionChapter.getActionType().equals(ACTION_DONE)) {
-                chapterService.markChapterAsDone(requestActionChapter.getEmail(), requestActionChapter.getTutorialId());
+                chapterService.markChapterAsDone(requestActionChapter.getEmail(), requestActionChapter.getChapterId());
             } else if (requestActionChapter.getActionType().equals(ACTION_TODO)) {
-                chapterService.markChapterAsTodo(requestActionChapter.getEmail(), requestActionChapter.getTutorialId());
+                chapterService.markChapterAsTodo(requestActionChapter.getEmail(), requestActionChapter.getChapterId());
             } else {
                 return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, "Action type is wrong.");
             }

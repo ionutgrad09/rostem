@@ -26,6 +26,7 @@ class RecentPosts extends React.Component {
   }
 
   handleClose = () => {
+    this.props.updatePosts();
     this.setState({ open: false });
   };
 
