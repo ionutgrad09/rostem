@@ -6,7 +6,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import image from "../../resources/background.jpg";
+import image from "../../resources/stemlogo.jpg";
 import { withRouter } from "react-router-dom";
 const styles = {
   card: {

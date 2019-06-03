@@ -36,8 +36,9 @@ public class UtilController {
     private long tutorial2;
 
     @Autowired
-    public UtilController(TutorialService tutorialService, CategoryService categoryService, ChapterService chapterService,
-            RegisterService registerService){
+    public UtilController(TutorialService tutorialService, CategoryService categoryService,
+            ChapterService chapterService,
+            RegisterService registerService) {
         this.tutorialService = tutorialService;
         this.chapterService = chapterService;
         this.categoryService = categoryService;
@@ -50,103 +51,119 @@ public class UtilController {
             addCategories();
             addTutorials();
             addChapters();
-            addUsers();
             return ResponseBuilder.encode(HttpStatus.OK);
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
-    private void addUsers(){
-        User userA = new User("a@a.a","1234","a");
-        User userB = new User("b@b.b","1234","b");
-        User userC = new User("c@c.c","1234","c");
-
-        registerService.registerUser(userA);
-        registerService.registerUser(userB);
-        registerService.registerUser(userC);
-    }
-
-    private void addCategories(){
+    private void addCategories() {
         RequestCategory requestCategory = new RequestCategory();
-        requestCategory.setName("category1");
-        requestCategory.setDescription("description1");
+        requestCategory.setName("Math");
+        requestCategory.setDescription("All you need to know about math.");
         category1 = categoryService.createCategory(requestCategory).getId();
 
-        requestCategory.setName("category2");
-        requestCategory.setDescription("description2");
+        requestCategory.setName("Web development");
+        requestCategory.setDescription("Learn JS, React and Angular");
         category2 = categoryService.createCategory(requestCategory).getId();
 
-        requestCategory.setName("category3");
-        requestCategory.setDescription("description3");
+        requestCategory.setName("Spring Framework");
+        requestCategory.setDescription("Learn everything about Spring Framework.");
         categoryService.createCategory(requestCategory);
 
-        requestCategory.setName("category4");
-        requestCategory.setDescription("description4");
+        requestCategory.setName(".NET Framework");
+        requestCategory.setDescription(".NET Framework at its best.");
         categoryService.createCategory(requestCategory);
 
-        requestCategory.setName("category5");
-        requestCategory.setDescription("description5");
+        requestCategory.setName("Science & engineering");
+        requestCategory.setDescription("All you need to know about science & engineering.");
         categoryService.createCategory(requestCategory);
 
-        requestCategory.setName("category6");
-        requestCategory.setDescription("description6");
+        requestCategory.setName("Databases");
+        requestCategory.setDescription("All you need to know about databases");
         categoryService.createCategory(requestCategory);
 
-        requestCategory.setName("category7");
-        requestCategory.setDescription("description7");
+        requestCategory.setName("Computing");
+        requestCategory.setDescription("All you need to know about computing.");
         categoryService.createCategory(requestCategory);
 
     }
 
-    private void addTutorials(){
+    private void addTutorials() {
         RequestTutorial requestTutorial = new RequestTutorial();
 
         requestTutorial.setCategoryId(category1);
-        requestTutorial.setName("tutorial1");
-        requestTutorial.setDescription("description1");
-
+        requestTutorial.setName("Pre-algebra");
+        requestTutorial.setDescription("All you need to know about Pre-algebra");
         tutorial1 = tutorialService.createTutorial(requestTutorial).getId();
 
-        requestTutorial.setName("tutorial2");
-        requestTutorial.setDescription("description2");
-
+        requestTutorial.setName("Trigonometry");
+        requestTutorial.setDescription("All you need to know about Trigonometry");
         tutorial2 = tutorialService.createTutorial(requestTutorial).getId();
 
-        requestTutorial.setCategoryId(category2);
-        requestTutorial.setName("tutorial3");
-        requestTutorial.setDescription("description3");
+        requestTutorial.setName("Algebra1");
+        requestTutorial.setDescription("All you need to know about Algebra1");
+        tutorialService.createTutorial(requestTutorial).getId();
 
+        requestTutorial.setName("Algebra2");
+        requestTutorial.setDescription("All you need to know about Algebra2");
         tutorialService.createTutorial(requestTutorial);
 
-        requestTutorial.setCategoryId(category2);
-        requestTutorial.setName("tutorial4");
-        requestTutorial.setDescription("description4");
-
+        requestTutorial.setName("Geometry");
+        requestTutorial.setDescription("All you need to know about Geometry");
         tutorialService.createTutorial(requestTutorial);
 
-        requestTutorial.setCategoryId(category2);
-        requestTutorial.setName("tutorial5");
-        requestTutorial.setDescription("description5");
+        requestTutorial.setName("Statistics & Probability");
+        requestTutorial.setDescription("All you need to know about Statistics & Probability");
+        tutorialService.createTutorial(requestTutorial);
 
+        requestTutorial.setName("Differential equations");
+        requestTutorial.setDescription("All you need to know about Differential equations");
         tutorialService.createTutorial(requestTutorial);
     }
 
-    private void addChapters(){
+    private void addChapters() {
         RequestChapter requestChapter = new RequestChapter();
 
         requestChapter.setTutorialId(tutorial1);
-        requestChapter.setName("chapter1");
-        requestChapter.setDescription("description1");
+        requestChapter.setName("Arithmetic properties");
+        requestChapter.setUrl("https://www.youtube.com/embed/edxiROADl8A");
+        requestChapter.setDescription(
+                "Multiplication and addition have specific arithmetic properties which characterize those operations. "
+                        + "In no specific order, they are the commutative, associative, distributive, identity and inverse properties.");
         chapterService.createChapter(requestChapter);
 
-        requestChapter.setName("chapter2");
-        requestChapter.setDescription("description2");
+        requestChapter.setName("Factors and multiples");
+        requestChapter.setDescription("Learn about factors and multiples and how they relate to each other.");
+        requestChapter.setUrl("https://www.youtube.com/embed/rUrLuTMq-sw");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Fractions");
+        requestChapter.setDescription(
+                "A fraction (from Latin fractus, \"broken\") represents a part of a whole or, more generally,"
+                        + " any number of equal parts. When spoken in everyday English.");
+        requestChapter.setUrl("https://www.youtube.com/embed/n0FZhQ_GkKw");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Decimals");
+        requestChapter.setDescription(
+                "The decimal numeral system (also called base-ten positional numeral system, and occasionally"
+                        + " called denary) is the standard system for denoting integer and non-integer numbers.");
+        requestChapter.setUrl("https://www.youtube.com/embed/kwh4SD1ToFc");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setTutorialId(tutorial2);
-        requestChapter.setName("chapter3");
-        requestChapter.setDescription("description3");
+
+        requestChapter.setName("Trigonometry with right triangles");
+        requestChapter.setDescription("Learn about trigonometry with right triangles.");
+        requestChapter.setUrl("https://www.youtube.com/embed/l5VbdqRjTXc");
         chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Trigonometric equations and identities");
+        requestChapter.setDescription("Trigonometric equations and identities.");
+        requestChapter.setUrl("https://www.youtube.com/embed/VMAMARmmDac");
+        chapterService.createChapter(requestChapter);
+
+
     }
 }

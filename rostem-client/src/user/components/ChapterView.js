@@ -7,6 +7,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
 import * as rostemConstants from "../../constants/constants.js";
+import ThumbUp from "@material-ui/icons/ThumbUp";
+import Fab from "@material-ui/core/Fab";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = theme => ({
   boxRoot: {
@@ -26,7 +29,8 @@ class ChapterView extends React.Component {
     super(props);
     this.state = {
       checkedTODO: this.props.chapter.todo,
-      checkedDONE: this.props.chapter.done
+      checkedDONE: this.props.chapter.done,
+      clickedThumbUp: false
     };
   }
 
@@ -117,6 +121,12 @@ class ChapterView extends React.Component {
     });
   };
 
+  handleThumbUp = () => {
+    this.setState({
+      clickedThumbUp: !this.state.clickedThumbUp
+    });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -128,7 +138,10 @@ class ChapterView extends React.Component {
             <Divider />
             <br />
           </center>
-          <Typography variant="h5">Description: </Typography> <br />
+          <Typography variant="h5">
+            <i>Description:</i>
+          </Typography>
+          <br />
           <Typography variant="h6">{this.props.chapter.description}</Typography>
           <br />
           <center>
@@ -142,6 +155,24 @@ class ChapterView extends React.Component {
                 allowFullScreen
               />
             ) : null}
+            <br />
+            <br />
+            {!this.state.clickedThumbUp ? (
+              <Tooltip title="Thumb UP" aria-label="Thumb UP">
+                <Fab color="primary" className={classes.absolute}>
+                  <ThumbUp onClick={this.handleThumbUp} />
+                </Fab>
+              </Tooltip>
+            ) : (
+              <Tooltip
+                title="Thanks for the vote"
+                aria-label="Thanks for the vote"
+              >
+                <Fab color="secondary" className={classes.absolute}>
+                  <ThumbUp onClick={this.handleThumbUp} />
+                </Fab>
+              </Tooltip>
+            )}
           </center>
           <br />
           <FormControlLabel
@@ -166,6 +197,10 @@ class ChapterView extends React.Component {
             label="Done"
           />
           <Divider />
+          <br />
+          <Typography variant="h5">
+            <i>Comments</i>
+          </Typography>
         </div>
       </Box>
     );

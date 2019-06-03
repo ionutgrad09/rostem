@@ -75,17 +75,10 @@ class MenuAppBar extends React.Component {
               onClick={this.handleRostemIconClick.bind(this)}
             />
             <Typography variant="h6" color="primary" className={classes.grow}>
-              {this.username}
+              ROSTEM
             </Typography>
             {auth && (
               <div>
-                <Typography
-                  variant="h6"
-                  color="primary"
-                  className={classes.grow}
-                >
-                  {user}
-                </Typography>
                 <IconButton
                   aria-owns={open ? "menu-appbar" : undefined}
                   aria-haspopup="true"

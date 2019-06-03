@@ -178,7 +178,7 @@ class TutorialsView extends React.Component {
             <div className={classes.tutorials}>
               <Grid item>
                 <div>
-                  <List dense={false}>
+                  <List dense={false} disablePadding>
                     {this.state.shownTutorials.map(tutorial => (
                       <div>
                         <ExpansionPanel
