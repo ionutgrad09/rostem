@@ -2,7 +2,7 @@ package rostem.utils.mapper;
 
 import rostem.model.dto.request.RequestTutorial;
 import rostem.model.dto.response.ResponseTutorial;
-import rostem.model.material.Tutorial;
+import rostem.model.entities.Tutorial;
 
 public class TutorialMapper {
 

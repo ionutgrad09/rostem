@@ -2,7 +2,7 @@ package rostem.utils.mapper;
 
 import rostem.model.dto.response.ResponseCategory;
 import rostem.model.dto.request.RequestCategory;
-import rostem.model.material.Category;
+import rostem.model.entities.Category;
 
 public class CategoryMapper {
 

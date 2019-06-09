@@ -46,10 +46,14 @@ class MenuAppBar extends React.Component {
   };
 
   handleClose = () => {
-    axios.post(rostemConstants.BASE_URL + "/logout");
-    sessionStorage.removeItem(rostemConstants.USER_ROLE);
-    this.props.history.replace("/");
+    // axios.post(rostemConstants.BASE_URL + "/logout");
+    // sessionStorage.removeItem(rostemConstants.USER_ROLE);
+    // this.props.history.replace("/");
     this.setState({ anchorEl: null });
+  };
+
+  handleProfile = () => {
+    this.props.history.push("/profile");
   };
 
   handleRostemIconClick = () => {
@@ -101,7 +105,12 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Log out</MenuItem>
+                  <MenuItem onClick={this.handleProfile.bind(this)}>
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose.bind(this)}>
+                    Logout
+                  </MenuItem>
                 </Menu>
               </div>
             )}

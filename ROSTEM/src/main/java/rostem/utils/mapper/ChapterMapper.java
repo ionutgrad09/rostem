@@ -3,7 +3,7 @@ package rostem.utils.mapper;
 import java.util.Date;
 import rostem.model.dto.request.RequestChapter;
 import rostem.model.dto.response.ResponseChapter;
-import rostem.model.material.Chapter;
+import rostem.model.entities.Chapter;
 
 public class ChapterMapper {
 

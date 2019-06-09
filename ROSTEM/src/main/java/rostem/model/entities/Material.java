@@ -1,4 +1,4 @@
-package rostem.model.material;
+package rostem.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;

@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rostem.model.dto.request.RequestActionChapter;
+import rostem.model.dto.request.RequestChapter;
+import rostem.model.dto.request.RequestComment;
 import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
+import rostem.model.dto.response.ResponseComment;
 import rostem.service.material.ChapterService;
 import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.ResponseBuilder.ResponseBuilder;
@@ -45,7 +48,8 @@ public class ChapterController {
             @ApiResponse(code = 400, message = "The tutorial does not exist.")
     })
     @PostMapping(path = "/action")
-    public ResponseEntity<Response> getAllChaptersForTutorial(@RequestBody @Validated RequestActionChapter requestActionChapter) {
+    public ResponseEntity<Response> getAllChaptersForTutorial(
+            @RequestBody @Validated RequestActionChapter requestActionChapter) {
         try {
             List<ResponseChapter> chapters = chapterService.getChaptersForTutorial(requestActionChapter);
             return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
@@ -123,6 +127,37 @@ public class ChapterController {
             }
             return ResponseBuilder.encode(HttpStatus.OK);
 
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get all comments for a chapter",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The comments were returned."),
+            @ApiResponse(code = 400, message = "The chapter does not exist.")
+    })
+    @GetMapping(path = "/comments/{chapterId}")
+    public ResponseEntity<Response> getAllComments(@PathVariable("chapterId") Long chapterId) {
+        try {
+            List<ResponseComment> comments = chapterService.getCommentsForChapter(chapterId);
+            return ResponseBuilder.encode(HttpStatus.OK, comments, 0, comments.size(), comments.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Add a new comment to a chapter",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "The comment was created."),
+            @ApiResponse(code = 400, message = "Bad request."),
+    })
+    @PostMapping("/comments")
+    public ResponseEntity<Response> addComment(@RequestBody @Validated RequestComment requestComment) {
+        try {
+            return ResponseBuilder.encode(HttpStatus.CREATED, chapterService.addComment(requestComment));
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }

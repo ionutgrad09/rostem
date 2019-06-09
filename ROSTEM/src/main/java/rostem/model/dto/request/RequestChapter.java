@@ -15,7 +15,6 @@ public class RequestChapter implements Serializable {
     @NotBlank(message = "Chapter's name can't be blank.")
     private String name;
 
-    @Size(max = 255, message = "Description max size must be 255.")
     private String description;
 
     @NotBlank(message = "You must provide a source for this chapter.")

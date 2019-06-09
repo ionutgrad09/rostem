@@ -71,17 +71,20 @@ class CategoriesView extends React.Component {
   }
 
   async getAllCategories() {
-    await axios.get(rostemConstants.BASE_URL + "/categories").then(result => {
-      let res = result.data;
-      if (res.status === "false") {
-        console.log("Error getting categories");
-      } else {
-        this.setState({
-          categories: res.object.objects,
-          shownCategories: res.object.objects
-        });
-      }
-    });
+    const user = sessionStorage.getItem(rostemConstants.EMAIL);
+    await axios
+      .get(rostemConstants.BASE_URL + "/categories/" + user)
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error getting categories");
+        } else {
+          this.setState({
+            categories: res.object.objects,
+            shownCategories: res.object.objects
+          });
+        }
+      });
   }
 
   componentDidMount() {
@@ -110,6 +113,7 @@ class CategoriesView extends React.Component {
                   id={category.id}
                   categoryName={category.name}
                   description={category.description}
+                  isMarkedAsFavorite={category.markedAsFavorite}
                 />
               ))}
             </Box>

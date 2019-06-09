@@ -1,5 +1,6 @@
 package rostem.service.material;
 
+import static rostem.utils.ApiResponses.CATEGORY_NOT_FOUND;
 import static rostem.utils.ApiResponses.CHAPTER_ALREADY_EXISTS;
 import static rostem.utils.ApiResponses.CHAPTER_NOT_FOUND;
 import static rostem.utils.ApiResponses.TUTORIAL_NOT_FOUND;
@@ -10,37 +11,45 @@ import static rostem.utils.mapper.ChapterMapper.map;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
+import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rostem.model.dto.request.RequestActionChapter;
 import rostem.model.dto.request.RequestChapter;
+import rostem.model.dto.request.RequestComment;
 import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
-import rostem.model.material.Chapter;
+import rostem.model.dto.response.ResponseComment;
+import rostem.model.entities.Chapter;
+import rostem.model.entities.Comment;
 import rostem.model.users.RostemUser;
 import rostem.repository.materials.ChapterRepository;
+import rostem.repository.materials.CommentRepository;
 import rostem.repository.materials.TutorialRepository;
 import rostem.repository.users.RostemUserRepository;
 import rostem.utils.exception.RostemException;
 import rostem.utils.mapper.ChapterMapper;
+import rostem.utils.mapper.CommentsMapper;
 
 @Service
 public class ChapterService {
 
     private final static Logger logger = LoggerFactory.getLogger(ChapterService.class);
 
-    private TutorialRepository tutorialRepository;
-    private ChapterRepository chapterRepository;
+    private final TutorialRepository tutorialRepository;
+    private final ChapterRepository chapterRepository;
     private final RostemUserRepository rostemUserRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
     public ChapterService(TutorialRepository tutorialRepository, ChapterRepository chapterRepository,
-            RostemUserRepository rostemUserRepository) {
+            RostemUserRepository rostemUserRepository, CommentRepository commentRepository) {
         this.tutorialRepository = tutorialRepository;
         this.chapterRepository = chapterRepository;
         this.rostemUserRepository = rostemUserRepository;
+        this.commentRepository = commentRepository;
     }
 
     public List<ResponseChapter> getAllChapters() {
@@ -56,7 +65,7 @@ public class ChapterService {
         if (!findTutorialById(tutorialId)) {
             throw new RostemException(TUTORIAL_NOT_FOUND);
         } else {
-            List<ResponseChapter> responseChapters = tutorialRepository.findTutorialById(tutorialId).get().getChapters()
+            List<ResponseChapter> responseChapters = tutorialRepository.findTutorialById(tutorialId).getChapters()
                     .stream()
                     .map(ChapterMapper::map)
                     .collect(Collectors.toList());
@@ -105,7 +114,7 @@ public class ChapterService {
                 throw new RostemException(CHAPTER_ALREADY_EXISTS);
             } else {
                 Chapter chapter = map(requestChapter);
-                chapter.setTutorial(tutorialRepository.findTutorialById(tutorialId).get());
+                chapter.setTutorial(tutorialRepository.findTutorialById(tutorialId));
                 return map(chapterRepository.save(chapter));
             }
         }
@@ -119,7 +128,7 @@ public class ChapterService {
             if (!findChapterById(id)) {
                 throw new RostemException(CHAPTER_NOT_FOUND);
             } else {
-                Chapter chapter = chapterRepository.findChapterById(id).get();
+                Chapter chapter = chapterRepository.findChapterById(id);
                 deleteFromUserTodoAndDone(chapter);
                 chapterRepository.deleteById(id);
             }
@@ -146,7 +155,7 @@ public class ChapterService {
         } else {
             Chapter chapter = map(requestChapter);
             chapter.setId(id);
-            chapter.setTutorial(tutorialRepository.findTutorialById(requestChapter.getTutorialId()).get());
+            chapter.setTutorial(tutorialRepository.findTutorialById(requestChapter.getTutorialId()));
             return map(chapterRepository.save(chapter));
         }
     }
@@ -170,7 +179,7 @@ public class ChapterService {
         logger.info("[USER_CHAPTER] Trying to set a chapter as todo for user " + email);
 
         checkForUserAndChapter(email, id);
-        Chapter chapter = chapterRepository.findChapterById(id).get();
+        Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
 
         chapter.getTodoUserList().add(rostemUser);
@@ -183,7 +192,7 @@ public class ChapterService {
         logger.info("[USER_CHAPTER] Trying to set a chapter as done for user " + email);
 
         checkForUserAndChapter(email, id);
-        Chapter chapter = chapterRepository.findChapterById(id).get();
+        Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
 
         chapter.getDoneUserList().add(rostemUser);
@@ -205,7 +214,7 @@ public class ChapterService {
         logger.info("[USER_CHAPTER] Trying to unmark a todo chapter from user " + email + " TODO list.");
 
         checkForUserAndChapter(email, id);
-        Chapter chapter = chapterRepository.findChapterById(id).get();
+        Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
         deleteTodoChapterFromUser(chapter, rostemUser);
         deleteUserFromTodoChapter(chapter, rostemUser);
@@ -216,7 +225,7 @@ public class ChapterService {
         logger.info("[USER_CHAPTER] Trying to unmark a done chapter from user " + email + " TODO list.");
 
         checkForUserAndChapter(email, id);
-        Chapter chapter = chapterRepository.findChapterById(id).get();
+        Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
         deleteDoneChapterFromUser(chapter, rostemUser);
         deleteUserFromDoneChapter(chapter, rostemUser);
@@ -267,19 +276,45 @@ public class ChapterService {
         }
     }
 
+    @Transactional
+    public List<ResponseComment> getCommentsForChapter(Long chapterId) {
+        logger.info("[CHAPTER] Trying to get all comments for chapter " + chapterId);
+
+        if (!findChapterById(chapterId)) {
+            throw new RostemException(CHAPTER_NOT_FOUND);
+        } else {
+            return chapterRepository.findChapterById(chapterId).getComments().stream()
+                    .map(CommentsMapper::map)
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Transactional
+    public ResponseComment addComment(RequestComment requestComment) {
+        final Long chapterId = requestComment.getChapterId();
+
+        if (!findChapterById(chapterId)) {
+            throw new RostemException(CATEGORY_NOT_FOUND);
+        } else {
+            Comment comment = CommentsMapper.map(requestComment);
+            comment.setChapter(chapterRepository.findChapterById(chapterId));
+            return CommentsMapper.map(commentRepository.save(comment));
+        }
+    }
+
     private boolean findUserByEmail(String email) {
         return rostemUserRepository.findByEmail(email) != null;
     }
 
     private boolean findTutorialById(Long id) {
-        return tutorialRepository.findTutorialById(id).isPresent();
+        return tutorialRepository.findTutorialById(id) != null;
     }
 
     private boolean findChapterById(Long id) {
-        return chapterRepository.findChapterById(id).isPresent();
+        return chapterRepository.findChapterById(id) != null;
     }
 
     private boolean findChapterByName(String name) {
-        return chapterRepository.findChapterByName(name).isPresent();
+        return chapterRepository.findChapterByName(name) != null;
     }
 }

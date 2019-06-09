@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rostem.model.dto.request.RequestTutorial;
 import rostem.model.dto.response.ResponseTutorial;
-import rostem.model.material.Tutorial;
+import rostem.model.entities.Tutorial;
 import rostem.repository.materials.CategoryRepository;
 import rostem.repository.materials.TutorialRepository;
 import rostem.utils.exception.RostemException;
@@ -46,7 +46,7 @@ public class TutorialService {
         if (!findCategoryByName(categoryName)) {
             throw new RostemException(CATEGORY_NOT_FOUND);
         } else {
-            return categoryRepository.findCategoryByName(categoryName).get().getTutorials().stream()
+            return categoryRepository.findCategoryByName(categoryName).getTutorials().stream()
                     .map(TutorialMapper::map)
                     .collect(Collectors.toList());
         }
@@ -64,7 +64,7 @@ public class TutorialService {
                 throw new RostemException(TUTORIAL_ALREADY_EXISTS);
             } else {
                 Tutorial tutorial = map(requestTutorial);
-                tutorial.setCategory(categoryRepository.findCategoryById(categoryId).get());
+                tutorial.setCategory(categoryRepository.findCategoryById(categoryId));
                 return map(tutorialRepository.save(tutorial));
             }
         }
@@ -91,24 +91,24 @@ public class TutorialService {
         } else {
             Tutorial tutorial = map(requestTutorial);
             tutorial.setId(id);
-            tutorial.setCategory(categoryRepository.findCategoryById(requestTutorial.getCategoryId()).get());
+            tutorial.setCategory(categoryRepository.findCategoryById(requestTutorial.getCategoryId()));
             return map(tutorialRepository.save(tutorial));
         }
     }
 
     private boolean findCategoryByName(String categoryName) {
-        return categoryRepository.findCategoryByName(categoryName).isPresent();
+        return categoryRepository.findCategoryByName(categoryName) != null;
     }
 
     private boolean findCategoryById(Long id) {
-        return categoryRepository.findCategoryById(id).isPresent();
+        return categoryRepository.findCategoryById(id) != null;
     }
 
     private boolean findTutorialById(Long id) {
-        return tutorialRepository.findTutorialById(id).isPresent();
+        return tutorialRepository.findTutorialById(id) != null;
     }
 
     private boolean findTutorialByName(String name) {
-        return tutorialRepository.findTutorialByName(name).isPresent();
+        return tutorialRepository.findTutorialByName(name) != null;
     }
 }

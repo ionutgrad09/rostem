@@ -2,8 +2,6 @@ package rostem.model.users;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -14,8 +12,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import rostem.model.material.Category;
-import rostem.model.material.Chapter;
+import rostem.model.entities.Category;
+import rostem.model.entities.Chapter;
 
 @Entity
 @NoArgsConstructor

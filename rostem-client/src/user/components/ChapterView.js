@@ -10,6 +10,7 @@ import * as rostemConstants from "../../constants/constants.js";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
+import CommentsView from "./CommentsView.js";
 
 const styles = theme => ({
   boxRoot: {
@@ -133,14 +134,12 @@ class ChapterView extends React.Component {
       <Box bgcolor="primary.main" className={classes.boxRoot}>
         <div className={classes.root}>
           <center>
-            <Typography variant="h4">{this.props.chapter.name}</Typography>
+            <Typography variant="h5">{this.props.chapter.name}</Typography>
             <br />
             <Divider />
             <br />
           </center>
-          <Typography variant="h5">
-            <i>Description:</i>
-          </Typography>
+
           <br />
           <Typography variant="h6">{this.props.chapter.description}</Typography>
           <br />
@@ -198,9 +197,7 @@ class ChapterView extends React.Component {
           />
           <Divider />
           <br />
-          <Typography variant="h5">
-            <i>Comments</i>
-          </Typography>
+          <CommentsView chapter={this.props.chapter} />
         </div>
       </Box>
     );

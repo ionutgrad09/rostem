@@ -9,6 +9,7 @@ public class ResponseCategory implements Serializable {
     private Long id;
     private String name;
     private String description;
+    private boolean isMarkedAsFavorite;
 
     public ResponseCategory() {
 

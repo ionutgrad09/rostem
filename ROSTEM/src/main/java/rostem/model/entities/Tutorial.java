@@ -1,4 +1,4 @@
-package rostem.model.material;
+package rostem.model.entities;
 
 import java.util.List;
 import javax.persistence.Entity;
@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -19,7 +18,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "TUTORIALS")
 public class Tutorial extends Material {
@@ -31,4 +29,12 @@ public class Tutorial extends Material {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutorial")
     private List<Chapter> chapters;
+
+    @Override
+    public String toString() {
+        return "Tutorial{" +
+                "category=" + category +
+                ", chapters=" + chapters +
+                '}';
+    }
 }

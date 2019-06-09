@@ -25,9 +25,7 @@ import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import EmptyChapterView from "./EmptyChapterView";
 import ChapterView from "./ChapterView";
 import PriorityHighRounded from "@material-ui/icons/PriorityHighRounded";
-import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
 import CheckBoxRounded from "@material-ui/icons/CheckBoxRounded";
 
 const styles = theme => ({
@@ -222,7 +220,6 @@ class TutorialsView extends React.Component {
                                       )}
                                       <ListItemText
                                         primary={chapter.name}
-                                        secondary={chapter.description}
                                         style={{ marginLeft: 15 }}
                                       />
                                       <ListItemIcon button>

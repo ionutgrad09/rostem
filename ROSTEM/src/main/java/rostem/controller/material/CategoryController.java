@@ -41,7 +41,7 @@ public class CategoryController {
             @ApiResponse(code = 200, message = "The category was found."),
             @ApiResponse(code = 404, message = "The category does not exist.")
     })
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/category/{id}")
     public ResponseEntity<Response> getCategory(@PathVariable("id") Long id) {
         try {
             return ResponseBuilder.encode(HttpStatus.OK, this.categoryService.getCategoryById(id));
@@ -55,10 +55,10 @@ public class CategoryController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The categories were returned."),
     })
-    @GetMapping
-    public ResponseEntity<Response> getCategories() {
+    @GetMapping("/{email}")
+    public ResponseEntity<Response> getCategories(@PathVariable("email") String userEmail) {
         try {
-            List<ResponseCategory> categories = this.categoryService.getAllCategories();
+            List<ResponseCategory> categories = this.categoryService.getAllCategories(userEmail);
             return ResponseBuilder.encode(HttpStatus.OK, categories, 0, categories.size(), categories.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());

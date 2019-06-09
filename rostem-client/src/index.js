@@ -7,6 +7,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import UserPage from "./user/UserPage";
 import TutorialsView from "./user/components/TutorialsView";
+import UserProfile from "./user/profile/UserProfile";
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +27,7 @@ const routing = (
       <Route path="/admin" component={AdminPanel} />
       <Route exact path="/categories" component={UserPage} />
       <Route path="/categories/:categoryName" component={TutorialsView} />
+      <Route exact path="/profile" component={UserProfile} />
     </MuiThemeProvider>
   </Router>
 );

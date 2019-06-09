@@ -60,7 +60,7 @@ public class JpaConfiguration {
             config.setJdbcUrl(jdbcUrl);
             config.setUsername(username);
             config.setPassword(password);
-            //config.setDriverClassName(driverClass);
+            config.setDriverClassName(driverClass);
         }
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
