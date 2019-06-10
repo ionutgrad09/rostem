@@ -36,7 +36,8 @@ class ChapterView extends React.Component {
   }
 
   async setActionTutorial(action) {
-    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
     const actionType = action;
     const chapterId = this.props.chapter.id;
 
@@ -73,7 +74,8 @@ class ChapterView extends React.Component {
   }
 
   async unsetActionTutorial(action) {
-    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
     const actionType = action;
     const chapterId = this.props.chapter.id;
 

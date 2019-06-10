@@ -65,7 +65,8 @@ class CommentsView extends React.Component {
     const body = {
       chapterId: this.props.chapter.id,
       content: this.state.userComment,
-      username: sessionStorage.getItem(rostemConstants.USERNAME)
+      username: JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+        .username
     };
     await axios
       .post(rostemConstants.BASE_URL + "/chapters/comments", body)

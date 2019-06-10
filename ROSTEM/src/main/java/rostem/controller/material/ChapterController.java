@@ -163,5 +163,37 @@ public class ChapterController {
         }
     }
 
+    @ApiOperation(value = "Get all TODO chapters for a user.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The TODO chapters were returned."),
+            @ApiResponse(code = 400, message = "The user does not exist.")
+    })
+    @GetMapping(path = "/todo/{email}")
+    public ResponseEntity<Response> getAllTodoChapters(@PathVariable("email") String userEmail) {
+        try {
+            List<ResponseChapter> chapters = chapterService.getTodoChapters(userEmail);
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get all DONE chapters for a user.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The DONE chapters were returned."),
+            @ApiResponse(code = 400, message = "The user does not exist.")
+    })
+    @GetMapping(path = "/done/{email}")
+    public ResponseEntity<Response> getAllDoneChapters(@PathVariable("email") String userEmail) {
+        try {
+            List<ResponseChapter> chapters = chapterService.getDoneChapters(userEmail);
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
 
 }

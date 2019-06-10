@@ -40,7 +40,8 @@ class CategoryItem extends React.Component {
   }
 
   async handleAddToFavorite() {
-    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
     const { id } = this.props;
     await axios
       .post(rostemConstants.BASE_URL + "/categories/favorites", {
@@ -60,7 +61,8 @@ class CategoryItem extends React.Component {
   }
 
   async handleDeleteFavorite() {
-    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
     const { id } = this.props;
     await axios
       .delete(rostemConstants.BASE_URL + "/categories/favorites", {
@@ -88,7 +90,6 @@ class CategoryItem extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const { id, description, categoryName, classes } = this.props;
     return (
       <Card className={classes.card}>

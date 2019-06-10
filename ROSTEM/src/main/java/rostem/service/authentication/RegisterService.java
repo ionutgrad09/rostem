@@ -22,6 +22,7 @@ import rostem.model.users.User;
 import rostem.repository.users.RostemAdminRepository;
 import rostem.repository.users.InactiveUserRepository;
 import rostem.repository.users.RostemUserRepository;
+import rostem.utils.exception.RostemException;
 
 @Service
 public class RegisterService {
@@ -44,18 +45,19 @@ public class RegisterService {
         this.emailService = emailService;
     }
 
-    public String registerUser(User user) {
+    public String registerUser(RostemUser user) {
         if (inactiveUserRepository.findByEmail(user.getEmail()) != null) {
-            return ACCOUNT_REGISTERED_NOT_ACTIVATED;
+            throw new RostemException(ACCOUNT_REGISTERED_NOT_ACTIVATED);
         }
         if (rostemUserRepository.findByEmail(user.getEmail()) != null) {
-            return USER_ALREADY_REGISTERED;
+            throw new RostemException(USER_ALREADY_REGISTERED);
         }
         user.setPassword(encoder.encode(user.getPassword()));
         InactiveUser stud = InactiveUser.builder()
                 .email(user.getEmail())
-                .username(user.getUsername())
                 .password(user.getPassword())
+                .username(user.getUsername())
+                .bio(user.getBio())
                 .userType(UserType.USER)
                 .id(UUID.randomUUID().toString())
                 .build();
@@ -75,12 +77,11 @@ public class RegisterService {
             InactiveUser inactiveUser = inactiveUserOpt.get();
             if (inactiveUser.getUserType().equals(UserType.USER)) {
                 rostemUserRepository.save(new RostemUser(inactiveUser.getEmail(), inactiveUser.getPassword(),
-                        inactiveUser.getUsername()));
+                        inactiveUser.getUsername(), inactiveUser.getBio()));
                 return REQUEST_OK;
             }
             if (inactiveUser.getUserType().equals(UserType.ADMIN)) {
-                adminUserRepository.save(new RostemAdmin(inactiveUser.getEmail(), inactiveUser.getPassword(),
-                        inactiveUser.getUsername()));
+                adminUserRepository.save(new RostemAdmin(inactiveUser.getEmail(), inactiveUser.getPassword()));
                 return REQUEST_OK;
             }
         }
@@ -92,7 +93,8 @@ public class RegisterService {
         if (inactiveUserOpt.isPresent()) {
             inactiveUserRepository.deleteById(id);
             InactiveUser user = inactiveUserOpt.get();
-            rostemUserRepository.save(new RostemUser(user.getEmail(), encoder.encode(password), user.getUsername()));
+            rostemUserRepository
+                    .save(new RostemUser(user.getEmail(), encoder.encode(password), user.getUsername(), user.getBio()));
             return REQUEST_OK;
         }
         return INVALID_ACCOUNT_KEY;

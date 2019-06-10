@@ -58,6 +58,14 @@ public class CategoryService {
         return responseCategories;
     }
 
+    public List<ResponseCategory> getAllCategoriesForAdmin() {
+        logger.info("[CATEGORY] Get all categories");
+        return categoryRepository.findAll()
+                .stream()
+                .map(CategoryMapper::map)
+                .collect(Collectors.toList());
+    }
+
     private void markFavoriteCategories(String email, List<ResponseCategory> responseCategories) {
         List<Category> favoriteCategories = rostemUserRepository.findByEmail(email).getFavoriteCategories();
 

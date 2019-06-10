@@ -20,6 +20,7 @@ import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.ResponseBuilder.ResponseBuilder;
 import rostem.model.users.RostemUser;
 import rostem.service.authentication.RegisterService;
+import rostem.utils.exception.RostemException;
 
 @RestController
 @Api(value = "register", description = "All operations that are used for creating accounts")
@@ -41,11 +42,12 @@ public class RegisterController {
     @PostMapping(path = "/register", consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> register(@RequestBody @Validated RostemUser user) {
 
-        String error = registerService.registerUser(user);
-        if (error.equals(REQUEST_OK)) {
+        try {
+            registerService.registerUser(user);
             return ResponseBuilder.encode(HttpStatus.OK);
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
-        return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, error);
     }
 
     @ApiOperation(value = "Activate an user",

@@ -34,4 +34,7 @@ public class InactiveUser {
     @Column(name = "USER_TYPE")
     private UserType userType;
 
+    @Column(name = "BIO")
+    private String bio;
+
 }

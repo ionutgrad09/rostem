@@ -10,6 +10,7 @@ import axios from "axios";
 import Box from "@material-ui/core/Box";
 import CategoryItem from "../components/CategoryItem.js";
 import RecentPosts from "./RecentPosts.js";
+import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -71,7 +72,7 @@ class CategoriesView extends React.Component {
   }
 
   async getAllCategories() {
-    const user = sessionStorage.getItem(rostemConstants.EMAIL);
+    const user = JSON.parse(sessionStorage.getItem(rostemConstants.USER)).email;
     await axios
       .get(rostemConstants.BASE_URL + "/categories/" + user)
       .then(result => {
@@ -129,4 +130,4 @@ CategoriesView.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CategoriesView);
+export default withRouter(withStyles(styles)(CategoriesView));

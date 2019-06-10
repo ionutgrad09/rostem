@@ -65,6 +65,21 @@ public class CategoryController {
         }
     }
 
+    @ApiOperation(value = "Get all categories",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The categories were returned."),
+    })
+    @GetMapping
+    public ResponseEntity<Response> getCategoriesForAdmin() {
+        try {
+            List<ResponseCategory> categories = this.categoryService.getAllCategoriesForAdmin();
+            return ResponseBuilder.encode(HttpStatus.OK, categories, 0, categories.size(), categories.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
     @ApiOperation(value = "Get all favorite categories for a user",
             response = Response.class)
     @ApiResponses(value = {

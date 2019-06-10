@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Data;
@@ -50,10 +51,18 @@ public class RostemUser extends User {
     )
     private List<Chapter> doneChapters;
 
-    public RostemUser(String email, String password, String username) {
+    @Column(name = "BIO")
+    private String bio;
 
-        super(email, password, username);
+    @Column(name = "USERNAME")
+    protected String username;
+
+    public RostemUser(String email, String password, String username, String bio) {
+        super(email, password);
         this.registrationDate = getCurrentDate();
+        this.bio = bio;
+      //  this.photo = photo;
+        this.username = username;
     }
 
     private Date getCurrentDate() {

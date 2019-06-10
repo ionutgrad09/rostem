@@ -10,10 +10,8 @@ import rostem.model.users.User;
 class SimpleUserDto implements Serializable {
 
     private String email;
-    private String username;
 
     public SimpleUserDto(User u) {
         email = u.getEmail();
-        username = u.getUsername();
     }
 }

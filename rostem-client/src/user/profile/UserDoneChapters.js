@@ -8,52 +8,50 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import axios from "axios";
 import * as rostemConstants from "../../constants/constants.js";
-import ChapterWrapper from "./ChapterWrapper.js";
+import ChapterWrapper from "../components/ChapterWrapper.js";
 import Box from "@material-ui/core/Box";
 
 const styles = theme => ({
   root: {
-    width: 500,
-    height: 415,
+    width: 450,
+    height: 500,
     overflow: "auto"
   },
   title: {
     align: "center"
+  },
+  empty: {
+    marginTop: 150
   }
 });
 
-class RecentPosts extends React.Component {
+class UserDoneChapters extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      latestChapters: []
+      doneChapters: []
     };
   }
 
-  async getRecentChapters() {
-    const pageCount = 5;
+  async getDoneChapters() {
     const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
       .email;
-    const body = {
-      counter: pageCount,
-      email: email
-    };
     await axios
-      .post(rostemConstants.BASE_URL + "/chapters/latest", body)
+      .get(rostemConstants.BASE_URL + "/chapters/done/" + email)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
-          console.log("Error getting tutorials");
+          console.log("Error getting done chapters");
         } else {
           this.setState({
-            latestChapters: res.object.objects
+            doneChapters: res.object.objects
           });
         }
       });
   }
 
   componentDidMount() {
-    this.getRecentChapters();
+    this.getDoneChapters();
   }
 
   render() {
@@ -61,35 +59,28 @@ class RecentPosts extends React.Component {
     return (
       <Box bgcolor="primary.main" className={classes.root}>
         <center>
-          <Typography variant="h6">Recent Posts</Typography>
+          <Typography variant="h6">DONE</Typography>
         </center>
         <Divider />
         <div>
           <List dense={false}>
-            {this.state.latestChapters.length > 0 ? (
-              this.state.latestChapters.map(chapter => {
+            {this.state.doneChapters.length > 0 ? (
+              this.state.doneChapters.map(chapter => {
                 return (
                   <ListItem className={classes.details} divider>
-                    <ListItemText
-                      primary={chapter.name}
-                      secondary={
-                        "Creation Date: " +
-                        chapter.creationDate.substr(
-                          0,
-                          chapter.creationDate.indexOf(" ")
-                        )
-                      }
-                    />
+                    <ListItemText primary={chapter.name} />
                     <ChapterWrapper
                       chapter={chapter}
-                      updatePosts={this.getRecentChapters.bind(this)}
+                      updatePosts={this.getDoneChapters.bind(this)}
                     />
                   </ListItem>
                 );
               })
             ) : (
-              <div>
-                <center>No recent posts!</center>
+              <div className={classes.empty}>
+                <center>
+                  <Typography variant="h4">No DONE chapters yet!</Typography>
+                </center>
               </div>
             )}
           </List>
@@ -99,4 +90,4 @@ class RecentPosts extends React.Component {
   }
 }
 
-export default withStyles(styles)(RecentPosts);
+export default withStyles(styles)(UserDoneChapters);

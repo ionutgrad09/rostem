@@ -1,36 +1,57 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
+import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import MenuAppBar from "../../commons/components/MenuHeader";
 import { withRouter } from "react-router-dom";
+import * as rostemConstants from "../../constants/constants.js";
+import UserLearningProfile from "./UserLearningProfile";
+import UserAccount from "./UserAccount";
 
-const styles = theme => ({
+const styles = {
   root: {
-    width: 910,
-    height: 200,
-    align: "center"
-  },
-  typo: {
-    marginTop: 50
+    flexGrow: 1
   }
-});
+};
 
 class UserProfile extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  state = {
+    value: 0
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
     const { classes } = this.props;
+
     return (
-      <Paper className={classes.root}>
-        <center>
-          <Typography className={classes.typo} variant="h3">
-            <i>HELLO TO YOUR PROFILE </i>
-          </Typography>
-        </center>
-      </Paper>
+      <div>
+        <MenuAppBar username="ROSTEM" />
+        <Paper square className={classes.root}>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="secondary"
+            textColor="secondary"
+            centered
+          >
+            <Tab label="Account" />
+            <Tab label="Learning" />
+          </Tabs>
+        </Paper>
+        {this.state.value === 0 && <UserAccount />}
+        {this.state.value === 1 && <UserLearningProfile />}
+      </div>
     );
   }
 }
+
+UserProfile.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withRouter(withStyles(styles)(UserProfile));

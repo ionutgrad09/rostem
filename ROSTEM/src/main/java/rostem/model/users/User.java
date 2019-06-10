@@ -20,7 +20,8 @@ public class User implements Serializable {
     @Column(name = "PASSWORD")
     protected String password;
 
-    @Column(name = "USERNAME")
-    protected String username;
+    public User(String email){
+        this.email = email;
+    }
 }
 

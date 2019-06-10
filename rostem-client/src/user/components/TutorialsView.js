@@ -14,7 +14,6 @@ import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -118,7 +117,8 @@ class TutorialsView extends React.Component {
   }
 
   async getAllChapters(id) {
-    const email = sessionStorage.getItem(rostemConstants.EMAIL);
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
     const tutorialId = id;
 
     await axios

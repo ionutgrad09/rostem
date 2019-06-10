@@ -16,7 +16,7 @@ import lombok.ToString;
 @Table(name = "ROSTEM_ADMINS")
 public class RostemAdmin extends User {
 
-    public RostemAdmin(String email, String password, String username) {
-        super(email, password, username);
+    public RostemAdmin(String email, String password) {
+        super(email, password);
     }
 }

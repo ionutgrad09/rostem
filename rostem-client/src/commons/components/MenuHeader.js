@@ -9,8 +9,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
-import * as rostemConstants from "../../constants/constants";
-import axios from "axios";
+import MenuOutlined from "@material-ui/icons/MenuOutlined";
 
 const styles = {
   root: {
@@ -64,8 +63,7 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const user = sessionStorage.getItem(rostemConstants.USERNAME);
-    console.log(user);
+
     return (
       <div className={classes.root}>
         <AppBar color="secondary" position="static">
@@ -79,18 +77,18 @@ class MenuAppBar extends React.Component {
               onClick={this.handleRostemIconClick.bind(this)}
             />
             <Typography variant="h6" color="primary" className={classes.grow}>
-              ROSTEM
+              {this.props.username}
             </Typography>
             {auth && (
               <div>
-                <IconButton
+                <MenuOutlined
                   aria-owns={open ? "menu-appbar" : undefined}
                   aria-haspopup="true"
                   onClick={this.handleMenu}
                   color="inherit"
                 >
                   <AccountCircle />
-                </IconButton>
+                </MenuOutlined>
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}

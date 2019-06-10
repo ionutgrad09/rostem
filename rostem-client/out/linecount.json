@@ -566,6 +566,349 @@
                     "filename": "src\\user\\UserPage.js"
                 }
             ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-06-10 16:04:24",
+            "filesum": 54,
+            "codesum": 22097,
+            "commentsum": 42,
+            "blanksum": 370,
+            "filelist": [
+                {
+                    "blank": 5,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 18297,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "filename": "public\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 23,
+                    "filename": "public\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "public\\manifest.json"
+                },
+                {
+                    "filename": "public\\rostem.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 31,
+                    "code": 37,
+                    "comment": 12,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "src\\admin\\actions\\AdminActions.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\AdminPanel.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 69,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\commons\\TableHeader.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 91,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\commons\\TableToolbar.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\commons\\UtilsFunctions.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\notifications\\AdminNotifications.js"
+                },
+                {
+                    "blank": 13,
+                    "code": 137,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AddCategory.js"
+                },
+                {
+                    "blank": 18,
+                    "code": 213,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AddChapter.js"
+                },
+                {
+                    "blank": 16,
+                    "code": 189,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AddTutorial.js"
+                },
+                {
+                    "blank": 22,
+                    "code": 197,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AdminCategories.js"
+                },
+                {
+                    "blank": 22,
+                    "code": 207,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AdminChapters.js"
+                },
+                {
+                    "blank": 22,
+                    "code": 205,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\posts\\AdminTutorials.js"
+                },
+                {
+                    "blank": 21,
+                    "code": 197,
+                    "comment": 0,
+                    "filename": "src\\admin\\components\\users\\AdminUsers.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\App.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "src\\App.test.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "src\\commons\\components\\Cover.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "src\\commons\\components\\HomeHeader.js"
+                },
+                {
+                    "blank": 12,
+                    "code": 112,
+                    "comment": 3,
+                    "filename": "src\\commons\\components\\MenuHeader.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "src\\constants\\constants.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\index.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\index.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "src\\login\\actions\\AuthenticatonActions.js"
+                },
+                {
+                    "blank": 18,
+                    "code": 153,
+                    "comment": 1,
+                    "filename": "src\\login\\components\\LoginDialog.js"
+                },
+                {
+                    "blank": 18,
+                    "code": 171,
+                    "comment": 1,
+                    "filename": "src\\login\\components\\RegisterDialog.js"
+                },
+                {
+                    "filename": "src\\resources\\background.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\backgroundImg.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\blueStem.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\green_back.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\grey_back.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\greyStem.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\resources\\stemlogo.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 10,
+                    "code": 123,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\CategoriesView.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 127,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\CategoryItem.js"
+                },
+                {
+                    "blank": 15,
+                    "code": 194,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\ChapterView.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 60,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\ChapterWrapper.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 156,
+                    "comment": 1,
+                    "filename": "src\\user\\components\\CommentsView.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\EmptyChapterView.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 96,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\RecentPosts.js"
+                },
+                {
+                    "blank": 14,
+                    "code": 242,
+                    "comment": 0,
+                    "filename": "src\\user\\components\\TutorialsView.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserAccount.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 87,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserDoneChapters.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 101,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserFavoriteCategories.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 40,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserLearningProfile.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserProfile.js"
+                },
+                {
+                    "blank": 6,
+                    "code": 87,
+                    "comment": 0,
+                    "filename": "src\\user\\profile\\UserTodoChapters.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\user\\UserPage.js"
+                }
+            ]
         }
     ]
 }

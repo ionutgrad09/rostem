@@ -11,7 +11,6 @@ import static rostem.utils.mapper.ChapterMapper.map;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
-import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +57,40 @@ public class ChapterService {
         return chapterRepository.findAll().stream().map(ChapterMapper::map).collect(Collectors.toList());
     }
 
+    public List<ResponseChapter> getTodoChapters(String email) {
+        logger.info("[CHAPTER] Get all todo chapters for user: " + email);
+
+        if (this.findUserByEmail(email)) {
+            List<ResponseChapter> responseChapters = rostemUserRepository.findByEmail(email).getTodoChapters().stream()
+                    .map(ChapterMapper::map)
+                    .collect(Collectors.toList());
+
+            markedAsDone(email, responseChapters);
+            markedAsTodo(email, responseChapters);
+
+            return responseChapters;
+        } else {
+            throw new RostemException(USER_NOT_FOUND_FOR_CHAPTER);
+        }
+    }
+
+    public List<ResponseChapter> getDoneChapters(String email) {
+        logger.info("[CHAPTER] Get all done chapters for user: " + email);
+
+        if (this.findUserByEmail(email)) {
+            List<ResponseChapter> responseChapters = rostemUserRepository.findByEmail(email).getDoneChapters().stream()
+                    .map(ChapterMapper::map)
+                    .collect(Collectors.toList());
+
+            markedAsDone(email, responseChapters);
+            markedAsTodo(email, responseChapters);
+
+            return responseChapters;
+        } else {
+            throw new RostemException(USER_NOT_FOUND_FOR_CHAPTER);
+        }
+    }
+
     public List<ResponseChapter> getChaptersForTutorial(RequestActionChapter requestActionChapter) {
         final Long tutorialId = requestActionChapter.getTutorialId();
         logger.info("[CHAPTER] Trying to get all chapters for tutorial " + tutorialId);
@@ -76,7 +109,6 @@ public class ChapterService {
             return responseChapters;
         }
     }
-
 
     private void markedAsDone(String email, List<ResponseChapter> responseChapters) {
         List<Chapter> doneChapters = rostemUserRepository.findByEmail(email).getDoneChapters();
@@ -144,7 +176,6 @@ public class ChapterService {
             rostemUserRepository.save(rostemUser);
         }
     }
-
 
     @Transactional
     public ResponseChapter updateChapter(Long id, RequestChapter requestChapter) {
