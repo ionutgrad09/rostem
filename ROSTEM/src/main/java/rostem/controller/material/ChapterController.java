@@ -163,6 +163,38 @@ public class ChapterController {
         }
     }
 
+    @ApiOperation(value = "Like a chapter.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "The chapter was marked as liked."),
+            @ApiResponse(code = 400, message = "Bad request."),
+    })
+    @PostMapping("/like")
+    public ResponseEntity<Response> likeChapter(@RequestBody @Validated RequestActionChapter requestActionChapter) {
+        try {
+            chapterService.likeChapter(requestActionChapter.getEmail(), requestActionChapter.getChapterId());
+            return ResponseBuilder.encode(HttpStatus.CREATED);
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Dislike a chapter.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "The chapter was marked as disliked."),
+            @ApiResponse(code = 400, message = "Bad request."),
+    })
+    @PostMapping("/like")
+    public ResponseEntity<Response> dislikeChapter(@RequestBody @Validated RequestActionChapter requestActionChapter) {
+        try {
+            chapterService.dislikeChapter(requestActionChapter.getEmail(), requestActionChapter.getChapterId());
+            return ResponseBuilder.encode(HttpStatus.CREATED);
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
     @ApiOperation(value = "Get all TODO chapters for a user.",
             response = Response.class)
     @ApiResponses(value = {
@@ -194,6 +226,4 @@ public class ChapterController {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
-
-
 }

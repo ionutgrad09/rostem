@@ -45,6 +45,9 @@ public class Chapter extends Material {
     @ManyToMany(mappedBy = "doneChapters")
     private List<RostemUser> doneUserList;
 
+    @ManyToMany(mappedBy = "likedChapters")
+    private List<RostemUser> userLikes;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter")
     @OrderBy(value = "creationDate asc")
     private List<Comment> comments;
@@ -57,6 +60,7 @@ public class Chapter extends Material {
                 ", tutorial=" + tutorial +
                 ", todoUserList=" + todoUserList +
                 ", doneUserList=" + doneUserList +
+                ", userLikes=" + userLikes +
                 ", comments=" + comments +
                 '}';
     }

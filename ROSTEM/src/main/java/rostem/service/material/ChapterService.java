@@ -67,6 +67,7 @@ public class ChapterService {
 
             markedAsDone(email, responseChapters);
             markedAsTodo(email, responseChapters);
+            markedAsLiked(email, responseChapters);
 
             return responseChapters;
         } else {
@@ -84,6 +85,7 @@ public class ChapterService {
 
             markedAsDone(email, responseChapters);
             markedAsTodo(email, responseChapters);
+            markedAsLiked(email, responseChapters);
 
             return responseChapters;
         } else {
@@ -105,6 +107,7 @@ public class ChapterService {
 
             markedAsDone(requestActionChapter.getEmail(), responseChapters);
             markedAsTodo(requestActionChapter.getEmail(), responseChapters);
+            markedAsLiked(requestActionChapter.getEmail(), responseChapters);
 
             return responseChapters;
         }
@@ -115,7 +118,7 @@ public class ChapterService {
 
         for (ResponseChapter responseChapter : responseChapters) {
             for (Chapter chapter : doneChapters) {
-                if (responseChapter.getId() == chapter.getId()) {
+                if (responseChapter.getId().equals(chapter.getId())) {
                     responseChapter.setDone(true);
                 }
             }
@@ -127,7 +130,19 @@ public class ChapterService {
 
         for (ResponseChapter responseChapter : responseChapters) {
             for (Chapter chapter : todoChapters) {
-                if (responseChapter.getId() == chapter.getId()) {
+                if (responseChapter.getId().equals(chapter.getId())) {
+                    responseChapter.setTodo(true);
+                }
+            }
+        }
+    }
+
+    private void markedAsLiked(String email, List<ResponseChapter> responseChapters) {
+        List<Chapter> likedChapters = rostemUserRepository.findByEmail(email).getLikedChapters();
+
+        for (ResponseChapter responseChapter : responseChapters) {
+            for (Chapter chapter : likedChapters) {
+                if (responseChapter.getId().equals(chapter.getId())) {
                     responseChapter.setTodo(true);
                 }
             }
@@ -206,6 +221,19 @@ public class ChapterService {
         return responseChapters;
     }
 
+    public void likeChapter(String email, Long id) {
+        logger.info("[USER_CHAPTER] Trying to set a chapter as liked by user " + email);
+
+        checkForUserAndChapter(email, id);
+        Chapter chapter = chapterRepository.findChapterById(id);
+        RostemUser rostemUser = rostemUserRepository.findByEmail(email);
+
+        chapter.getUserLikes().add(rostemUser);
+        rostemUser.getLikedChapters().add(chapter);
+        chapterRepository.save(chapter);
+        rostemUserRepository.save(rostemUser);
+    }
+
     public void markChapterAsTodo(String email, Long id) {
         logger.info("[USER_CHAPTER] Trying to set a chapter as todo for user " + email);
 
@@ -241,6 +269,39 @@ public class ChapterService {
     }
 
     @Transactional
+    public void dislikeChapter(String email, Long id) {
+        logger.info("[USER_CHAPTER] Trying to dislike a chapter for user " + email);
+
+        checkForUserAndChapter(email, id);
+        Chapter chapter = chapterRepository.findChapterById(id);
+        RostemUser rostemUser = rostemUserRepository.findByEmail(email);
+        deleteLikeChapterFromUser(chapter, rostemUser);
+        deleteUserFromLikeChapter(chapter, rostemUser);
+    }
+
+    private void deleteLikeChapterFromUser(Chapter chapter, RostemUser rostemUser) {
+        List<Chapter> userLikes = rostemUser.getLikedChapters();
+        if (userLikes.stream().anyMatch(x -> x.getId().equals(chapter.getId()))) {
+            userLikes.remove(chapter);
+            rostemUser.setLikedChapters(userLikes);
+            rostemUserRepository.save(rostemUser);
+        } else {
+            throw new RostemException(CHAPTER_NOT_FOUND);
+        }
+    }
+
+    private void deleteUserFromLikeChapter(Chapter chapter, RostemUser rostemUser) {
+        List<RostemUser> userLikes = chapter.getUserLikes();
+        if (userLikes.stream().anyMatch(x -> x.getEmail().equals(rostemUser.getEmail()))) {
+            userLikes.remove(rostemUser);
+            chapter.setUserLikes(userLikes);
+            chapterRepository.save(chapter);
+        } else {
+            throw new RostemException(USER_NOT_FOUND_FOR_CHAPTER);
+        }
+    }
+
+    @Transactional
     public void unmarkTodoChapter(String email, Long id) {
         logger.info("[USER_CHAPTER] Trying to unmark a todo chapter from user " + email + " TODO list.");
 
@@ -265,7 +326,7 @@ public class ChapterService {
 
     private void deleteTodoChapterFromUser(Chapter chapter, RostemUser rostemUser) {
         List<Chapter> userTodoChapters = rostemUser.getTodoChapters();
-        if (userTodoChapters.stream().anyMatch(x -> x.getId() == chapter.getId())) {
+        if (userTodoChapters.stream().anyMatch(x -> x.getId().equals(chapter.getId()))) {
             userTodoChapters.remove(chapter);
             rostemUser.setTodoChapters(userTodoChapters);
             rostemUserRepository.save(rostemUser);

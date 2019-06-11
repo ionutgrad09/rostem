@@ -30,7 +30,7 @@ public class AuthenticationService implements UserDetailsService {
         this.rostemAdminRepository = rostemAdminRepository;
     }
 
-    //  Searches for a user with a given email in all 2 databases (Student and Professor)
+    //  Searches for a user with a given email in all 2 databases (Admin and User)
     //  In our case the username is actually the email
     //  If there is no user found with the given id -> UsernameNotFoundException
     @Override

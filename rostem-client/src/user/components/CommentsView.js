@@ -84,7 +84,6 @@ class CommentsView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // only update chart if the data has changed
     if (prevProps.chapter.id !== this.props.chapter.id) {
       this.getAllComments();
     }

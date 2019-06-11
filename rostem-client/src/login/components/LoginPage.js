@@ -122,7 +122,7 @@ class LoginPage extends React.Component {
     };
     const body = "username=" + username + "&password=" + password;
     axios
-      .post(rostemConstants.BASE_URL + "/login", body, { headers: headers })
+      .post(rostemConstants.BASE_URL + "/login?" + body, { headers: headers })
       .then(response => {
         this.handleLoginResponse(response);
       });

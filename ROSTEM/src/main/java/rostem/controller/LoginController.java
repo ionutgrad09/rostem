@@ -35,11 +35,11 @@ public class LoginController {
     }
 
     @PostMapping(value = "login/getdetails")
-    public ResponseEntity<Response> getUserDetails(@ApiIgnore Principal principal){
-        if (principal == null){
-            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST,"invalidUser");
+    public ResponseEntity<Response> getUserDetails(@ApiIgnore Principal principal) {
+        if (principal == null) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, "invalidUser");
         }
         UserPrincipal userPrincipal = (UserPrincipal) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
-        return ResponseBuilder.encode(HttpStatus.OK,new UserLoginDetailDto(userPrincipal.getUser()));
+        return ResponseBuilder.encode(HttpStatus.OK, new UserLoginDetailDto(userPrincipal.getUser()));
     }
 }

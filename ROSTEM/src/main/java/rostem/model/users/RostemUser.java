@@ -51,6 +51,14 @@ public class RostemUser extends User {
     )
     private List<Chapter> doneChapters;
 
+    @ManyToMany
+    @JoinTable(
+            name = "USER_LIKE",
+            joinColumns = @JoinColumn(name = "EMAIL"),
+            inverseJoinColumns = @JoinColumn(name = "ID")
+    )
+    private List<Chapter> likedChapters;
+
     @Column(name = "BIO")
     private String bio;
 

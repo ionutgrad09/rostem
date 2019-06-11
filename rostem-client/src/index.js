@@ -10,6 +10,9 @@ import TutorialsView from "./user/components/TutorialsView";
 import UserProfile from "./user/profile/UserProfile";
 import RegisterPage from "./login/components/RegisterPage";
 import LoginPage from "./login/components/LoginPage";
+import requireAdminAuth from "./login/actions/AdminLoginGuard";
+import requireUserAuth from "./login/actions/UserLoginGuard";
+import Forbidden from "./commons/components/Forbidden";
 
 const theme = createMuiTheme({
   palette: {
@@ -32,6 +35,7 @@ const routing = (
       <Route exact path="/profile" component={UserProfile} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/forbidden" component={Forbidden} />
     </MuiThemeProvider>
   </Router>
 );
