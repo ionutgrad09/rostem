@@ -5,17 +5,8 @@ import Divider from "@material-ui/core/Divider";
 import axios from "axios";
 import * as rostemConstants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Container from "@material-ui/core/Container";
-import HomeHeader from "../../commons/components/HomeHeader";
 
 const styles = theme => ({
   boxRoot: {
@@ -168,15 +159,6 @@ class UserAccount extends React.Component {
               <br />
               <Divider />
               <br />
-              <TextField
-                disabled
-                id="standard-email-input"
-                label="Email"
-                value={this.state.email}
-                className={classes.textField}
-                type="email"
-                margin="normal"
-              />
 
               <TextField
                 id="standard-username-input"
@@ -198,6 +180,16 @@ class UserAccount extends React.Component {
                 className={classes.textField}
                 margin="normal"
                 onChange={this.onBioChange.bind(this)}
+              />
+
+              <TextField
+                disabled
+                id="standard-email-input"
+                label="Email"
+                value={this.state.email}
+                className={classes.textField}
+                type="email"
+                margin="normal"
               />
 
               <TextField

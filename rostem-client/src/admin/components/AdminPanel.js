@@ -8,7 +8,7 @@ import AdminUsers from "./users/AdminUsers";
 import AdminCategories from "./posts/AdminCategories";
 import AdminChapters from "./posts/AdminChapters";
 import AdminTutorials from "./posts/AdminTutorials";
-import AdminNotifications from "./notifications/AdminNotifications";
+import AdminStatistics from "./statistics/AdminStatistics";
 import MenuAppBar from "../../commons/components/MenuHeader";
 
 const styles = {
@@ -44,14 +44,14 @@ class AdminPanel extends React.Component {
             <Tab label="Categories" />
             <Tab label="Tutorials" />
             <Tab label="Chapters" />
-            <Tab label="Notifications" />
+            <Tab label="Statistics" />
           </Tabs>
         </Paper>
         {this.state.value === 0 && <AdminUsers />}
         {this.state.value === 1 && <AdminCategories />}
         {this.state.value === 2 && <AdminTutorials />}
         {this.state.value === 3 && <AdminChapters />}
-        {this.state.value === 4 && <AdminNotifications />}
+        {this.state.value === 4 && <AdminStatistics />}
       </div>
     );
   }

@@ -25,9 +25,14 @@ import rostem.model.dto.request.BatchDeleteUsers;
 import rostem.model.dto.request.RequestCategory;
 import rostem.model.dto.request.RequestChapter;
 import rostem.model.dto.request.RequestTutorial;
+import rostem.model.dto.response.ResponseChapter;
 import rostem.model.dto.response.ResponseRostemUser;
+import rostem.model.dto.response.ResponseStatisticsCategory;
+import rostem.model.dto.response.ResponseStatisticsChapter;
+import rostem.model.dto.response.ResponseStatisticsUser;
 import rostem.service.material.CategoryService;
 import rostem.service.material.ChapterService;
+import rostem.service.material.StatisticsService;
 import rostem.service.material.TutorialService;
 import rostem.service.users.RostemUserService;
 import rostem.utils.ResponseBuilder.Response;
@@ -44,14 +49,17 @@ public class AdminController {
     private final CategoryService categoryService;
     private final ChapterService chapterService;
     private final TutorialService tutorialService;
+    private final StatisticsService statisticsService;
 
     @Autowired
-    public AdminController(RostemUserService rostemUserService, CategoryService categoryService, TutorialService tutorialService,
-            ChapterService chapterService) {
+    public AdminController(RostemUserService rostemUserService, CategoryService categoryService,
+            TutorialService tutorialService,
+            ChapterService chapterService, StatisticsService statisticsService) {
         this.rostemUserService = rostemUserService;
         this.categoryService = categoryService;
         this.tutorialService = tutorialService;
         this.chapterService = chapterService;
+        this.statisticsService = statisticsService;
     }
 
     @ApiOperation(value = "Get all users",
@@ -224,6 +232,54 @@ public class AdminController {
             @RequestBody @Validated RequestTutorial requestTutorial) {
         try {
             return ResponseBuilder.encode(HttpStatus.OK, tutorialService.updateTutorial(id, requestTutorial));
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+
+    /*********** STATISTICS ***************/
+
+    @ApiOperation(value = "Get top chapters.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The  chapters were returned."),
+    })
+    @GetMapping(path = "/statistics/chapters")
+    public ResponseEntity<Response> getTopChapters() {
+        try {
+            List<ResponseStatisticsChapter> chapters = statisticsService.getTopChapters();
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get top categories.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The categories were returned."),
+    })
+    @GetMapping(path = "/statistics/categories")
+    public ResponseEntity<Response> getTopCategories() {
+        try {
+            List<ResponseStatisticsCategory> categories = statisticsService.getTopCategories();
+            return ResponseBuilder.encode(HttpStatus.OK, categories, 0, categories.size(), categories.size());
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get top users.",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The users were returned."),
+    })
+    @GetMapping(path = "/statistics/users")
+    public ResponseEntity<Response> getTopUsers() {
+        try {
+            List<ResponseStatisticsUser> users = statisticsService.getTopUsers();
+            return ResponseBuilder.encode(HttpStatus.OK, users, 0, users.size(), users.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }

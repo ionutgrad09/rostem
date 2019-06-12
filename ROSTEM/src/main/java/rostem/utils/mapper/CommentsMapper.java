@@ -10,7 +10,7 @@ public class CommentsMapper {
     public static Comment map(RequestComment requestComment) {
         Comment comment = new Comment();
         comment.setContent(requestComment.getContent());
-        comment.setUsername(requestComment.getUsername());
+        comment.setEmail(requestComment.getEmail());
         comment.setCreationDate(new Date());
         return comment;
     }
@@ -20,7 +20,7 @@ public class CommentsMapper {
         requestComment.setId(comment.getId());
         requestComment.setContent(comment.getContent());
         requestComment.setCreationDate(comment.getCreationDate().toString());
-        requestComment.setUsername(comment.getUsername());
+        requestComment.setEmail(comment.getEmail());
         return requestComment;
     }
 }

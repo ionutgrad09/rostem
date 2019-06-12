@@ -9,6 +9,7 @@ import { withRouter } from "react-router-dom";
 import * as rostemConstants from "../../constants/constants.js";
 import UserLearningProfile from "./UserLearningProfile";
 import UserAccount from "./UserAccount";
+import UserMessages from "./UserMessages";
 
 const styles = {
   root: {
@@ -41,10 +42,12 @@ class UserProfile extends React.Component {
           >
             <Tab label="Account" />
             <Tab label="Learning" />
+            <Tab label="Messages" />
           </Tabs>
         </Paper>
         {this.state.value === 0 && <UserAccount />}
         {this.state.value === 1 && <UserLearningProfile />}
+        {this.state.value === 2 && <UserMessages />}
       </div>
     );
   }

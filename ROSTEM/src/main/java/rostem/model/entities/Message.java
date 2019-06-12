@@ -38,11 +38,11 @@ public class Message {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @Column(name = "FROM")
-    private String from;
+    @Column(name = "SENT_BY")
+    private String sentBy;
 
-    @Column(name = "TO")
-    private String to;
+    @Column(name = "RECEIVED_BY")
+    private String receivedBy;
 
     @Override
     public String toString() {
@@ -50,8 +50,8 @@ public class Message {
                 "id=" + id +
                 ", message='" + message + '\'' +
                 ", receivedAt=" + creationDate +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
+                ", sendBy='" + sentBy + '\'' +
+                ", receivedBy='" + receivedBy + '\'' +
                 '}';
     }
 }

@@ -38,8 +38,8 @@ public class Comment {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @Column(name = "USERNAME")
-    private String username;
+    @Column(name = "EMAIL")
+    private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CHAPTER_ID", nullable = false)
@@ -52,7 +52,7 @@ public class Comment {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", creationDate=" + creationDate +
-                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", chapter=" + chapter +
                 '}';
     }

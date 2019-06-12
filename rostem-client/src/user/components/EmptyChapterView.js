@@ -6,11 +6,11 @@ import { Typography } from "@material-ui/core";
 const styles = theme => ({
   root: {
     width: 910,
-    height: 200,
+    height: 500,
     align: "center"
   },
   typo: {
-    marginTop: 50
+    marginTop: 200
   }
 });
 
@@ -24,7 +24,7 @@ class EmptyChapterView extends React.Component {
       <Paper className={classes.root}>
         <center>
           <Typography className={classes.typo} variant="h3">
-            <i>NO CHAPTER SELECTED! </i>
+            <i>Select a chapter... </i>
           </Typography>
         </center>
       </Paper>

@@ -4,6 +4,7 @@ import static rostem.utils.mapper.MessageMapper.map;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,18 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
+    @Transactional
     public List<ResponseMessage> getMessagesSent(String email) {
         logger.info("[MESSAGE] Getting all messages sent by " + email);
-        return messageRepository.findAllByFrom(email).stream().map(MessageMapper::map).collect(Collectors.toList());
+        return messageRepository.findAllBySentByOrderByCreationDateDesc(email).stream().map(MessageMapper::map)
+                .collect(Collectors.toList());
     }
 
+    @Transactional
     public List<ResponseMessage> getMessagesReceived(String email) {
         logger.info("[MESSAGE] Getting all messages received by " + email);
-        return messageRepository.findAllByTo(email).stream().map(MessageMapper::map).collect(Collectors.toList());
+        return messageRepository.findAllByReceivedByOrderByCreationDateDesc(email).stream().map(MessageMapper::map)
+                .collect(Collectors.toList());
     }
 
     public void addMessage(RequestMessage requestMessage) {

@@ -8,6 +8,7 @@ import static rostem.utils.ApiResponses.USER_NOT_FOUND;
 import static rostem.utils.ApiResponses.USER_NOT_FOUND_FOR_CHAPTER;
 import static rostem.utils.mapper.ChapterMapper.map;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
@@ -28,6 +29,7 @@ import rostem.repository.materials.ChapterRepository;
 import rostem.repository.materials.CommentRepository;
 import rostem.repository.materials.TutorialRepository;
 import rostem.repository.users.RostemUserRepository;
+import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.exception.RostemException;
 import rostem.utils.mapper.ChapterMapper;
 import rostem.utils.mapper.CommentsMapper;
@@ -55,6 +57,24 @@ public class ChapterService {
         logger.info("[CHAPTER] Get all chapters.");
 
         return chapterRepository.findAll().stream().map(ChapterMapper::map).collect(Collectors.toList());
+    }
+
+    public List<ResponseChapter> getLikedChapters(String email) {
+        logger.info("[CHAPTER] Get all liked chapters by user: " + email);
+
+        if (this.findUserByEmail(email)) {
+            List<ResponseChapter> responseChapters = rostemUserRepository.findByEmail(email).getLikedChapters().stream()
+                    .map(ChapterMapper::map)
+                    .collect(Collectors.toList());
+
+            markedAsDone(email, responseChapters);
+            markedAsTodo(email, responseChapters);
+            markedAsLiked(email, responseChapters);
+
+            return responseChapters;
+        } else {
+            throw new RostemException(USER_NOT_FOUND_FOR_CHAPTER);
+        }
     }
 
     public List<ResponseChapter> getTodoChapters(String email) {
@@ -143,7 +163,7 @@ public class ChapterService {
         for (ResponseChapter responseChapter : responseChapters) {
             for (Chapter chapter : likedChapters) {
                 if (responseChapter.getId().equals(chapter.getId())) {
-                    responseChapter.setTodo(true);
+                    responseChapter.setLiked(true);
                 }
             }
         }
@@ -375,10 +395,19 @@ public class ChapterService {
         if (!findChapterById(chapterId)) {
             throw new RostemException(CHAPTER_NOT_FOUND);
         } else {
-            return chapterRepository.findChapterById(chapterId).getComments().stream()
-                    .map(CommentsMapper::map)
-                    .collect(Collectors.toList());
+            List<Comment> comments = chapterRepository.findChapterById(chapterId).getComments();
+            List<ResponseComment> responseComments = new ArrayList<>();
+            for (Comment comment : comments) {
+                ResponseComment responseComment = CommentsMapper.map(comment);
+                responseComment.setUsername(getUsernameForEmail(comment.getEmail()));
+                responseComments.add(responseComment);
+            }
+            return responseComments;
         }
+    }
+
+    private String getUsernameForEmail(String email) {
+        return rostemUserRepository.findByEmail(email).getUsername();
     }
 
     @Transactional
@@ -387,10 +416,15 @@ public class ChapterService {
 
         if (!findChapterById(chapterId)) {
             throw new RostemException(CATEGORY_NOT_FOUND);
-        } else {
+        } else if (findUserByEmail(requestComment.getEmail())) {
+            RostemUser rostemUser = rostemUserRepository.findByEmail(requestComment.getEmail());
             Comment comment = CommentsMapper.map(requestComment);
             comment.setChapter(chapterRepository.findChapterById(chapterId));
-            return CommentsMapper.map(commentRepository.save(comment));
+            ResponseComment responseComment = CommentsMapper.map(commentRepository.save(comment));
+            responseComment.setUsername(rostemUser.getUsername());
+            return responseComment;
+        } else {
+            throw new RostemException(USER_NOT_FOUND);
         }
     }
 

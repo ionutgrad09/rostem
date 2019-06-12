@@ -9,8 +9,8 @@ public class MessageMapper {
 
     public static Message map(RequestMessage requestMessage) {
         Message message = new Message();
-        message.setFrom(requestMessage.getFrom());
-        message.setTo(requestMessage.getTo());
+        message.setSentBy(requestMessage.getSentBy());
+        message.setReceivedBy(requestMessage.getReceivedBy());
         message.setMessage(requestMessage.getMessage());
         message.setCreationDate(new Date());
 
@@ -20,8 +20,8 @@ public class MessageMapper {
     public static ResponseMessage map(Message message) {
         ResponseMessage responseMessage = new ResponseMessage();
         responseMessage.setCreationDate(message.getCreationDate().toString());
-        responseMessage.setFrom(message.getFrom());
-        responseMessage.setTo(message.getTo());
+        responseMessage.setSentBy(message.getSentBy());
+        responseMessage.setReceivedBy(message.getReceivedBy());
         responseMessage.setId(message.getId());
         responseMessage.setMessage(message.getMessage());
 

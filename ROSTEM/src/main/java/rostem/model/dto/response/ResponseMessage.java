@@ -8,8 +8,8 @@ public class ResponseMessage implements Serializable {
 
     private Long id;
     private String message;
-    private String from;
-    private String to;
+    private String sentBy;
+    private String receivedBy;
     private String creationDate;
 
     public ResponseMessage() {

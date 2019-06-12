@@ -6,7 +6,7 @@ import rostem.model.entities.Message;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-    List<Message> findAllByFrom(String from);
+    List<Message> findAllBySentByOrderByCreationDateDesc(String from);
 
-    List<Message> findAllByTo(String from);
+    List<Message> findAllByReceivedByOrderByCreationDateDesc(String from);
 }

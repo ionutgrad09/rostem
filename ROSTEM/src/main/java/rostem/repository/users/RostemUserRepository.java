@@ -8,4 +8,6 @@ public interface RostemUserRepository extends JpaRepository<RostemUser, String> 
     RostemUser findByEmail(String email);
 
     void deleteByEmail(String email);
+
+    RostemUser findByUsername(String username);
 }

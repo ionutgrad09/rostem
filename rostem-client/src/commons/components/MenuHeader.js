@@ -74,7 +74,11 @@ class MenuAppBar extends React.Component {
               height="50"
               width="50"
               style={{ paddingRight: 20 }}
-              onClick={this.handleRostemIconClick.bind(this)}
+              onClick={
+                this.props.username !== "ADMINISTRATOR"
+                  ? this.handleRostemIconClick.bind(this)
+                  : null
+              }
             />
             <Typography variant="h6" color="primary" className={classes.grow}>
               {this.props.username}
@@ -103,9 +107,11 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleProfile.bind(this)}>
-                    Profile
-                  </MenuItem>
+                  {this.props.username !== "ADMINISTRATOR" && (
+                    <MenuItem onClick={this.handleProfile.bind(this)}>
+                      Profile
+                    </MenuItem>
+                  )}
                   <MenuItem onClick={this.handleClose.bind(this)}>
                     Logout
                   </MenuItem>

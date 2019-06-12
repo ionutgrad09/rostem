@@ -31,7 +31,7 @@ class ChapterView extends React.Component {
     this.state = {
       checkedTODO: this.props.chapter.todo,
       checkedDONE: this.props.chapter.done,
-      clickedThumbUp: false
+      isLiked: this.props.chapter.liked
     };
   }
 
@@ -73,6 +73,46 @@ class ChapterView extends React.Component {
     }
   }
 
+  async unlikeChapter() {
+    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
+      .email;
+    const chapterId = this.props.chapter.id;
+
+    if (this.state.isLiked === true) {
+      await axios
+        .post(rostemConstants.BASE_URL + "/chapters/dislike", {
+          email: email,
+          chapterId: chapterId
+        })
+        .then(result => {
+          let res = result.data;
+          if (res.status === "false") {
+            console.log("Error marking chapter as disliked.");
+          } else {
+            this.setState({
+              isLiked: !this.state.isLiked
+            });
+          }
+        });
+    } else {
+      await axios
+        .post(rostemConstants.BASE_URL + "/chapters/like", {
+          email: email,
+          chapterId: chapterId
+        })
+        .then(result => {
+          let res = result.data;
+          if (res.status === "false") {
+            console.log("Error marking chapter as liked.");
+          } else {
+            this.setState({
+              isLiked: !this.state.isLiked
+            });
+          }
+        });
+    }
+  }
+
   async unsetActionTutorial(action) {
     const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
       .email;
@@ -96,7 +136,8 @@ class ChapterView extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       checkedTODO: nextProps.chapter.todo,
-      checkedDONE: nextProps.chapter.done
+      checkedDONE: nextProps.chapter.done,
+      isLiked: nextProps.chapter.done
     });
   }
 
@@ -121,12 +162,6 @@ class ChapterView extends React.Component {
     }
     this.setState({
       checkedDONE: !this.state.checkedDONE
-    });
-  };
-
-  handleThumbUp = () => {
-    this.setState({
-      clickedThumbUp: !this.state.clickedThumbUp
     });
   };
 
@@ -158,10 +193,14 @@ class ChapterView extends React.Component {
             ) : null}
             <br />
             <br />
-            {!this.state.clickedThumbUp ? (
+            {!this.state.isLiked ? (
               <Tooltip title="Thumb UP" aria-label="Thumb UP">
-                <Fab color="primary" className={classes.absolute}>
-                  <ThumbUp onClick={this.handleThumbUp} />
+                <Fab
+                  color="primary"
+                  className={classes.absolute}
+                  onClick={this.unlikeChapter.bind(this)}
+                >
+                  <ThumbUp />
                 </Fab>
               </Tooltip>
             ) : (
@@ -169,8 +208,12 @@ class ChapterView extends React.Component {
                 title="Thanks for the vote"
                 aria-label="Thanks for the vote"
               >
-                <Fab color="secondary" className={classes.absolute}>
-                  <ThumbUp onClick={this.handleThumbUp} />
+                <Fab
+                  color="secondary"
+                  className={classes.absolute}
+                  onClick={this.unlikeChapter.bind(this)}
+                >
+                  <ThumbUp />
                 </Fab>
               </Tooltip>
             )}

@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import image from "../../resources/stemlogo.jpg";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import * as rostemConstants from "../../constants/constants.js";
@@ -16,9 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-
-const stemAvatar = require("../../resources/blueStem.png");
+import SendMessage from "./SendMessaage";
 
 const styles = theme => ({
   details: {
@@ -65,8 +58,7 @@ class CommentsView extends React.Component {
     const body = {
       chapterId: this.props.chapter.id,
       content: this.state.userComment,
-      username: JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-        .username
+      email: JSON.parse(sessionStorage.getItem(rostemConstants.USER)).email
     };
     await axios
       .post(rostemConstants.BASE_URL + "/chapters/comments", body)
@@ -107,7 +99,10 @@ class CommentsView extends React.Component {
               return (
                 <ListItem className={classes.details} divider>
                   <ListItemAvatar>
-                    <Avatar alt={comment.username} src={stemAvatar} />
+                    <SendMessage
+                      friendEmail={comment.email}
+                      username={comment.username}
+                    />
                   </ListItemAvatar>
                   <ListItemText
                     secondary={
@@ -128,7 +123,9 @@ class CommentsView extends React.Component {
               );
             })
           ) : (
-            <div>No lalala for this chapter!</div>
+            <center>
+              <div>No comments for this chapter!</div>
+            </center>
           )}
         </List>
         <br />

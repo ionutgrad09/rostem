@@ -8,4 +8,5 @@ import rostem.model.entities.Comment;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     Comment findCommentById(Long id);
+
 }

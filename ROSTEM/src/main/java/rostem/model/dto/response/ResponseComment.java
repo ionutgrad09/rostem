@@ -9,6 +9,7 @@ public class ResponseComment implements Serializable {
     private Long id;
     private String content;
     private String username;
+    private String email;
     private String creationDate;
 
     public ResponseComment(){

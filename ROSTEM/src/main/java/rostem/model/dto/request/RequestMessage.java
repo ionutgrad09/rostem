@@ -7,8 +7,8 @@ import lombok.Data;
 public class RequestMessage implements Serializable {
 
     private String message;
-    private String from;
-    private String to;
+    private String sentBy;
+    private String receivedBy;
 
     public RequestMessage() {
     }

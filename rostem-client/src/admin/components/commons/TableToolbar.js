@@ -11,6 +11,7 @@ import { lighten } from "@material-ui/core/styles/colorManipulator";
 import AddCategory from "../posts/AddCategory.js";
 import AddTutorial from "../posts/AddTutorial.js";
 import AddChapter from "../posts/AddChapter.js";
+import Button from "@material-ui/core/Button";
 
 const toolbarStyles = theme => ({
   root: {
@@ -74,6 +75,17 @@ export default class TableToolbar extends React.Component {
           )}
         </div>
         <div className={classes.spacer} />
+        <div>
+          {numSelected == 1 && (
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
+              EDIT
+            </Button>
+          )}
+        </div>
         <div className={classes.actions}>
           {numSelected > 0 && (
             <Tooltip title="Delete">
