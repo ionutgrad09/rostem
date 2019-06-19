@@ -5,8 +5,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -36,14 +35,12 @@ class ChapterView extends React.Component {
   }
 
   async setActionTutorial(action) {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
     const actionType = action;
     const chapterId = this.props.chapter.id;
 
-    await axios
-      .post(rostemConstants.BASE_URL + "/chapters/mark", {
-        email: email,
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/chapters/mark", {
+        email: this.props.userEmail,
         chapterId: chapterId,
         actionType: actionType
       })
@@ -74,13 +71,12 @@ class ChapterView extends React.Component {
   }
 
   async unlikeChapter() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const chapterId = this.props.chapter.id;
 
     if (this.state.isLiked === true) {
-      await axios
-        .post(rostemConstants.BASE_URL + "/chapters/dislike", {
+      await constants.axiosRequest
+        .post(constants.BASE_URL + "/chapters/dislike", {
           email: email,
           chapterId: chapterId
         })
@@ -95,8 +91,8 @@ class ChapterView extends React.Component {
           }
         });
     } else {
-      await axios
-        .post(rostemConstants.BASE_URL + "/chapters/like", {
+      await constants.axiosRequest
+        .post(constants.BASE_URL + "/chapters/like", {
           email: email,
           chapterId: chapterId
         })
@@ -114,13 +110,12 @@ class ChapterView extends React.Component {
   }
 
   async unsetActionTutorial(action) {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const actionType = action;
     const chapterId = this.props.chapter.id;
 
-    await axios
-      .post(rostemConstants.BASE_URL + "/chapters/unmark", {
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/chapters/unmark", {
         email: email,
         chapterId: chapterId,
         actionType: actionType
@@ -242,7 +237,10 @@ class ChapterView extends React.Component {
           />
           <Divider />
           <br />
-          <CommentsView chapter={this.props.chapter} />
+          <CommentsView
+            userEmail={this.props.userEmail}
+            chapter={this.props.chapter}
+          />
         </div>
       </Box>
     );

@@ -32,8 +32,7 @@ class RecentPosts extends React.Component {
 
   async getRecentChapters() {
     const pageCount = 5;
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const body = {
       counter: pageCount,
       email: email

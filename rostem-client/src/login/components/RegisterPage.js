@@ -103,7 +103,10 @@ class RegisterPage extends React.Component {
   }
 
   register(email, username, password, bio) {
-    axios
+    const transport = axios.create({
+      withCredentials: true
+    });
+    transport
       .post(rostemConstants.BASE_URL + "/register", {
         email,
         password,

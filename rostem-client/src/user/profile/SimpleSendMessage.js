@@ -2,8 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import Avatar from "@material-ui/core/Avatar";
 import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
@@ -83,15 +82,14 @@ class SimpleSendMessage extends React.Component {
 
   async onSendMessage() {
     if (this.state.message !== "") {
-      const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-        .email;
+      const email = this.props.userEmail;
       const body = {
         message: this.state.message,
         sentBy: email,
         receivedBy: this.state.to
       };
-      await axios
-        .post(rostemConstants.BASE_URL + "/messages/send", body)
+      await constants.axiosRequest
+        .post(constants.BASE_URL + "/messages/send", body)
         .then(result => {
           let res = result.data;
           if (res.status === "false") {

@@ -11,8 +11,7 @@ import { withRouter } from "react-router-dom";
 import { CardActions } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import IconButton from "@material-ui/core/IconButton";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 
 const styles = {
   card: {
@@ -40,11 +39,10 @@ class CategoryItem extends React.Component {
   }
 
   async handleAddToFavorite() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const { id } = this.props;
-    await axios
-      .post(rostemConstants.BASE_URL + "/categories/favorites", {
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/categories/favorites", {
         id: id,
         email: email
       })
@@ -61,11 +59,10 @@ class CategoryItem extends React.Component {
   }
 
   async handleDeleteFavorite() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const { id } = this.props;
-    await axios
-      .delete(rostemConstants.BASE_URL + "/categories/favorites", {
+    await constants.axiosRequest
+      .delete(constants.BASE_URL + "/categories/favorites", {
         data: {
           id: id,
           email: email

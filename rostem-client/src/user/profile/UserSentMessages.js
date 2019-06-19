@@ -5,8 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import SendIcon from "@material-ui/icons/Send";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -63,10 +62,9 @@ class UserSentMessages extends React.Component {
   }
 
   async getSentMessages() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
-    await axios
-      .get(rostemConstants.BASE_URL + "/messages/sent/" + email)
+    const email = this.props.userEmail;
+    await constants.axiosRequest
+      .get(constants.BASE_URL + "/messages/sent/" + email)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -98,8 +96,8 @@ class UserSentMessages extends React.Component {
         sentBy: message.sentBy,
         receivedBy: message.receivedBy
       };
-      await axios
-        .post(rostemConstants.BASE_URL + "/messages/send", body)
+      await constants.axiosRequest
+        .post(constants.BASE_URL + "/messages/send", body)
         .then(result => {
           let res = result.data;
           if (res.status === "false") {

@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -35,8 +34,8 @@ class CommentsView extends React.Component {
 
   async getAllComments() {
     const chapterId = this.props.chapter.id;
-    await axios
-      .get(rostemConstants.BASE_URL + "/chapters/comments/" + chapterId)
+    await constants.axiosRequest
+      .get(constants.BASE_URL + "/chapters/comments/" + chapterId)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -58,10 +57,10 @@ class CommentsView extends React.Component {
     const body = {
       chapterId: this.props.chapter.id,
       content: this.state.userComment,
-      email: JSON.parse(sessionStorage.getItem(rostemConstants.USER)).email
+      email: this.props.userEmail
     };
-    await axios
-      .post(rostemConstants.BASE_URL + "/chapters/comments", body)
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/chapters/comments", body)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -100,6 +99,7 @@ class CommentsView extends React.Component {
                 <ListItem className={classes.details} divider>
                   <ListItemAvatar>
                     <SendMessage
+                      userEmail={this.props.userEmail}
                       friendEmail={comment.email}
                       username={comment.username}
                     />

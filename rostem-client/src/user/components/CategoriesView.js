@@ -5,8 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import * as rostemConstants from "../../constants/constants.js";
-import axios from "axios";
+import * as constants from "../../constants/constants.js";
+
 import Box from "@material-ui/core/Box";
 import CategoryItem from "../components/CategoryItem.js";
 import RecentPosts from "./RecentPosts.js";
@@ -47,7 +47,11 @@ const styles = theme => ({
 class CategoriesView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { searchText: "", categories: [], shownCategories: [] };
+    this.state = {
+      searchText: "",
+      categories: [],
+      shownCategories: []
+    };
   }
 
   filterShownCategories(searchKey) {
@@ -72,9 +76,8 @@ class CategoriesView extends React.Component {
   }
 
   async getAllCategories() {
-    const user = JSON.parse(sessionStorage.getItem(rostemConstants.USER)).email;
-    await axios
-      .get(rostemConstants.BASE_URL + "/categories/" + user)
+    await constants.axiosRequest
+      .get(constants.BASE_URL + "/categories/" + this.props.userEmail)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -111,6 +114,7 @@ class CategoriesView extends React.Component {
             <Box className={classes.box} p={1} m={1}>
               {this.state.shownCategories.map(category => (
                 <CategoryItem
+                  userEmail={this.props.userEmail}
                   id={category.id}
                   categoryName={category.name}
                   description={category.description}
@@ -119,7 +123,7 @@ class CategoriesView extends React.Component {
               ))}
             </Box>
           </div>
-          <RecentPosts />
+          <RecentPosts userEmail={this.props.userEmail} />
         </Box>
       </div>
     );

@@ -2,8 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -17,6 +16,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import HomeHeader from "../../commons/components/HomeHeader";
+import CryptoJS from "crypto-js";
 
 const styles = theme => ({
   boxRoot: {
@@ -100,11 +100,6 @@ class LoginPage extends React.Component {
       if (response.data.exception) {
         // console.log("Error: " + response.data.exception);
       } else {
-        sessionStorage.setItem(
-          rostemConstants.USER,
-          JSON.stringify(response.data.object.user)
-        );
-
         if (response.data.object.role === "ROLE_ADMIN") {
           this.handleAdmin();
         } else if (response.data.object.role === "ROLE_USER") {
@@ -121,8 +116,8 @@ class LoginPage extends React.Component {
       "Content-Type": "application/x-www-form-urlencoded"
     };
     const body = "username=" + username + "&password=" + password;
-    axios
-      .post(rostemConstants.BASE_URL + "/login?" + body, { headers: headers })
+    constants.axiosRequest
+      .post(constants.BASE_URL + "/login?" + body, { headers: headers })
       .then(response => {
         this.handleLoginResponse(response);
       });

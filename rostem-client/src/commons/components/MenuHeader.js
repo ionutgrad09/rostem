@@ -10,6 +10,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { withRouter } from "react-router-dom";
 import MenuOutlined from "@material-ui/icons/MenuOutlined";
+import axios from "axios";
+import * as constants from "../../constants/constants";
 
 const styles = {
   root: {
@@ -45,10 +47,12 @@ class MenuAppBar extends React.Component {
   };
 
   handleClose = () => {
-    // axios.post(rostemConstants.BASE_URL + "/logout");
-    // sessionStorage.removeItem(rostemConstants.USER_ROLE);
-    // this.props.history.replace("/");
     this.setState({ anchorEl: null });
+  };
+
+  handleLogout = () => {
+    constants.axiosRequest.post(constants.BASE_URL + "/logout");
+    this.props.history.replace("/login");
   };
 
   handleProfile = () => {
@@ -112,7 +116,7 @@ class MenuAppBar extends React.Component {
                       Profile
                     </MenuItem>
                   )}
-                  <MenuItem onClick={this.handleClose.bind(this)}>
+                  <MenuItem onClick={this.handleLogout.bind(this)}>
                     Logout
                   </MenuItem>
                 </Menu>

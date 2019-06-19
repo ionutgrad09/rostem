@@ -2,8 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -74,10 +73,9 @@ class UserAccount extends React.Component {
   }
 
   async getUserDetails() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
-    await axios
-      .get(rostemConstants.BASE_URL + "/users/details/" + email)
+    const email = this.props.userEmail;
+    await constants.axiosRequest
+      .get(constants.BASE_URL + "/users/details/" + email)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -102,11 +100,10 @@ class UserAccount extends React.Component {
   }
 
   async updateDetails() {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
+    const email = this.props.userEmail;
     const data = new FormData();
-    await axios
-      .put(rostemConstants.BASE_URL + "/users/update", {
+    await constants.axiosRequest
+      .put(constants.BASE_URL + "/users/update", {
         email: this.state.email,
         newUsername: this.state.username,
         newBio: this.state.bio

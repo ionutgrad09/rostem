@@ -1,34 +1,40 @@
 import React from "react";
 import { withRouter } from "react-router";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 
 export default function requireUserAuth(Component) {
   class AuthenticatedComponent extends React.Component {
-    state = {
-      loggedIn: false
-    };
-
-    componentWillMount() {
-      this.checkAuth();
+    constructor(props) {
+      super(props);
+      this.state = {
+        showComponent: false
+      };
     }
 
-    checkAuth() {
-      console.log(global.email);
-      console.log(global.role);
-      if (global.email === "") {
-        this.props.history.replace("/login");
-      } else if (global.role === "ROLE_ADMIN") {
-        this.props.history.push("/forbidden");
-      } else {
-        this.setState({
-          loggedIn: true
+    componentDidMount() {
+      this.getUser();
+    }
+
+    async getUser() {
+      await constants.axiosRequest
+        .post(constants.BASE_URL + "/login/getdetails")
+        .then(response => {
+          console.log(response);
+          if (response.data.object.role !== "ROLE_USER") {
+            this.props.history.push("/forbidden");
+          } else {
+            this.setState({
+              showComponent: true
+            });
+          }
+        })
+        .catch(error => {
+          this.props.history.replace("/login");
         });
-      }
     }
 
     render() {
-      return this.state.loggedIn ? <Component {...this.props} /> : null;
+      return this.state.showComponent && <Component {...this.props} />;
     }
   }
 

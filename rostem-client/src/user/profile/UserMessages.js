@@ -29,9 +29,9 @@ class UserMessages extends React.Component {
     return (
       <div className={classes.root}>
         <Box className={classes.wrapperBox} p={1} m={1}>
-          <UserSentMessages />
-          <UserReceivedMessages />
-          <SimpleSendMessage />
+          <UserSentMessages userEmail={this.props.userEmail} />
+          <UserReceivedMessages userEmail={this.props.userEmail} />
+          <SimpleSendMessage userEmail={this.props.userEmail} />
         </Box>
       </div>
     );

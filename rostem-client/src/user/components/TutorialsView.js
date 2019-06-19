@@ -8,8 +8,7 @@ import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-import * as rostemConstants from "../../constants/constants.js";
+import * as constants from "../../constants/constants.js";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
@@ -70,7 +69,8 @@ class TutorialsView extends React.Component {
       shownTutorials: [],
       chapters: [],
       selectedChapter: null,
-      showChapter: false
+      showChapter: false,
+      userEmail: ""
     };
   }
 
@@ -95,10 +95,25 @@ class TutorialsView extends React.Component {
     }
   }
 
+  async getUser() {
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/login/getdetails")
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error getting user");
+        } else {
+          this.setState({
+            userEmail: res.object.user.email
+          });
+        }
+      });
+  }
+
   async getAllTutorials() {
     const categoryName = this.props.match.params.categoryName;
-    await axios
-      .get(rostemConstants.BASE_URL + "/tutorials/" + categoryName)
+    await constants.axiosRequest
+      .get(constants.BASE_URL + "/tutorials/" + categoryName)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -113,17 +128,16 @@ class TutorialsView extends React.Component {
   }
 
   componentDidMount() {
+    this.getUser();
     this.getAllTutorials();
   }
 
   async getAllChapters(id) {
-    const email = JSON.parse(sessionStorage.getItem(rostemConstants.USER))
-      .email;
     const tutorialId = id;
 
-    await axios
-      .post(rostemConstants.BASE_URL + "/chapters/action", {
-        email: email,
+    await constants.axiosRequest
+      .post(constants.BASE_URL + "/chapters/action", {
+        email: this.state.userEmail,
         tutorialId: tutorialId
       })
       .then(result => {
@@ -243,7 +257,10 @@ class TutorialsView extends React.Component {
             </div>
           </div>
           {this.state.showChapter ? (
-            <ChapterView chapter={this.state.selectedChapter} />
+            <ChapterView
+              userEmail={this.state.userEmail}
+              chapter={this.state.selectedChapter}
+            />
           ) : (
             <EmptyChapterView />
           )}

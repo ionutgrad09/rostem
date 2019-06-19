@@ -29,9 +29,9 @@ class UserLearningProfile extends React.Component {
     return (
       <div className={classes.root}>
         <Box className={classes.wrapperBox} p={1} m={1}>
-          <UserFavoriteCategories />
-          <UserDoneChapters />
-          <UserTodoChapters />
+          <UserFavoriteCategories userEmail={this.props.userEmail} />
+          <UserDoneChapters userEmail={this.props.userEmail} />
+          <UserTodoChapters userEmail={this.props.userEmail} />
         </Box>
       </div>
     );
