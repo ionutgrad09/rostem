@@ -24,6 +24,7 @@ import rostem.model.dto.response.ResponseChapter;
 import rostem.model.dto.response.ResponseComment;
 import rostem.model.entities.Chapter;
 import rostem.model.entities.Comment;
+import rostem.model.entities.Tutorial;
 import rostem.model.users.RostemUser;
 import rostem.repository.materials.ChapterRepository;
 import rostem.repository.materials.CommentRepository;
@@ -53,12 +54,14 @@ public class ChapterService {
         this.commentRepository = commentRepository;
     }
 
+    @Transactional
     public List<ResponseChapter> getAllChapters() {
         logger.info("[CHAPTER] Get all chapters.");
 
         return chapterRepository.findAll().stream().map(ChapterMapper::map).collect(Collectors.toList());
     }
 
+    @Transactional
     public List<ResponseChapter> getLikedChapters(String email) {
         logger.info("[CHAPTER] Get all liked chapters by user: " + email);
 
@@ -77,6 +80,7 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public List<ResponseChapter> getTodoChapters(String email) {
         logger.info("[CHAPTER] Get all todo chapters for user: " + email);
 
@@ -95,6 +99,7 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public List<ResponseChapter> getDoneChapters(String email) {
         logger.info("[CHAPTER] Get all done chapters for user: " + email);
 
@@ -113,6 +118,7 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public List<ResponseChapter> getChaptersForTutorial(RequestActionChapter requestActionChapter) {
         final Long tutorialId = requestActionChapter.getTutorialId();
         logger.info("[CHAPTER] Trying to get all chapters for tutorial " + tutorialId);
@@ -169,6 +175,7 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public ResponseChapter createChapter(RequestChapter requestChapter) {
         final Long tutorialId = requestChapter.getTutorialId();
         final String name = requestChapter.getName();
@@ -226,6 +233,7 @@ public class ChapterService {
         }
     }
 
+    @Transactional
     public List<ResponseChapter> getLatestChapters(RequestRecentPosts requestRecentPosts) {
         logger.info("[CHAPTER] Getting latest created chapters..");
 
@@ -237,10 +245,23 @@ public class ChapterService {
 
         markedAsDone(requestRecentPosts.getEmail(), responseChapters);
         markedAsTodo(requestRecentPosts.getEmail(), responseChapters);
+        addCategoryName(responseChapters);
 
         return responseChapters;
     }
 
+    private void addCategoryName(List<ResponseChapter> responseChapters) {
+        try {
+            responseChapters.forEach(chapter -> {
+                chapter.setCategoryName(
+                        tutorialRepository.findTutorialByName(chapter.getTutorialName()).getCategory().getName());
+            });
+        } catch (Exception e) {
+            throw new RostemException(TUTORIAL_NOT_FOUND);
+        }
+    }
+
+    @Transactional
     public void likeChapter(String email, Long id) {
         logger.info("[USER_CHAPTER] Trying to set a chapter as liked by user " + email);
 
@@ -254,6 +275,7 @@ public class ChapterService {
         rostemUserRepository.save(rostemUser);
     }
 
+    @Transactional
     public void markChapterAsTodo(String email, Long id) {
         logger.info("[USER_CHAPTER] Trying to set a chapter as todo for user " + email);
 
@@ -267,6 +289,7 @@ public class ChapterService {
         rostemUserRepository.save(rostemUser);
     }
 
+    @Transactional
     public void markChapterAsDone(String email, Long id) {
         logger.info("[USER_CHAPTER] Trying to set a chapter as done for user " + email);
 

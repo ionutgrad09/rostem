@@ -1,6 +1,7 @@
 package rostem.model.dto.request;
 
 import java.io.Serializable;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,10 +16,8 @@ public class RequestChapter implements Serializable {
     @NotBlank(message = "Chapter's name can't be blank.")
     private String name;
 
-    private String description;
-
-    @NotBlank(message = "You must provide a source for this chapter.")
-    private String url;
+    @Lob
+    private String content;
 
     public RequestChapter() {
     }

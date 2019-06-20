@@ -68,6 +68,7 @@ public class StatisticsService {
                 + chapter.getComments().size();
     }
 
+    @Transactional
     public List<ResponseStatisticsCategory> getTopCategories() {
         List<Category> categories = categoryRepository.findAll();
         categories.sort((c1, c2) -> {
@@ -125,6 +126,7 @@ public class StatisticsService {
                 user.getTodoChapters().size() + getNoComments(user);
     }
 
+    @Transactional
     public List<ResponseTutorialProgress> getTutorialProgress(String email, Long categoryId) {
         List<Tutorial> tutorials = checkCategory(categoryId).getTutorials();
         List<Chapter> doneChapters = checkUser(email).getDoneChapters();

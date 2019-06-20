@@ -1,18 +1,20 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import DeleteIcon from "@material-ui/icons/Delete";
-import {lighten} from "@material-ui/core/styles/colorManipulator";
+import { lighten } from "@material-ui/core/styles/colorManipulator";
 import AddCategory from "../posts/AddCategory.js";
 import AddTutorial from "../posts/AddTutorial.js";
 import AddChapter from "../posts/AddChapter.js";
 import Button from "@material-ui/core/Button";
-
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import { withRouter } from "react-router";
 const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit
@@ -38,7 +40,10 @@ const toolbarStyles = theme => ({
   }
 });
 
-export default class TableToolbar extends React.Component {
+class TableToolbar extends React.Component {
+  handleAddChapter() {
+    this.props.history.push("/admin/addChapter");
+  }
   render() {
     const {
       isCategory,
@@ -60,7 +65,16 @@ export default class TableToolbar extends React.Component {
         <div className={classes.actions}>
           {isCategory === "true" && <AddCategory onAdd={onAdd} />}
           {isTutorial === "true" && <AddTutorial onAdd={onAdd} />}
-          {isChapter === "true" && <AddChapter onAdd={onAdd} />}
+          {isChapter === "true" && (
+            <Fab
+              size="small"
+              color="secondary"
+              aria-label="Add"
+              onClick={this.handleAddChapter.bind(this)}
+            >
+              <AddIcon />
+            </Fab>
+          )}
         </div>
         <div className={classes.spacer} />
         <div className={classes.title}>
@@ -105,4 +119,4 @@ TableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired
 };
 
-TableToolbar = withStyles(toolbarStyles)(TableToolbar);
+export default withRouter(withStyles(toolbarStyles)(TableToolbar));

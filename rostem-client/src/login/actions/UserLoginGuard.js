@@ -20,7 +20,7 @@ export default function requireUserAuth(Component) {
         .post(constants.BASE_URL + "/login/getdetails")
         .then(response => {
           if (response.data.object.role !== "ROLE_USER") {
-            this.props.history.push("/forbidden");
+            this.props.history.push("/badRequest");
           } else {
             this.setState({
               showComponent: true

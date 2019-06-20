@@ -13,34 +13,67 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import ReactDOM from "react-dom";
+import { withStyles } from "@material-ui/core/styles";
+import MenuAppBar from "../../../commons/components/MenuHeader";
+import Box from "@material-ui/core/Box";
+import { withRouter } from "react-router";
+import Divider from "@material-ui/core/Divider";
+import { Typography } from "@material-ui/core";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 
-export default class AddChapter extends React.Component {
+const styles = {
+  editorStyle: {
+    height: "auto",
+    border: "1px solid black",
+    padding: 10
+  },
+  boxRoot: {
+    marginTop: 25,
+    marginBottom: 25,
+    width: 900,
+    minWidth: 300,
+    height: "auto"
+  },
+  root: {
+    padding: 25
+  },
+  title: {
+    align: "center"
+  },
+  textField: {
+    marginTop: 15,
+    width: 500
+  },
+  actionButtons: {
+    marginTop: 25
+  },
+  dangerError: {
+    color: "red"
+  }
+};
+
+class AddChapter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showUniqueNameError: false,
       showUniqueNameErrorMessage: "",
-      open: false,
       errors: [],
       name: "",
-      description: "",
-      url: "",
       tutorials: [],
-      tutorial: ""
+      tutorial: "",
+      editorState: EditorState.createEmpty()
     };
+    this.onChange = editorState => this.setState({ editorState });
   }
 
   onNameChange(e) {
     this.setState({ name: e.target.value });
     this.clearValidationError("name");
-  }
-
-  onDescriptionChange(e) {
-    this.setState({ description: e.target.value });
-  }
-
-  onUrlChange(e) {
-    this.setState({ url: e.target.value });
   }
 
   onTutorialChange(e) {
@@ -82,26 +115,18 @@ export default class AddChapter extends React.Component {
   }
 
   addChapter() {
-    const { url, name, description, tutorial } = this.state;
+    const { name, tutorial } = this.state;
+    const content = draftToHtml(
+      convertToRaw(this.state.editorState.getCurrentContent())
+    );
     axios
       .post(rostemConstants.BASE_URL + "/admin/createChapter", {
         name: name,
-        description: description,
-        tutorialId: tutorial,
-        url: url
+        content: content,
+        tutorialId: tutorial
       })
-      .then(response => {
-        if (response.status === false) {
-        } else {
-          this.handleClose();
-          this.props.onAdd();
-        }
-      })
-      .catch(error => {
-        this.setState({
-          showUniqueNameError: true,
-          showUniqueNameErrorMessage: error.response.data.exception
-        });
+      .then(result => {
+        this.props.history.push("/admin");
       });
   }
 
@@ -140,6 +165,7 @@ export default class AddChapter extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     let nameError = null,
       tutorialError = null,
       urlError = null;
@@ -158,74 +184,75 @@ export default class AddChapter extends React.Component {
 
     return (
       <div>
-        <Fab
-          size="small"
-          color="secondary"
-          aria-label="Add"
-          onClick={this.handleOpen}
-        >
-          <AddIcon />
-        </Fab>
-        <Dialog open={this.state.open} onClose={this.handleClose}>
-          <DialogTitle variant="h2">New chapter</DialogTitle>
-          <DialogContent>
-            <TextField
-              id="custom-css-standard-input"
-              label="Chapter name"
-              type="text"
-              fullWidth
-              required
-              onChange={this.onNameChange.bind(this)}
-            />
-            <small className="danger-error">{nameError ? nameError : ""}</small>
-            <small className="danger-error">
-              {this.state.showUniqueNameError
-                ? this.state.showUniqueNameErrorMessage
-                : ""}
-            </small>
-            <TextField
-              id="custom-css-standard-input"
-              label="Description"
-              type="text"
-              margin="normal"
-              fullWidth
-              onChange={this.onDescriptionChange.bind(this)}
-            />
-            <TextField
-              id="custom-css-standard-input"
-              label="Source (URL)"
-              type="text"
-              margin="normal"
-              fullWidth
-              onChange={this.onUrlChange.bind(this)}
-            />
-            <small className="danger-error">{urlError ? urlError : ""}</small>
-            <FormControl fullWidth>
-              <InputLabel>Tutorial</InputLabel>
-              <Select
-                value={this.state.tutorial}
-                onChange={this.onTutorialChange.bind(this)}
-              >
-                {tutorials.map(c => (
-                  <MenuItem value={c.id}>{c.name}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <small className="danger-error">
-              {tutorialError ? tutorialError : ""}
-            </small>
-          </DialogContent>
+        <MenuAppBar username="ADMINISTRATOR" />
+        <center>
+          <Box bgcolor="primary.main" className={classes.boxRoot}>
+            <div className={classes.root}>
+              <br />
+              <Typography component="h1" variant="h5">
+                Add a new chapter
+              </Typography>
+              <br />
+              <Divider />
+              <br />
+              <TextField
+                id="custom-css-standard-input"
+                label="Chapter name"
+                type="text"
+                fullWidth
+                required
+                onChange={this.onNameChange.bind(this)}
+              />
+              <small className="danger-error">
+                {nameError ? nameError : ""}
+              </small>
 
-          <DialogActions>
-            <Button onClick={this.handleClose.bind(this)} color="secondary">
-              Cancel
-            </Button>
-            <Button onClick={this.submitChapter.bind(this)} color="secondary">
-              Add
-            </Button>
-          </DialogActions>
-        </Dialog>
+              <FormControl fullWidth>
+                <InputLabel>Tutorial</InputLabel>
+                <Select
+                  value={this.state.tutorial}
+                  onChange={this.onTutorialChange.bind(this)}
+                >
+                  {tutorials.map(c => (
+                    <MenuItem value={c.id}>{c.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <small className="danger-error">
+                {tutorialError ? tutorialError : ""}
+              </small>
+              <br />
+              <br />
+              <Divider />
+              <br />
+              <div className={classes.editorStyle}>
+                <h2> Content </h2>
+                <Editor
+                  className={classes.draftEditor}
+                  editorState={this.state.editorState}
+                  toolbarClassName="toolbarClassName"
+                  wrapperClassName="wrapperClassName"
+                  editorClassName="editorClassName"
+                  onEditorStateChange={this.onChange}
+                />
+              </div>
+              <div className={classes.actionButtons}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.addChapter.bind(this)}
+                >
+                  Save
+                </Button>
+              </div>
+              <br />
+            </div>
+          </Box>
+        </center>
       </div>
     );
   }
 }
+
+export default withRouter(withStyles(styles)(AddChapter));

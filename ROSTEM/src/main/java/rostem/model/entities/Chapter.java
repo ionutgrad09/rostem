@@ -28,8 +28,9 @@ import rostem.model.users.RostemUser;
 @Table(name = "CHAPTERS")
 public class Chapter extends Material {
 
-    @Column(name = "SOURCE_URL")
-    private String sourceUrl;
+    @Lob
+    @Column(name = "CONTENT")
+    private String content;
 
     @Column(name = "CREATION_DATE")
     private Date creationDate;
@@ -55,7 +56,7 @@ public class Chapter extends Material {
     @Override
     public String toString() {
         return "Chapter{" +
-                ", sourceUrl='" + sourceUrl + '\'' +
+                ", content=" + content +
                 ", creationDate=" + creationDate +
                 ", tutorial=" + tutorial +
                 ", todoUserList=" + todoUserList +

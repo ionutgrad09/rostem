@@ -1,6 +1,6 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
-import {Typography} from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
@@ -9,11 +9,12 @@ import axios from "axios";
 import * as rostemConstants from "../../constants/constants.js";
 import ChapterWrapper from "./ChapterWrapper.js";
 import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 const styles = theme => ({
   root: {
     width: 500,
-    height: 415,
+    height: 700,
     overflow: "auto"
   },
   title: {
@@ -30,7 +31,7 @@ class RecentPosts extends React.Component {
   }
 
   async getRecentChapters() {
-    const pageCount = 5;
+    const pageCount = 8;
     const email = this.props.userEmail;
     const body = {
       counter: pageCount,
@@ -69,7 +70,19 @@ class RecentPosts extends React.Component {
                 return (
                   <ListItem className={classes.details} divider>
                     <ListItemText
-                      primary={chapter.name}
+                      primary={
+                        <Breadcrumbs separator="›" aria-label="Breadcrumb">
+                          <Typography color="textPrimary">
+                            {chapter.categoryName}
+                          </Typography>
+                          <Typography color="textPrimary">
+                            {chapter.tutorialName}
+                          </Typography>
+                          <Typography color="textPrimary">
+                            {chapter.name}
+                          </Typography>
+                        </Breadcrumbs>
+                      }
                       secondary={
                         "Creation Date: " +
                         chapter.creationDate.substr(

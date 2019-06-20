@@ -127,41 +127,35 @@ public class UtilController {
 
         requestChapter.setTutorialId(tutorial1);
         requestChapter.setName("Arithmetic properties");
-        requestChapter.setUrl("https://www.youtube.com/embed/edxiROADl8A");
-        requestChapter.setDescription(
+        requestChapter.setContent(
                 "Multiplication and addition have specific arithmetic properties which characterize those operations. "
                         + "In no specific order, they are the commutative, associative, distributive, identity and inverse properties.");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setName("Factors and multiples");
-        requestChapter.setDescription("Learn about factors and multiples and how they relate to each other.");
-        requestChapter.setUrl("https://www.youtube.com/embed/rUrLuTMq-sw");
+        requestChapter.setContent("Learn about factors and multiples and how they relate to each other.");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setName("Fractions");
-        requestChapter.setDescription(
+        requestChapter.setContent(
                 "A fraction (from Latin fractus, \"broken\") represents a part of a whole or, more generally,"
                         + " any number of equal parts. When spoken in everyday English.");
-        requestChapter.setUrl("https://www.youtube.com/embed/n0FZhQ_GkKw");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setName("Decimals");
-        requestChapter.setDescription(
+        requestChapter.setContent(
                 "The decimal numeral system (also called base-ten positional numeral system, and occasionally"
                         + " called denary) is the standard system for denoting integer and non-integer numbers.");
-        requestChapter.setUrl("https://www.youtube.com/embed/kwh4SD1ToFc");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setTutorialId(tutorial2);
 
         requestChapter.setName("Trigonometry with right triangles");
-        requestChapter.setDescription("Learn about trigonometry with right triangles.");
-        requestChapter.setUrl("https://www.youtube.com/embed/l5VbdqRjTXc");
+        requestChapter.setContent("Learn about trigonometry with right triangles.");
         chapterService.createChapter(requestChapter);
 
         requestChapter.setName("Trigonometric equations and identities");
-        requestChapter.setDescription("Trigonometric equations and identities.");
-        requestChapter.setUrl("https://www.youtube.com/embed/VMAMARmmDac");
+        requestChapter.setContent("Trigonometric equations and identities.");
         chapterService.createChapter(requestChapter);
 
 

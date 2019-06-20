@@ -20,7 +20,7 @@ export default function requireAdminAuth(Component) {
         .post(constants.BASE_URL + "/login/getdetails")
         .then(response => {
           if (response.data.object.role !== "ROLE_ADMIN") {
-            this.props.history.push("/forbidden");
+            this.props.history.push("/badRequest");
           } else {
             this.setState({
               showComponent: true

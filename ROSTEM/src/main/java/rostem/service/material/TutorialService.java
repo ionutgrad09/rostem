@@ -34,12 +34,14 @@ public class TutorialService {
         this.categoryRepository = categoryRepository;
     }
 
+    @Transactional
     public List<ResponseTutorial> getAllTutorials() {
         logger.info("[TUTORIAL] Get all tutorial");
 
         return tutorialRepository.findAll().stream().map(TutorialMapper::map).collect(Collectors.toList());
     }
 
+    @Transactional
     public List<ResponseTutorial> getTutorialsForCategory(String categoryName) {
         logger.info("[TUTORIAL] Trying to get all tutorials for category " + categoryName);
 
@@ -83,6 +85,7 @@ public class TutorialService {
         }
     }
 
+    @Transactional
     public ResponseTutorial updateTutorial(Long id, RequestTutorial requestTutorial) {
         logger.info("[TUTORIAL] Trying to update tutorial " + id);
 

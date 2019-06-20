@@ -15,6 +15,7 @@ import requireUserAuth from "./login/actions/UserLoginGuard";
 import Forbidden from "./commons/components/Forbidden";
 import alreadyLoggedIn from "./login/actions/AlreadyLoginGuard";
 import ActivateAccountView from "./login/components/ActivateAccountView";
+import AddChapter from "./admin/components/posts/AddChapter";
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +35,11 @@ const routing = (
       <Route exact path="/admin" component={requireAdminAuth(AdminPanel)} />
       <Route exact path="/categories" component={requireUserAuth(UserPage)} />
       <Route
+        exact
+        path="/admin/addChapter"
+        component={requireAdminAuth(AddChapter)}
+      />
+      <Route
         path="/categories/:categoryName"
         component={requireUserAuth(TutorialsView)}
       />
@@ -44,7 +50,7 @@ const routing = (
         path="/activate/:key"
         component={alreadyLoggedIn(ActivateAccountView)}
       />
-      <Route exact path="/forbidden" component={Forbidden} />
+      <Route exact path="/badRequest" component={Forbidden} />
     </MuiThemeProvider>
   </Router>
 );

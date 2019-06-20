@@ -47,10 +47,10 @@ class AdminPanel extends React.Component {
             <Tab label="Statistics" />
           </Tabs>
         </Paper>
-        {this.state.value === 0 && <AdminUsers />}
+        {this.state.value === 3 && <AdminUsers />}
         {this.state.value === 1 && <AdminCategories />}
         {this.state.value === 2 && <AdminTutorials />}
-        {this.state.value === 3 && <AdminChapters />}
+        {this.state.value === 0 && <AdminChapters />}
         {this.state.value === 4 && <AdminStatistics />}
       </div>
     );

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,7 +33,7 @@ public abstract class Material implements Serializable {
     @Column(name = "NAME", unique = true)
     private String name;
 
-    @Size(max = 255)
+    @Lob
     @Column(name = "DESCRIPTION")
     private String description;
 

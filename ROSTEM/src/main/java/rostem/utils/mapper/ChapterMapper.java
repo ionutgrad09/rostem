@@ -10,8 +10,7 @@ public class ChapterMapper {
     public static Chapter map(RequestChapter requestChapter) {
         Chapter chapter = new Chapter();
         chapter.setName(requestChapter.getName());
-        chapter.setDescription(requestChapter.getDescription());
-        chapter.setSourceUrl(requestChapter.getUrl());
+        chapter.setContent(requestChapter.getContent());
         chapter.setCreationDate(new Date());
 
         return chapter;
@@ -21,9 +20,8 @@ public class ChapterMapper {
         ResponseChapter responseChapter = new ResponseChapter();
         responseChapter.setId(chapter.getId());
         responseChapter.setName(chapter.getName());
-        responseChapter.setDescription(chapter.getDescription());
+        responseChapter.setContent(chapter.getContent());
         responseChapter.setTutorialName(chapter.getTutorial().getName());
-        responseChapter.setSourceUrl(chapter.getSourceUrl());
         responseChapter.setCreationDate(chapter.getCreationDate().toString());
 
         return responseChapter;

@@ -37,7 +37,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     padding: 25,
-    maxWidth: 500
+    maxWidth: 400,
+    fontSize: "10px"
   },
   tutorials: {
     marginTop: 0

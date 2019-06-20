@@ -78,6 +78,7 @@ public class CategoryService {
         }
     }
 
+    @Transactional
     public ResponseCategory createCategory(RequestCategory requestCategory) {
         final String name = requestCategory.getName();
         logger.info("[CATEGORY] Trying to add a new category " + name);
@@ -116,6 +117,7 @@ public class CategoryService {
         }
     }
 
+    @Transactional
     public void addFavoriteCategory(String email, Long id) {
         logger.info("[USER_CATEGORY] Trying to add set a category as favorite for user " + email);
 
@@ -134,6 +136,7 @@ public class CategoryService {
         }
     }
 
+    @Transactional
     public List<ResponseCategory> getFavoritesCategories(String email) {
         logger.info("[USER_CATEGORY] Trying to get favorites categories for user " + email);
 

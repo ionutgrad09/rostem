@@ -97,9 +97,7 @@ class TutorialProgress extends React.Component {
                         className={classes.margin}
                         variant="determinate"
                         color="secondary"
-                        value={
-                          (tutorial.doneChapters * 100) / tutorial.totalChapters
-                        }
+                        value={tutorial.percentage}
                       />
                     }
                   />

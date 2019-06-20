@@ -40,6 +40,7 @@ public class MessageService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void addMessage(RequestMessage requestMessage) {
         logger.info("[MESSAGE] Trying to add a new message.");
         messageRepository.save(map(requestMessage));

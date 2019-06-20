@@ -10,10 +10,18 @@ import ThumbUp from "@material-ui/icons/ThumbUp";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 import CommentsView from "./CommentsView.js";
+import htmlToDraft from "html-to-draftjs";
+import { ContentState } from "draft-js";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2
+} from "react-html-parser";
 
 const styles = theme => ({
   boxRoot: {
-    width: 910,
+    width: 1000,
+    minWidth: 300,
     height: "auto"
   },
   root: {
@@ -21,8 +29,25 @@ const styles = theme => ({
   },
   title: {
     align: "center"
+  },
+  description: {
+    display: "inline-flex",
+    alignItems: "flex-start"
+  },
+  content: {
+    width: 900,
+    wordWrap: "break-all"
   }
 });
+
+const isValidUrl = string => {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
+};
 
 class ChapterView extends React.Component {
   constructor(props) {
@@ -171,23 +196,19 @@ class ChapterView extends React.Component {
             <Typography variant="h5">{this.props.chapter.name}</Typography>
             <br />
             <Divider />
-            <br />
           </center>
+          <br />
 
+          <Typography className={classes.description} variant="h6">
+            <center>
+              <div className={classes.content}>
+                {ReactHtmlParser(this.props.chapter.content)}
+              </div>
+            </center>
+          </Typography>
           <br />
-          <Typography variant="h6">{this.props.chapter.description}</Typography>
-          <br />
+
           <center>
-            {this.props.chapter.sourceUrl ? (
-              <iframe
-                width="650"
-                height="400"
-                src={this.props.chapter.sourceUrl}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : null}
             <br />
             <br />
             {!this.state.isLiked ? (
