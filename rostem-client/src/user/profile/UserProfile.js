@@ -10,6 +10,7 @@ import * as constants from "../../constants/constants.js";
 import UserLearningProfile from "./UserLearningProfile";
 import UserAccount from "./UserAccount";
 import UserMessages from "./UserMessages";
+import UserProgress from "./UserProgress";
 
 const styles = {
   root: {
@@ -63,7 +64,8 @@ class UserProfile extends React.Component {
             centered
           >
             <Tab label="Account" />
-            <Tab label="Learning" />
+            <Tab label="Dashboard" />
+            <Tab label="Progress" />
             <Tab label="Messages" />
           </Tabs>
         </Paper>
@@ -76,6 +78,9 @@ class UserProfile extends React.Component {
               <UserLearningProfile userEmail={this.state.userEmail} />
             )}
             {this.state.value === 2 && (
+              <UserProgress userEmail={this.state.userEmail} />
+            )}
+            {this.state.value === 3 && (
               <UserMessages userEmail={this.state.userEmail} />
             )}
           </div>

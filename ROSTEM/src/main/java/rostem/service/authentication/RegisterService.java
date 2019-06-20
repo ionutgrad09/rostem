@@ -87,39 +87,4 @@ public class RegisterService {
         }
         return INVALID_ACCOUNT_KEY;
     }
-
-    public String acceptUser(String id, String password) {
-        Optional<InactiveUser> inactiveUserOpt = inactiveUserRepository.findById(id);
-        if (inactiveUserOpt.isPresent()) {
-            inactiveUserRepository.deleteById(id);
-            InactiveUser user = inactiveUserOpt.get();
-            rostemUserRepository
-                    .save(new RostemUser(user.getEmail(), encoder.encode(password), user.getUsername(), user.getBio()));
-            return REQUEST_OK;
-        }
-        return INVALID_ACCOUNT_KEY;
-    }
-
-    public String inviteFriend(String email, String name) {
-        if (inactiveUserRepository.findByEmail(email) != null) {
-            return ACCOUNT_REGISTERED_NOT_ACTIVATED;
-        }
-        if (rostemUserRepository.findByEmail(email) != null) {
-            return USER_ALREADY_REGISTERED;
-        }
-        InactiveUser newUser = InactiveUser.builder()
-                .email(email)
-                .username(name)
-                .userType(UserType.USER)
-                .id(UUID.randomUUID().toString())
-                .build();
-        try {
-            emailService.sendInviteMail(newUser);
-        } catch (MessagingException e) {
-            return EMAIL_SERVICE_NOT_AVAILABLE;
-        }
-        inactiveUserRepository.save(newUser);
-        return REQUEST_OK;
-    }
-
 }

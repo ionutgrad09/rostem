@@ -30,7 +30,8 @@ class ChapterView extends React.Component {
     this.state = {
       checkedTODO: this.props.chapter.todo,
       checkedDONE: this.props.chapter.done,
-      isLiked: this.props.chapter.liked
+      isLiked: this.props.chapter.liked,
+      chapter: this.props.chapter
     };
   }
 
@@ -132,7 +133,8 @@ class ChapterView extends React.Component {
     this.setState({
       checkedTODO: nextProps.chapter.todo,
       checkedDONE: nextProps.chapter.done,
-      isLiked: nextProps.chapter.done
+      isLiked: nextProps.chapter.done,
+      chapter: nextProps.chapter
     });
   }
 
@@ -239,7 +241,7 @@ class ChapterView extends React.Component {
           <br />
           <CommentsView
             userEmail={this.props.userEmail}
-            chapter={this.props.chapter}
+            chapter={this.state.chapter}
           />
         </div>
       </Box>

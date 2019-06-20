@@ -65,35 +65,4 @@ public class RegisterController {
         }
         return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, error);
     }
-
-    @ApiOperation(value = "Activate an invited user/Accept invitation",
-            notes = "errors: Invalid account key")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully accepted user"),
-            @ApiResponse(code = 400, message = "Some error occurred, check error field for more details")
-    })
-    @PostMapping(path = "/acceptInvite/{id}")
-    public ResponseEntity<Response> acceptInvite(@PathVariable(name = "id") String id, String password) {
-        String error = registerService.acceptUser(id, password);
-        if (error.equals(REQUEST_OK)) {
-            return ResponseBuilder.encode(HttpStatus.OK);
-        }
-        return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, error);
-    }
-
-    @ApiOperation(value = "Invite an assistant",
-            notes = "errors: User already defined, Email service not available, Account registered but not activated")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully invited assistant"),
-            @ApiResponse(code = 400, message = "Some error occurred, check error field for more details")
-    })
-    @PostMapping(path = "/inviteFriend")
-    //TODO: limit the professor to be the only one able to access this api
-    public ResponseEntity<Response> inviteAssistant(String email, String name) {
-        String error = registerService.inviteFriend(email, name);
-        if (error.equals(REQUEST_OK)) {
-            return ResponseBuilder.encode(HttpStatus.OK);
-        }
-        return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, error);
-    }
 }

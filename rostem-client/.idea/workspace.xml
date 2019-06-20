@@ -11,30 +11,7 @@
       <change beforePath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/service/authentication/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/service/authentication/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/service/authentication/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ROSTEM/src/main/java/rostem/service/authentication/RegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/actions/AdminActions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/commons/TableToolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/commons/TableToolbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/commons/UtilsFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/commons/UtilsFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/posts/AdminCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/posts/AdminCategories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/statistics/AdminStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/statistics/AdminStatistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/statistics/CategoryStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/statistics/CategoryStatistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/statistics/ChapterStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/statistics/ChapterStatistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/components/statistics/UserStatistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/components/statistics/UserStatistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/components/Forbidden.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/components/Forbidden.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/commons/components/MenuHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/commons/components/MenuHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login/actions/AdminLoginGuard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/actions/AdminLoginGuard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login/actions/UserLoginGuard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/actions/UserLoginGuard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/components/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/login/components/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/components/RegisterPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/components/RecentPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/components/RecentPosts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/components/SendMessaage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/components/SendMessaage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/SimpleSendMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/SimpleSendMessage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/UserDoneChapters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/UserDoneChapters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/UserFavoriteCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/UserFavoriteCategories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/UserReceivedMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/UserReceivedMessages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/UserSentMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/UserSentMessages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/profile/UserTodoChapters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/profile/UserTodoChapters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/components/TutorialsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/components/TutorialsView.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

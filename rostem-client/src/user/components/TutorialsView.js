@@ -25,6 +25,7 @@ import ChapterView from "./ChapterView";
 import PriorityHighRounded from "@material-ui/icons/PriorityHighRounded";
 import Tooltip from "@material-ui/core/Tooltip";
 import CheckBoxRounded from "@material-ui/icons/CheckBoxRounded";
+import SimpleTutorial from "./SimpleTutorial";
 
 const styles = theme => ({
   box: {
@@ -39,12 +40,14 @@ const styles = theme => ({
     maxWidth: 500
   },
   tutorials: {
-    marginTop: 25
+    marginTop: 0
   },
   details: {
     display: "inline-flex"
   },
-
+  categoryTitle: {
+    marginTop: 10
+  },
   expansionPanelDetailsRoot: {
     display: "list-item"
   },
@@ -132,33 +135,10 @@ class TutorialsView extends React.Component {
     this.getAllTutorials();
   }
 
-  async getAllChapters(id) {
-    const tutorialId = id;
-
-    await constants.axiosRequest
-      .post(constants.BASE_URL + "/chapters/action", {
-        email: this.state.userEmail,
-        tutorialId: tutorialId
-      })
-      .then(result => {
-        let res = result.data;
-        if (res.status === "false") {
-          console.log("Error getting chapters");
-        } else {
-          this.setState({
-            chapters: res.object.objects
-          });
-        }
-      });
-  }
-
-  handleChapterClick(id) {
-    const clickedChapter = this.state.chapters.find(function(chapter) {
-      return chapter.id === id;
-    });
+  handleChapterClick(ch) {
     this.setState({
       showChapter: true,
-      selectedChapter: clickedChapter
+      selectedChapter: ch
     });
   }
 
@@ -187,69 +167,23 @@ class TutorialsView extends React.Component {
                 onChange={this.onSearchChange.bind(this)}
               />
             </Paper>
+            <Paper square className={classes.categoryTitle} elevation={1}>
+              <center>
+                <Typography variant="h4">
+                  {this.props.match.params.categoryName}
+                </Typography>
+              </center>
+            </Paper>
             <div className={classes.tutorials}>
               <Grid item>
                 <div>
                   <List dense={false} disablePadding>
                     {this.state.shownTutorials.map(tutorial => (
-                      <div>
-                        <ExpansionPanel
-                          expanded={expanded === tutorial.id}
-                          onChange={this.handleChange(tutorial.id)}
-                        >
-                          <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                          >
-                            <Typography className={classes.heading}>
-                              {tutorial.name}
-                            </Typography>
-                            <Typography className={classes.secondaryHeading}>
-                              {tutorial.description}
-                            </Typography>
-                          </ExpansionPanelSummary>
-                          <ExpansionPanelDetails
-                            className={classes.expansionPanelDetailsRoot}
-                          >
-                            <List dense={true}>
-                              {this.state.chapters.length > 0 ? (
-                                this.state.chapters.map(chapter => {
-                                  return (
-                                    <ListItem
-                                      className={classes.details}
-                                      button
-                                      divider
-                                      onClick={e =>
-                                        this.handleChapterClick(chapter.id)
-                                      }
-                                    >
-                                      {chapter.todo && (
-                                        <Tooltip title="TODO" aria-label="TODO">
-                                          <PriorityHighRounded color="secondary" />
-                                        </Tooltip>
-                                      )}
-                                      {chapter.done && (
-                                        <Tooltip title="DONE" aria-label="DONE">
-                                          <CheckBoxRounded color="secondary" />
-                                        </Tooltip>
-                                      )}
-                                      <ListItemText
-                                        primary={chapter.name}
-                                        style={{ marginLeft: 15 }}
-                                      />
-                                      <ListItemIcon button>
-                                        <NavigateNextIcon />
-                                      </ListItemIcon>
-                                    </ListItem>
-                                  );
-                                })
-                              ) : (
-                                <div>No chapters for this tutorial!</div>
-                              )}
-                            </List>
-                          </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                        <Divider />
-                      </div>
+                      <SimpleTutorial
+                        userEmail={this.state.userEmail}
+                        tutorial={tutorial}
+                        clickChapter={this.handleChapterClick.bind(this)}
+                      />
                     ))}
                   </List>
                 </div>

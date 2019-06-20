@@ -192,7 +192,7 @@ class RegisterPage extends React.Component {
                   </Avatar>
                   <br />
                   <Typography component="h1" variant="h5">
-                    Successfully completed registration
+                    Successfully completed registration!
                   </Typography>
                   <br />
                   <Typography component="h1" variant="h5">

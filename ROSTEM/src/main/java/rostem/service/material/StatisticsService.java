@@ -1,5 +1,10 @@
 package rostem.service.material;
 
+import static rostem.utils.ApiResponses.CATEGORY_NOT_FOUND;
+import static rostem.utils.ApiResponses.USER_NOT_FOUND;
+import static rostem.utils.mapper.CategoryMapper.map;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
@@ -8,14 +13,17 @@ import org.springframework.stereotype.Service;
 import rostem.model.dto.response.ResponseStatisticsCategory;
 import rostem.model.dto.response.ResponseStatisticsChapter;
 import rostem.model.dto.response.ResponseStatisticsUser;
+import rostem.model.dto.response.ResponseTutorialProgress;
 import rostem.model.entities.Category;
 import rostem.model.entities.Chapter;
 import rostem.model.entities.Comment;
+import rostem.model.entities.Tutorial;
 import rostem.model.users.RostemUser;
 import rostem.repository.materials.CategoryRepository;
 import rostem.repository.materials.ChapterRepository;
 import rostem.repository.materials.CommentRepository;
 import rostem.repository.users.RostemUserRepository;
+import rostem.utils.exception.RostemException;
 
 @Service
 public class StatisticsService {
@@ -115,5 +123,59 @@ public class StatisticsService {
     private int getUserScore(RostemUser user) {
         return user.getFavoriteCategories().size() + user.getLikedChapters().size() + user.getDoneChapters().size() +
                 user.getTodoChapters().size() + getNoComments(user);
+    }
+
+    public List<ResponseTutorialProgress> getTutorialProgress(String email, Long categoryId) {
+        List<Tutorial> tutorials = checkCategory(categoryId).getTutorials();
+        List<Chapter> doneChapters = checkUser(email).getDoneChapters();
+
+        List<ResponseTutorialProgress> responseTutorialProgresses = new ArrayList<>();
+
+        for (Tutorial tutorial : tutorials) {
+            final int noChapters = tutorial.getChapters().size();
+
+            ResponseTutorialProgress responseTutorialProgress = new ResponseTutorialProgress();
+            responseTutorialProgress.setName(tutorial.getName());
+            responseTutorialProgress.setTotalChapters(noChapters);
+
+            int counter = 0;
+            for (Chapter doneChapter : doneChapters) {
+                for (Chapter chapter : tutorial.getChapters()) {
+                    if (doneChapter.getId().equals(chapter.getId())) {
+                        counter++;
+                    }
+                }
+            }
+            responseTutorialProgress.setDoneChapters(counter);
+            responseTutorialProgress.setPercentage(
+                    noChapters == 0 ? 0 : (float) (counter * 100) / noChapters);
+            responseTutorialProgresses.add(responseTutorialProgress);
+        }
+
+        return responseTutorialProgresses;
+    }
+
+    private RostemUser checkUser(String email) {
+        if (!findUserByEmail(email)) {
+            throw new RostemException(USER_NOT_FOUND);
+        } else {
+            return rostemUserRepository.findByEmail(email);
+        }
+    }
+
+    private Category checkCategory(Long categoryId) {
+        if (!findCategoryById(categoryId)) {
+            throw new RostemException(CATEGORY_NOT_FOUND);
+        } else {
+            return categoryRepository.findCategoryById(categoryId);
+        }
+    }
+
+    private boolean findCategoryById(Long id) {
+        return categoryRepository.findCategoryById(id) != null;
+    }
+
+    private boolean findUserByEmail(String email) {
+        return rostemUserRepository.findByEmail(email) != null;
     }
 }

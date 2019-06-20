@@ -151,7 +151,7 @@ class UserAccount extends React.Component {
             <div className={classes.root}>
               <br />
               <Typography component="h1" variant="h5">
-                My Profile
+                Profile
               </Typography>
               <br />
               <Divider />

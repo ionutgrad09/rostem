@@ -30,7 +30,7 @@ public class EmailService {
         //Establishing a session with required user details
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("rostemplatform@gmail.com", "Rostemplatform1234");
+                return new PasswordAuthentication("rostemplatform@gmail.com", "Parolarostem2019!");
             }
         });
 
@@ -42,38 +42,19 @@ public class EmailService {
         String to = u.getEmail();
         String url;
         if (System.getenv("IS_PRODUCTION") == null) {
-            url = "http://localhost:8080/rostem/activate/";
+            url = "http://localhost:3000/activate/";
         } else {
-            url = "http://localhost:4200/rostem/activate-account?key=";
+            url = "https://rostem.herokuapp.com/activate/";
         }
         InternetAddress[] address = InternetAddress.parse(to, true);
         msg.setRecipients(Message.RecipientType.TO, address);
         msg.setSubject("ROSTEM register - noreply");
         msg.setSentDate(new Date());
-        msg.setText("Dear " + u.getUsername() + ", thank you for registering to our platform.\n" +
-                "Please confirm your account at the following link: " + url + u.getId() + " \n" +
-                "Your approval code is: " + u.getId() + " \n" +
-                "If this was not you, please ignore this mail.\n");
+        msg.setText("Dear " + u.getUsername() + ", thank you for registering to ROSTEM platform.\n" +
+                "Use this link to activate your account: " + url + u.getId() + " \n" +
+                "Activation code: " + u.getId() + " \n");
         msg.setHeader("XPriority", "1");
         Transport.send(msg);
         logger.info("Mail has been sent successfully");
     }
-
-    void sendInviteMail(InactiveUser friend) throws MessagingException {
-        MimeMessage msg = message();
-        String to = friend.getEmail();
-        String url = "http://localhost:8080/rostem/accept";
-        InternetAddress[] address = InternetAddress.parse(to, true);
-        msg.setRecipients(Message.RecipientType.TO, address);
-        msg.setSubject("ROSTEM invitation - noreply");
-        msg.setSentDate(new Date());
-        msg.setText("Dear " + friend.getUsername() + ", you have been invited to use our platform.\n" +
-                "Please confirm your account at the following link: " + url + " \n" +
-                "Your approval code is: " + friend.getId() + " \n" +
-                "If you think this is a mistake, please ignore this mail.\n");
-        msg.setHeader("XPriority", "1");
-        Transport.send(msg);
-        logger.info("Mail has been sent successfully");
-    }
-
 }

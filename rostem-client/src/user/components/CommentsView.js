@@ -18,6 +18,7 @@ const styles = theme => ({
     alignItems: "flex-start"
   },
   root: {
+    marginTop: 25,
     width: "100%",
     maxWidth: 880
   }
@@ -28,12 +29,25 @@ class CommentsView extends React.Component {
     super(props);
     this.state = {
       comments: [],
-      userComment: ""
+      userComment: "",
+      chapter: this.props.chapter,
+      userEmail: this.props.userEmail
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(
+      {
+        chapter: nextProps.chapter
+      },
+      () => {
+        this.getAllComments();
+      }
+    );
+  }
+
   async getAllComments() {
-    const chapterId = this.props.chapter.id;
+    const chapterId = this.state.chapter.id;
     await constants.axiosRequest
       .get(constants.BASE_URL + "/chapters/comments/" + chapterId)
       .then(result => {
@@ -44,7 +58,6 @@ class CommentsView extends React.Component {
           this.setState({
             comments: res.object.objects
           });
-          console.log(this.state.comments);
         }
       });
   }
@@ -55,9 +68,9 @@ class CommentsView extends React.Component {
 
   async addComment() {
     const body = {
-      chapterId: this.props.chapter.id,
+      chapterId: this.state.chapter.id,
       content: this.state.userComment,
-      email: this.props.userEmail
+      email: this.state.userEmail
     };
     await constants.axiosRequest
       .post(constants.BASE_URL + "/chapters/comments", body)
@@ -74,19 +87,12 @@ class CommentsView extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.chapter.id !== this.props.chapter.id) {
-      this.getAllComments();
-    }
-  }
-
   componentDidMount() {
-    console.log("Did mount for" + this.props.chapter.id);
     this.getAllComments();
   }
 
   render() {
-    const { description, categoryName, classes } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.divRoot}>
         <Typography variant="h5">
@@ -99,7 +105,7 @@ class CommentsView extends React.Component {
                 <ListItem className={classes.details} divider>
                   <ListItemAvatar>
                     <SendMessage
-                      userEmail={this.props.userEmail}
+                      userEmail={this.state.userEmail}
                       friendEmail={comment.email}
                       username={comment.username}
                     />

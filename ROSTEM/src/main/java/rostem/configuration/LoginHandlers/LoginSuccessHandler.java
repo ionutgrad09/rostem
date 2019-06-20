@@ -33,6 +33,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         final SavedRequest savedRequest = requestCache.getRequest(request, response);
 
         UserLoginDetail userdata = ((UserPrincipal)authentication.getPrincipal()).getUser();
+        response.setHeader("Cookie", response.getHeader("Set-Cookie"));
         request.setAttribute("user", userdata);
         RequestDispatcher dispatcher = request.getRequestDispatcher("login/returndetails");
         dispatcher.forward(request,response);
