@@ -1,6 +1,6 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import {withStyles} from "@material-ui/core/styles";
+import {Typography} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
@@ -9,8 +9,6 @@ import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import SendIcon from "@material-ui/icons/Send";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = theme => ({
   root: {

@@ -1,10 +1,9 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import * as constants from "../../constants/constants.js";
-import Avatar from "@material-ui/core/Avatar";
-import { Typography } from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -13,12 +12,7 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 
-const stemAvatar = require("../../resources/blueStem.png");
-
 const styles = theme => ({
-  title: {
-    align: "center"
-  },
   boxRoot: {
     marginTop: 25,
     marginBottom: 25,

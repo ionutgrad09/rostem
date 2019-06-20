@@ -1,7 +1,6 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import {withStyles} from "@material-ui/core/styles";
+import {Typography} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";

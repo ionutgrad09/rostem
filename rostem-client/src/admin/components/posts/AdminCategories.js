@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -13,8 +13,6 @@ import TableHeader from "../commons/TableHeader";
 import TableToolbar from "../commons/TableToolbar";
 import * as rostemConstants from "../../../constants/constants";
 import axios from "axios";
-import Fab from "@material-ui/core/Fab";
-import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {

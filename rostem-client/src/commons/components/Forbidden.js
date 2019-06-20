@@ -1,6 +1,6 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
+import {Typography} from "@material-ui/core";
+import {withRouter} from "react-router";
 
 function Forbidden(props) {
   return (
@@ -10,4 +10,4 @@ function Forbidden(props) {
   );
 }
 
-export default Forbidden;
+export default withRouter(Forbidden);

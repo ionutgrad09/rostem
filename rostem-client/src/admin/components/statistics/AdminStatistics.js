@@ -1,15 +1,11 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import { Divider } from "@material-ui/core";
+import {Divider} from "@material-ui/core";
 import CategoryStatistics from "./CategoryStatistics";
 import UserStatistics from "./UserStatistics";
 import ChapterStatistics from "./ChapterStatistics";

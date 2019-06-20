@@ -19,7 +19,6 @@ export default function requireUserAuth(Component) {
       await constants.axiosRequest
         .post(constants.BASE_URL + "/login/getdetails")
         .then(response => {
-          console.log(response);
           if (response.data.object.role !== "ROLE_USER") {
             this.props.history.push("/forbidden");
           } else {

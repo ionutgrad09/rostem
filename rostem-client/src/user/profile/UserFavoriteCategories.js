@@ -1,7 +1,6 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import {withStyles} from "@material-ui/core/styles";
+import {Typography} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
@@ -9,7 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 const styles = theme => ({
   root: {

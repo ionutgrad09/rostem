@@ -1,6 +1,3 @@
-import axios from "axios";
-import * as rostemConstants from "../../../constants/constants";
-
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;

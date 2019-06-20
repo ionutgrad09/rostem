@@ -7,16 +7,12 @@ import * as rostemConstants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import HomeHeader from "../../commons/components/HomeHeader";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 
 const styles = theme => ({
   boxRoot: {
@@ -99,7 +95,7 @@ class RegisterPage extends React.Component {
   }
 
   success() {
-    //TODO show message
+    this.setState({ open: true });
   }
 
   register(email, username, password, bio) {
@@ -154,6 +150,14 @@ class RegisterPage extends React.Component {
     }
   }
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  navigateToLogin() {
+    this.props.history.push("/login");
+  }
+
   render() {
     const { classes } = this.props;
     let usernameError = null,
@@ -178,6 +182,42 @@ class RegisterPage extends React.Component {
     return (
       <div>
         <HomeHeader />
+        <Dialog open={this.state.open} onClose={this.handleClose}>
+          <DialogContent>
+            <center>
+              <Box bgcolor="primary.main" className={classes.boxRoot}>
+                <div className={classes.root}>
+                  <Avatar>
+                    <LockOutlinedIcon />
+                  </Avatar>
+                  <br />
+                  <Typography component="h1" variant="h5">
+                    Successfully completed registration
+                  </Typography>
+                  <br />
+                  <Typography component="h1" variant="h5">
+                    You need to activate the account using your email address.
+                  </Typography>
+
+                  <br />
+                  <Divider />
+                  <br />
+
+                  <div className={classes.actionButtons}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.navigateToLogin.bind(this)}
+                    >
+                      Log in
+                    </Button>
+                  </div>
+                </div>
+              </Box>
+            </center>
+          </DialogContent>
+        </Dialog>
         <center>
           <Box bgcolor="primary.main" className={classes.boxRoot}>
             <div className={classes.root}>
