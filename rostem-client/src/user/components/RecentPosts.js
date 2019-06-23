@@ -14,7 +14,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 const styles = theme => ({
   root: {
     width: 500,
-    height: 700,
+    height: 610,
     overflow: "auto"
   },
   title: {
