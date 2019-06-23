@@ -55,6 +55,7 @@ class CommentsView extends React.Component {
         if (res.status === "false") {
           console.log("Error getting comments");
         } else {
+          console.log(res.object.objects);
           this.setState({
             comments: res.object.objects
           });

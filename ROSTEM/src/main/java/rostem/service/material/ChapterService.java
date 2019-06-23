@@ -8,6 +8,7 @@ import static rostem.utils.ApiResponses.USER_NOT_FOUND;
 import static rostem.utils.ApiResponses.USER_NOT_FOUND_FOR_CHAPTER;
 import static rostem.utils.mapper.ChapterMapper.map;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,9 @@ import rostem.model.dto.request.RequestComment;
 import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
 import rostem.model.dto.response.ResponseComment;
+import rostem.model.dto.response.ResponseRostemUser;
+import rostem.model.dto.response.ResponseTutorialProgress;
+import rostem.model.entities.Category;
 import rostem.model.entities.Chapter;
 import rostem.model.entities.Comment;
 import rostem.model.entities.Tutorial;
@@ -30,13 +34,14 @@ import rostem.repository.materials.ChapterRepository;
 import rostem.repository.materials.CommentRepository;
 import rostem.repository.materials.TutorialRepository;
 import rostem.repository.users.RostemUserRepository;
+import rostem.service.users.RostemUserService;
 import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.exception.RostemException;
 import rostem.utils.mapper.ChapterMapper;
 import rostem.utils.mapper.CommentsMapper;
 
 @Service
-public class ChapterService {
+public class ChapterService<T extends Serializable> {
 
     private final static Logger logger = LoggerFactory.getLogger(ChapterService.class);
 
@@ -44,14 +49,18 @@ public class ChapterService {
     private final ChapterRepository chapterRepository;
     private final RostemUserRepository rostemUserRepository;
     private final CommentRepository commentRepository;
+    private final RostemUserService rostemUserService;
+
 
     @Autowired
     public ChapterService(TutorialRepository tutorialRepository, ChapterRepository chapterRepository,
-            RostemUserRepository rostemUserRepository, CommentRepository commentRepository) {
+            RostemUserRepository rostemUserRepository, CommentRepository commentRepository,
+            RostemUserService rostemUserService) {
         this.tutorialRepository = tutorialRepository;
         this.chapterRepository = chapterRepository;
         this.rostemUserRepository = rostemUserRepository;
         this.commentRepository = commentRepository;
+        this.rostemUserService = rostemUserService;
     }
 
     @Transactional
@@ -423,6 +432,7 @@ public class ChapterService {
             for (Comment comment : comments) {
                 ResponseComment responseComment = CommentsMapper.map(comment);
                 responseComment.setUsername(getUsernameForEmail(comment.getEmail()));
+                this.rostemUserService.setBadgesForUser(comment.getEmail(), (T) responseComment, true);
                 responseComments.add(responseComment);
             }
             return responseComments;

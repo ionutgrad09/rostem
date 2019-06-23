@@ -22,6 +22,7 @@ import rostem.model.dto.request.RequestRecentPosts;
 import rostem.model.dto.response.ResponseChapter;
 import rostem.model.dto.response.ResponseComment;
 import rostem.service.material.ChapterService;
+import rostem.service.material.StatisticsService;
 import rostem.utils.ResponseBuilder.Response;
 import rostem.utils.ResponseBuilder.ResponseBuilder;
 import rostem.utils.exception.RostemException;
@@ -35,10 +36,12 @@ public class ChapterController {
     private static final String ACTION_DONE = "DONE";
 
     private final ChapterService chapterService;
+    private final StatisticsService statisticsService;
 
     @Autowired
-    public ChapterController(ChapterService chapterService) {
+    public ChapterController(ChapterService chapterService, StatisticsService statisticsService) {
         this.chapterService = chapterService;
+        this.statisticsService = statisticsService;
     }
 
     @ApiOperation(value = "Get all chapters for a tutorial",
@@ -127,6 +130,22 @@ public class ChapterController {
             }
             return ResponseBuilder.encode(HttpStatus.OK);
 
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "Get all comments for a chapter",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The comments were returned."),
+            @ApiResponse(code = 400, message = "The chapter does not exist.")
+    })
+    @GetMapping(path = "/random/{email}")
+    public ResponseEntity<Response> getRandomChapters(@PathVariable("email") String email) {
+        try {
+            List<ResponseChapter> chapters = statisticsService.getRandomChapters(email);
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }

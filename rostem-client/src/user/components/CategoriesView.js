@@ -10,6 +10,7 @@ import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import CategoryItem from "../components/CategoryItem.js";
 import RecentPosts from "./RecentPosts.js";
+import SuggestionsPosts from "./SuggestionsPosts.js";
 import { withRouter } from "react-router-dom";
 
 const styles = theme => ({
@@ -41,6 +42,12 @@ const styles = theme => ({
   input: {
     marginLeft: 8,
     flex: 1
+  },
+  utilitiesBoxes: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    overflow: "hidden"
   }
 });
 
@@ -123,7 +130,10 @@ class CategoriesView extends React.Component {
               ))}
             </Box>
           </div>
-          <RecentPosts userEmail={this.props.userEmail} />
+          <Box className={classes.utiliesBoxes}>
+            <RecentPosts userEmail={this.props.userEmail} />
+            <SuggestionsPosts userEmail={this.props.userEmail} />
+          </Box>
         </Box>
       </div>
     );

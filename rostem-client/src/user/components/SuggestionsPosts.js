@@ -13,16 +13,20 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 const styles = theme => ({
   root: {
+    marginTop: 25,
     width: 500,
-    height: 400,
+    height: 350,
     overflow: "auto"
   },
   title: {
     align: "center"
+  },
+  emptyMessage: {
+    marginTop: 50
   }
 });
 
-class RecentPosts extends React.Component {
+class SuggestionsPosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,12 +37,9 @@ class RecentPosts extends React.Component {
   async getRecentChapters() {
     const pageCount = 8;
     const email = this.props.userEmail;
-    const body = {
-      counter: pageCount,
-      email: email
-    };
+
     await axios
-      .post(rostemConstants.BASE_URL + "/chapters/latest", body)
+      .get(rostemConstants.BASE_URL + "/chapters/random/" + email)
       .then(result => {
         let res = result.data;
         if (res.status === "false") {
@@ -60,7 +61,7 @@ class RecentPosts extends React.Component {
     return (
       <Box bgcolor="primary.main" className={classes.root}>
         <center>
-          <Typography variant="h6">Recent Posts</Typography>
+          <Typography variant="h6">Posts you may like...</Typography>
         </center>
         <Divider />
         <div>
@@ -99,8 +100,13 @@ class RecentPosts extends React.Component {
                 );
               })
             ) : (
-              <div>
-                <center>No recent posts!</center>
+              <div className={classes.emptyMessage}>
+                <center>
+                  <Typography variant="h5">
+                    Mark at least one category as favorite <br /> to get free
+                    suggestions...
+                  </Typography>
+                </center>
               </div>
             )}
           </List>
@@ -110,4 +116,4 @@ class RecentPosts extends React.Component {
   }
 }
 
-export default withStyles(styles)(RecentPosts);
+export default withStyles(styles)(SuggestionsPosts);

@@ -6,6 +6,15 @@ import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Tooltip from "@material-ui/core/Tooltip";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
   boxRoot: {
@@ -14,11 +23,12 @@ const styles = theme => ({
     width: 700,
     height: "auto"
   },
+  badgesClass: {
+    maxHeight: 200,
+    height: "auto"
+  },
   root: {
     padding: 25
-  },
-  title: {
-    align: "center"
   },
   textField: {
     marginTop: 15,
@@ -29,6 +39,13 @@ const styles = theme => ({
   },
   dangerError: {
     color: "red"
+  },
+  details: {
+    display: "inline-flex"
+  },
+  tabsStyle: {
+    flexGrow: 1,
+    justifyContent: "space-evenly"
   }
 });
 
@@ -41,7 +58,9 @@ class UserAccount extends React.Component {
       username: "",
       bio: "",
       photo: null,
-      creationDate: null
+      creationDate: null,
+      badges: [],
+      tabValue: 0
     };
   }
 
@@ -72,6 +91,11 @@ class UserAccount extends React.Component {
     });
   }
 
+  handleTabChange = (event, value) => {
+    console.log(value);
+    this.setState({ tabValue: value });
+  };
+
   async getUserDetails() {
     const email = this.props.userEmail;
     await constants.axiosRequest
@@ -89,7 +113,8 @@ class UserAccount extends React.Component {
             creationDate: res.object.registrationDate.substr(
               0,
               res.object.registrationDate.indexOf(".")
-            )
+            ),
+            badges: res.object.badges
           });
         }
       });
@@ -148,66 +173,116 @@ class UserAccount extends React.Component {
       <div>
         <center>
           <Box bgcolor="primary.main" className={classes.boxRoot}>
-            <div className={classes.root}>
-              <br />
-              <Typography component="h1" variant="h5">
-                Profile
-              </Typography>
-              <br />
-              <Divider />
-              <br />
+            <Paper square className={classes.tabsStyle}>
+              <Tabs
+                value={this.state.tabValue}
+                onChange={this.handleTabChange}
+                indicatorColor="secondary"
+                textColor="secondary"
+                centered
+                variant="fullWidth"
+              >
+                <Tab label="Profile" />
+                <Tab label="Badges" />
+              </Tabs>
+            </Paper>
+            <div>
+              {this.state.tabValue === 0 && (
+                <div className={classes.root}>
+                  <br />
+                  <Typography component="h1" variant="h5">
+                    Profile
+                  </Typography>
+                  <br />
+                  <Divider />
+                  <br />
 
-              <TextField
-                id="standard-username-input"
-                label="Username"
-                className={classes.textField}
-                type="text"
-                margin="normal"
-                value={this.state.username}
-                onChange={this.onUsernameChange.bind(this)}
-                placeholder={usernameError ? usernameError : ""}
-                error={usernameError ? true : false}
-              />
+                  <TextField
+                    id="standard-username-input"
+                    label="Username"
+                    className={classes.textField}
+                    type="text"
+                    margin="normal"
+                    value={this.state.username}
+                    onChange={this.onUsernameChange.bind(this)}
+                    placeholder={usernameError ? usernameError : ""}
+                    error={usernameError ? true : false}
+                  />
 
-              <TextField
-                id="standard-textarea"
-                label="Bio"
-                value={this.state.bio}
-                multiline
-                className={classes.textField}
-                margin="normal"
-                onChange={this.onBioChange.bind(this)}
-              />
+                  <TextField
+                    id="standard-textarea"
+                    label="Bio"
+                    value={this.state.bio}
+                    multiline
+                    className={classes.textField}
+                    margin="normal"
+                    onChange={this.onBioChange.bind(this)}
+                  />
 
-              <TextField
-                disabled
-                id="standard-email-input"
-                label="Email"
-                value={this.state.email}
-                className={classes.textField}
-                type="email"
-                margin="normal"
-              />
+                  <TextField
+                    disabled
+                    id="standard-email-input"
+                    label="Email"
+                    value={this.state.email}
+                    className={classes.textField}
+                    type="email"
+                    margin="normal"
+                  />
 
-              <TextField
-                disabled
-                id="standard-textarea"
-                label="Registration date"
-                value={this.state.creationDate}
-                className={classes.textField}
-                margin="normal"
-              />
+                  <TextField
+                    disabled
+                    id="standard-textarea"
+                    label="Registration date"
+                    value={this.state.creationDate}
+                    className={classes.textField}
+                    margin="normal"
+                  />
 
-              <div className={classes.actionButtons}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.onUpdateClick.bind(this)}
-                >
-                  Save changes
-                </Button>
-              </div>
+                  <div className={classes.actionButtons}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.onUpdateClick.bind(this)}
+                    >
+                      Save changes
+                    </Button>
+                  </div>
+                </div>
+              )}{" "}
+              {this.state.tabValue === 1 && (
+                <div>
+                  <br />
+                  <div className={classes.root}>
+                    <Tooltip title="You can earn badges by completing a tutorial 100%.">
+                      <Typography variant="h5">Badges</Typography>
+                    </Tooltip>
+                    <br />
+                    <Divider />
+                    <br />
+                    {this.state.badges.length > 0 ? (
+                      <div>
+                        <div>
+                          <List dense={false} disablePadding>
+                            {this.state.badges.map(badge => (
+                              <ListItem className={classes.details}>
+                                <ListItemIcon>
+                                  <WhatshotIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={badge} />
+                              </ListItem>
+                            ))}
+                          </List>
+                        </div>
+                      </div>
+                    ) : (
+                      <Typography variant="h5">
+                        You didn't earn any badge yet!
+                      </Typography>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </Box>
         </center>

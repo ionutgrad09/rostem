@@ -1,9 +1,9 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import * as constants from "../../constants/constants.js";
-import {Typography} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -11,6 +11,11 @@ import TextField from "@material-ui/core/TextField";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
 
 const styles = theme => ({
   boxRoot: {
@@ -44,7 +49,8 @@ class SendMessage extends React.Component {
       open: false,
       user: "",
       message: "",
-      showMessage: false
+      showMessage: false,
+      existUser: false
     };
   }
 
@@ -56,7 +62,9 @@ class SendMessage extends React.Component {
         if (res.status === "false") {
           console.log("Error getting user details.");
         } else {
+          console.log(res.user);
           this.setState({
+            existUser: true,
             user: res.object
           });
         }
@@ -186,6 +194,37 @@ class SendMessage extends React.Component {
                       {this.state.showMessage && (
                         <Typography variant="h6">
                           Message sent successfully!
+                        </Typography>
+                      )}
+                    </div>
+
+                    <div className={classes.root}>
+                      <br />
+                      {this.state.existUser &&
+                      this.state.user.badges.length > 0 ? (
+                        <div>
+                          <Tooltip title="Badges are earn when you complete a tutorial 100%.">
+                            <Typography variant="h5">Badges</Typography>
+                          </Tooltip>
+                          <br />
+                          <Divider />
+                          <br />
+                          <div>
+                            <List dense={false} disablePadding>
+                              {this.state.user.badges.map(badge => (
+                                <ListItem className={classes.details}>
+                                  <ListItemIcon>
+                                    <WhatshotIcon />
+                                  </ListItemIcon>
+                                  <ListItemText primary={badge} />
+                                </ListItem>
+                              ))}
+                            </List>
+                          </div>
+                        </div>
+                      ) : (
+                        <Typography variant="h5">
+                          {this.state.user.username} didn't earn any badge yet!
                         </Typography>
                       )}
                     </div>
