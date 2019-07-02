@@ -37,6 +37,21 @@ public class TutorialController {
         this.statisticsService = statisticsService;
     }
 
+    @ApiOperation(value = "Get tutorial by id",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The tutorials was returned."),
+            @ApiResponse(code = 400, message = "The tutorial does not exist.")
+    })
+    @GetMapping(path = "/details/{id}")
+    public ResponseEntity<Response> getTutorialById(@PathVariable("id") Long tutorialId) {
+        try {
+            return ResponseBuilder.encode(HttpStatus.OK, tutorialService.getTutorialById(tutorialId));
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
     @ApiOperation(value = "Get all tutorials for a category",
             response = Response.class)
     @ApiResponses(value = {
@@ -82,7 +97,7 @@ public class TutorialController {
     public ResponseEntity<Response> getTutorialProgress(@RequestBody RequestFavoriteCategory requestFavoriteCategory) {
         try {
             List<ResponseTutorialProgress> tutorials = statisticsService
-                    .getTutorialProgress(requestFavoriteCategory.getEmail(), requestFavoriteCategory.getId());
+                    .getTutorialProgress(requestFavoriteCategory.getEmail(), requestFavoriteCategory.getCategoryName());
             return ResponseBuilder.encode(HttpStatus.OK, tutorials, 0, tutorials.size(), tutorials.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());

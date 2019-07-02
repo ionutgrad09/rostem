@@ -17,7 +17,7 @@ import rostem.model.users.RostemUser;
 @Table(name = "CATEGORIES")
 public class Category extends Material {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     private List<Tutorial> tutorials;
 
     @ManyToMany(mappedBy = "favoriteCategories")

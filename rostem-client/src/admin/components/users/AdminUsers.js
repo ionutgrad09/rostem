@@ -31,12 +31,14 @@ const styles = theme => ({
 const rows = [
   { id: "email", numeric: false, disablePadding: true, label: "Email " },
   { id: "username", numeric: false, disablePadding: false, label: "Username" },
+  { id: "bio", numeric: false, disablePadding: false, label: "Bio" },
   {
     id: "registration",
     numeric: false,
     disablePadding: false,
     label: "Registration date"
-  }
+  },
+  { id: "badges", numeric: false, disablePadding: false, label: "No. Badges" }
 ];
 
 class UsersTable extends React.Component {
@@ -141,7 +143,7 @@ class UsersTable extends React.Component {
             shouldShowAddButton="false"
             onDelete={this.handleDeleteUsers.bind(this)}
             tableName="Users"
-            numSelected={selected.length}
+            itemsSelected={selected}
           />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} aria-labelledby="tableTitle">
@@ -179,8 +181,13 @@ class UsersTable extends React.Component {
                           {n.email}
                         </TableCell>
                         <TableCell align="justify">{n.username}</TableCell>
+                        <TableCell align="justify">{n.bio}</TableCell>
+
                         <TableCell align="justify">
                           {n.registrationDate}
+                        </TableCell>
+                        <TableCell align="justify">
+                          {n.badges !== null ? n.badges.length : 0}
                         </TableCell>
                       </TableRow>
                     );

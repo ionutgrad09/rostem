@@ -45,10 +45,12 @@ public class RostemUserService<T extends Serializable> {
     public List<ResponseRostemUser> getAllUsers() {
         logger.info("[ADMIN] Get all users");
 
-        return rostemUserRepository.findAll()
+        List<ResponseRostemUser>  rostemUsers = rostemUserRepository.findAll()
                 .stream()
                 .map(RostemUserMapper::map)
                 .collect(Collectors.toList());
+        rostemUsers.forEach(rostemUser -> setBadgesForUser(rostemUser.getEmail(), (T) rostemUser, false));
+        return rostemUsers;
     }
 
     @Transactional
@@ -77,7 +79,7 @@ public class RostemUserService<T extends Serializable> {
 
         for (Category category : categories) {
             List<ResponseTutorialProgress> responseTutorialProgresses = this.statisticsService
-                    .getTutorialProgress(email, category.getId());
+                    .getTutorialProgress(email, category.getName());
             for (ResponseTutorialProgress responseTutorialProgress : responseTutorialProgresses) {
                 if (responseTutorialProgress.getPercentage() == 100) {
                     badges.add(responseTutorialProgress.getName());

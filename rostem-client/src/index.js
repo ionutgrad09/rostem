@@ -16,6 +16,7 @@ import Forbidden from "./commons/components/Forbidden";
 import alreadyLoggedIn from "./login/actions/AlreadyLoginGuard";
 import ActivateAccountView from "./login/components/ActivateAccountView";
 import AddChapter from "./admin/components/posts/AddChapter";
+import EditChapter from "./admin/components/posts/EditChapter";
 
 const theme = createMuiTheme({
   palette: {
@@ -38,6 +39,11 @@ const routing = (
         exact
         path="/admin/addChapter"
         component={requireAdminAuth(AddChapter)}
+      />
+      <Route
+        exact
+        path="/admin/editChapter/:chapterId"
+        component={requireAdminAuth(EditChapter)}
       />
       <Route
         path="/categories/:categoryName"

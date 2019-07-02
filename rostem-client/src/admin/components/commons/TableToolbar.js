@@ -15,6 +15,10 @@ import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import { withRouter } from "react-router";
+import EditCategory from "../posts/EditCategory.js";
+import EditTutorial from "../posts/EditTutorial.js";
+import EditChapter from "../posts/EditChapter.js";
+
 const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit
@@ -44,6 +48,11 @@ class TableToolbar extends React.Component {
   handleAddChapter() {
     this.props.history.push("/admin/addChapter");
   }
+
+  editChapter() {
+    const chapterId = this.props.itemsSelected[0];
+    this.props.history.push("/admin/editChapter/" + chapterId);
+  }
   render() {
     const {
       isCategory,
@@ -52,14 +61,14 @@ class TableToolbar extends React.Component {
       tableName,
       onDelete,
       onAdd,
-      numSelected,
+      itemsSelected,
       classes
     } = this.props;
 
     return (
       <Toolbar
         className={classNames(classes.root, {
-          [classes.highlight]: numSelected > 0
+          [classes.highlight]: itemsSelected.length > 0
         })}
       >
         <div className={classes.actions}>
@@ -78,9 +87,9 @@ class TableToolbar extends React.Component {
         </div>
         <div className={classes.spacer} />
         <div className={classes.title}>
-          {numSelected > 0 ? (
+          {itemsSelected.length > 0 ? (
             <Typography color="inherit" variant="subtitle1">
-              {numSelected} selected
+              {itemsSelected.length} selected
             </Typography>
           ) : (
             <Typography variant="h6" id="tableTitle">
@@ -90,18 +99,28 @@ class TableToolbar extends React.Component {
         </div>
         <div className={classes.spacer} />
         <div>
-          {numSelected == 1 && (
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-            >
-              EDIT
-            </Button>
+          {itemsSelected.length == 1 && (
+            <div>
+              {isCategory === "true" && (
+                <EditCategory categoryId={itemsSelected[0]} onAdd={onAdd} />
+              )}
+              {isTutorial === "true" && (
+                <EditTutorial tutorialId={itemsSelected[0]} onAdd={onAdd} />
+              )}
+              {isChapter === "true" && (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.editChapter.bind(this)}
+                >
+                  EDIT
+                </Button>
+              )}
+            </div>
           )}
         </div>
         <div className={classes.actions}>
-          {numSelected > 0 && (
+          {itemsSelected.length > 0 && (
             <Tooltip title="Delete">
               <IconButton onClick={onDelete} aria-label="Delete">
                 <DeleteIcon />

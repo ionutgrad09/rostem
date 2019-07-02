@@ -1,5 +1,5 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -55,11 +55,12 @@ class CategoryStatistics extends React.Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Category</TableCell>
+                <TableCell>Category name</TableCell>
+                <TableCell>Number of Tutorials</TableCell>
                 <TableCell align="right">
-                  Favorite (how many users have this category to favorite)
+                  How many users marked this category as favorite
                 </TableCell>
-                <TableCell align="right">Percentage</TableCell>
+                <TableCell align="right">Percentage (users)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -68,6 +69,7 @@ class CategoryStatistics extends React.Component {
                   <TableCell component="th" scope="row">
                     {category.name}
                   </TableCell>
+                  <TableCell align="center">{category.noTutorials}</TableCell>
                   <TableCell align="center">{category.noFavorites}</TableCell>
                   <TableCell align="right">{category.percentage} %</TableCell>
                 </TableRow>

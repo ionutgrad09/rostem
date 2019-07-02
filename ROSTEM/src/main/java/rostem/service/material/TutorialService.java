@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rostem.model.dto.request.RequestTutorial;
 import rostem.model.dto.response.ResponseTutorial;
+import rostem.model.entities.Material;
 import rostem.model.entities.Tutorial;
 import rostem.repository.materials.CategoryRepository;
 import rostem.repository.materials.TutorialRepository;
@@ -27,11 +28,14 @@ public class TutorialService {
 
     private TutorialRepository tutorialRepository;
     private CategoryRepository categoryRepository;
+    private ChapterService chapterService;
 
     @Autowired
-    public TutorialService(TutorialRepository tutorialRepository, CategoryRepository categoryRepository) {
+    public TutorialService(TutorialRepository tutorialRepository, CategoryRepository categoryRepository,
+            ChapterService chapterService) {
         this.tutorialRepository = tutorialRepository;
         this.categoryRepository = categoryRepository;
+        this.chapterService = chapterService;
     }
 
     @Transactional
@@ -39,6 +43,17 @@ public class TutorialService {
         logger.info("[TUTORIAL] Get all tutorial");
 
         return tutorialRepository.findAll().stream().map(TutorialMapper::map).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public ResponseTutorial getTutorialById(Long id) {
+        logger.info("[TUTORIAL] Get tutorial by id");
+
+        if (!findTutorialById(id)) {
+            throw new RostemException(TUTORIAL_NOT_FOUND);
+        } else {
+            return map(tutorialRepository.findTutorialById(id));
+        }
     }
 
     @Transactional
@@ -54,6 +69,7 @@ public class TutorialService {
         }
     }
 
+    @Transactional
     public ResponseTutorial createTutorial(RequestTutorial requestTutorial) {
         final Long categoryId = requestTutorial.getCategoryId();
         final String name = requestTutorial.getName();
@@ -80,6 +96,9 @@ public class TutorialService {
             if (!findTutorialById(id)) {
                 throw new RostemException(TUTORIAL_NOT_FOUND);
             } else {
+                Tutorial tutorial = tutorialRepository.findTutorialById(id);
+                chapterService.deleteChapters(tutorial.getChapters().stream().map(Material::getId).collect(
+                        Collectors.toList()));
                 tutorialRepository.deleteById(id);
             }
         }
@@ -91,6 +110,8 @@ public class TutorialService {
 
         if (!findTutorialById(id)) {
             throw new RostemException(TUTORIAL_NOT_FOUND);
+        } else if (!findCategoryById(requestTutorial.getCategoryId())) {
+            throw new RostemException(CATEGORY_NOT_FOUND);
         } else {
             Tutorial tutorial = map(requestTutorial);
             tutorial.setId(id);

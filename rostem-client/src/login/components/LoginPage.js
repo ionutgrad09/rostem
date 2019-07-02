@@ -1,6 +1,6 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
-import {Typography} from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import * as constants from "../../constants/constants.js";
 import Box from "@material-ui/core/Box";
@@ -43,7 +43,8 @@ class LoginPage extends React.Component {
     this.state = {
       errors: [],
       email: "",
-      password: ""
+      password: "",
+      showError: false
     };
   }
 
@@ -92,7 +93,7 @@ class LoginPage extends React.Component {
       console.log("error");
     } else {
       if (response.data.exception) {
-        // console.log("Error: " + response.data.exception);
+        this.setState({ showError: true });
       } else {
         if (response.data.object.role === "ROLE_ADMIN") {
           this.handleAdmin();
@@ -182,6 +183,11 @@ class LoginPage extends React.Component {
                 placeholder={passwordError ? passwordError : ""}
                 error={passwordError ? true : false}
               />
+              <br />
+              {this.state.showError && (
+                <p style={{ color: "red" }}>Bad credentials!</p>
+              )}
+              <br />
 
               <div className={classes.actionButtons}>
                 <Button

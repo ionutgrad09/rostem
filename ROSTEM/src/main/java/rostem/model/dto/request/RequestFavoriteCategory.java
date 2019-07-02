@@ -8,7 +8,7 @@ import lombok.Data;
 public class RequestFavoriteCategory implements Serializable {
 
     private String email;
-
+    private String categoryName;
     private Long id;
 
     public RequestFavoriteCategory() {

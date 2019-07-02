@@ -44,6 +44,22 @@ public class ChapterController {
         this.statisticsService = statisticsService;
     }
 
+    @ApiOperation(value = "Get chapter by id",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The chapter was returned."),
+            @ApiResponse(code = 400, message = "The chapter does not exist.")
+    })
+    @PostMapping(path = "/chapter/{id}")
+    public ResponseEntity<Response> getChapterById(
+            @PathVariable("id") Long id) {
+        try {
+            return ResponseBuilder.encode(HttpStatus.OK, chapterService.getChapterById(id));
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
     @ApiOperation(value = "Get all chapters for a tutorial",
             response = Response.class)
     @ApiResponses(value = {
@@ -55,7 +71,7 @@ public class ChapterController {
             @RequestBody @Validated RequestActionChapter requestActionChapter) {
         try {
             List<ResponseChapter> chapters = chapterService.getChaptersForTutorial(requestActionChapter);
-                return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }

@@ -6,9 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as rostemConstants from "../../../constants/constants";
-import axios from "axios";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -19,7 +16,7 @@ const styles = theme => ({
   }
 });
 
-class AddCategory extends React.Component {
+class EditCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +24,8 @@ class AddCategory extends React.Component {
       emptyNameError: false,
       open: false,
       name: "",
-      description: ""
+      description: "",
+      id: null
     };
   }
 
@@ -43,13 +41,16 @@ class AddCategory extends React.Component {
     this.setState({ description: e.target.value });
   }
 
-  addCategory() {
+  updateCategory() {
     const { name, description } = this.state;
-    axios
-      .post(rostemConstants.BASE_URL + "/admin/createCategory", {
-        name: name,
-        description: description
-      })
+    rostemConstants.axiosRequest
+      .put(
+        rostemConstants.BASE_URL + "/admin/updateCategory/" + this.state.id,
+        {
+          name: name,
+          description: description
+        }
+      )
       .then(response => {
         if (response.status === false) {
         } else {
@@ -59,11 +60,34 @@ class AddCategory extends React.Component {
       });
   }
 
+  async getCategoryDetails() {
+    rostemConstants.axiosRequest
+      .get(
+        rostemConstants.BASE_URL +
+          "/categories/category/" +
+          this.props.categoryId
+      )
+      .then(response => {
+        if (response.status === false) {
+        } else {
+          this.setState({
+            name: response.data.object.name,
+            description: response.data.object.description,
+            id: response.data.object.id
+          });
+        }
+      });
+  }
+
+  componentDidMount() {
+    this.getCategoryDetails();
+  }
+
   submitCategory(e) {
     if (this.state.name === "") {
       this.setState({ emptyNameError: true });
     } else {
-      this.addCategory();
+      this.updateCategory();
     }
   }
 
@@ -83,22 +107,18 @@ class AddCategory extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Fab
-          size="small"
-          color="secondary"
-          aria-label="Add"
-          onClick={this.handleOpen}
-        >
-          <AddIcon />
-        </Fab>
+        <Button variant="contained" color="secondary" onClick={this.handleOpen}>
+          EDIT
+        </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>
-          <DialogTitle variant="h2">New category</DialogTitle>
+          <DialogTitle variant="h2">Edit category</DialogTitle>
           <DialogContent>
             <div className={classes.root}>
               <TextField
                 id="custom-css-standard-input"
                 label="Category name"
                 type="text"
+                value={this.state.name}
                 fullWidth
                 required
                 error={this.state.emptyNameError ? true : false}
@@ -109,11 +129,15 @@ class AddCategory extends React.Component {
                 }
                 onChange={this.onNameChange.bind(this)}
               />
-              <br />
+
               {this.state.showUniqueNameError && (
-                <p style={{ color: "red" }}>Category name must be unique!</p>
+                <p style={{ color: "red" }}>
+                  <br />
+                  Category name must be unique!
+                  <br />
+                </p>
               )}
-              <br />
+
               <TextField
                 id="standard-password-input"
                 label="Description"
@@ -121,6 +145,7 @@ class AddCategory extends React.Component {
                 margin="normal"
                 multiline
                 rowsMax="4"
+                value={this.state.description}
                 fullWidth
                 onChange={this.onDescriptionChange.bind(this)}
               />
@@ -132,7 +157,7 @@ class AddCategory extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.submitCategory.bind(this)} color="secondary">
-              Add
+              Save
             </Button>
           </DialogActions>
         </Dialog>
@@ -141,4 +166,4 @@ class AddCategory extends React.Component {
   }
 }
 
-export default withStyles(styles)(AddCategory);
+export default withStyles(styles)(EditCategory);

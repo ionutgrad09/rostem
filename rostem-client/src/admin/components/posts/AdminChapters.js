@@ -29,18 +29,18 @@ const styles = theme => ({
 });
 
 const rows = [
-  { id: "name", numeric: false, disablePadding: true, label: "Name " },
-  {
-    id: "description",
-    numeric: false,
-    disablePadding: false,
-    label: "Description"
-  },
+  { id: "name", numeric: false, disablePadding: true, label: "Name" },
   {
     id: "tutorial",
     numeric: false,
     disablePadding: false,
     label: "Tutorial"
+  },
+  {
+    id: "creationDate",
+    numeric: false,
+    disablePadding: false,
+    label: "Creation Date"
   }
 ];
 
@@ -153,7 +153,7 @@ class ChaptersTable extends React.Component {
             onAdd={this.handleAddChapter.bind(this)}
             onDelete={this.handleDeleteChapter.bind(this)}
             tableName="Chapters"
-            numSelected={selected.length}
+            itemsSelected={selected}
           />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} aria-labelledby="tableTitle">
@@ -190,8 +190,13 @@ class ChaptersTable extends React.Component {
                         <TableCell component="th" scope="row" padding="none">
                           {n.name}
                         </TableCell>
-                        <TableCell align="justify">{n.description}</TableCell>
                         <TableCell align="justify">{n.tutorialName}</TableCell>
+                        <TableCell align="justify">
+                          {n.creationDate.substr(
+                            0,
+                            n.creationDate.indexOf(".")
+                          )}
+                        </TableCell>
                       </TableRow>
                     );
                   })}

@@ -43,7 +43,6 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CHAPTER_ID", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Chapter chapter;
 
     @Override

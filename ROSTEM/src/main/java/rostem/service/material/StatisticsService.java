@@ -43,7 +43,7 @@ public class StatisticsService {
     @Autowired
     public StatisticsService(CommentRepository commentRepository, ChapterRepository chapterRepository,
             RostemUserRepository rostemUserRepository, CategoryRepository categoryRepository,
-            TutorialRepository tutorialRepository   ) {
+            TutorialRepository tutorialRepository) {
         this.commentRepository = commentRepository;
         this.chapterRepository = chapterRepository;
         this.rostemUserRepository = rostemUserRepository;
@@ -86,7 +86,7 @@ public class StatisticsService {
         });
 
         return categories.stream().limit(STATISTICS_COUNTER)
-                .map(c -> new ResponseStatisticsCategory(getCategoryPercentage(c), c.getName(), c.getUsers().size()))
+                .map(c -> new ResponseStatisticsCategory(getCategoryPercentage(c), c.getTutorials().size(), c.getName(), c.getUsers().size()))
                 .collect(
                         Collectors.toList());
     }
@@ -142,7 +142,7 @@ public class StatisticsService {
 
             for (Category category : categories) {
                 List<ResponseTutorialProgress> responseTutorialProgresses = this
-                        .getTutorialProgress(email, category.getId());
+                        .getTutorialProgress(email, category.getName());
                 for (ResponseTutorialProgress responseTutorialProgress : responseTutorialProgresses) {
                     if (responseTutorialProgress.getPercentage() < 60) {
                         tutorials.add(tutorialRepository.findTutorialByName(responseTutorialProgress.getName()));
@@ -207,8 +207,8 @@ public class StatisticsService {
 
 
     @Transactional
-    public List<ResponseTutorialProgress> getTutorialProgress(String email, Long categoryId) {
-        List<Tutorial> tutorials = checkCategory(categoryId).getTutorials();
+    public List<ResponseTutorialProgress> getTutorialProgress(String email, String categoryName) {
+        List<Tutorial> tutorials = checkCategory(categoryName).getTutorials();
         List<Chapter> doneChapters = checkUser(email).getDoneChapters();
 
         List<ResponseTutorialProgress> responseTutorialProgresses = new ArrayList<>();
@@ -245,12 +245,16 @@ public class StatisticsService {
         }
     }
 
-    private Category checkCategory(Long categoryId) {
-        if (!findCategoryById(categoryId)) {
+    private Category checkCategory(String categoryName) {
+        if (!findCategoryByName(categoryName)) {
             throw new RostemException(CATEGORY_NOT_FOUND);
         } else {
-            return categoryRepository.findCategoryById(categoryId);
+            return categoryRepository.findCategoryByName(categoryName);
         }
+    }
+
+    private boolean findCategoryByName(String name) {
+        return categoryRepository.findCategoryByName(name) != null;
     }
 
     private boolean findCategoryById(Long id) {

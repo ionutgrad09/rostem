@@ -6,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as rostemConstants from "../../../constants/constants";
-import axios from "axios";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -22,8 +21,14 @@ import Divider from "@material-ui/core/Divider";
 import { Typography } from "@material-ui/core";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import {
+  ContentState,
+  EditorState,
+  convertFromRaw,
+  convertToRaw
+} from "draft-js";
 import draftToHtml from "draftjs-to-html";
+import htmlToDraft from "html-to-draftjs";
 
 const styles = {
   editorStyle: {
@@ -56,7 +61,7 @@ const styles = {
   }
 };
 
-class AddChapter extends React.Component {
+class EditChapter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,7 +71,7 @@ class AddChapter extends React.Component {
       name: "",
       tutorials: [],
       tutorial: "",
-      editorState: EditorState.createEmpty()
+      editorState: null
     };
     this.onChange = editorState => this.setState({ editorState });
   }
@@ -74,8 +79,8 @@ class AddChapter extends React.Component {
   onNameChange(e) {
     this.setState({
       name: e.target.value,
-      emptyNameError: false,
-      showUniqueNameError: false
+      showUniqueNameError: false,
+      emptyNameError: false
     });
   }
 
@@ -84,49 +89,78 @@ class AddChapter extends React.Component {
   }
 
   async getAllTutorials() {
-    await axios.get(rostemConstants.BASE_URL + "/tutorials").then(result => {
-      let res = result.data;
-      if (res.status === "false") {
-        console.log("Error getting categories");
-      } else {
-        this.setState({ tutorials: res.object.objects });
-      }
-    });
+    await rostemConstants.axiosRequest
+      .get(rostemConstants.BASE_URL + "/tutorials")
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error getting tutorials");
+        } else {
+          this.setState({ tutorials: res.object.objects });
+        }
+      });
   }
 
-  componentDidMount() {
+  async getChapterDetails() {
+    await rostemConstants.axiosRequest
+      .post(
+        rostemConstants.BASE_URL +
+          "/chapters/chapter/" +
+          this.props.match.params.chapterId
+      )
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error getting tutorials");
+        } else {
+          this.setState({
+            name: res.object.name,
+            editorState: EditorState.createWithContent(
+              ContentState.createFromBlockArray(htmlToDraft(res.object.content))
+            )
+          });
+        }
+      });
+  }
+
+  componentWillMount() {
+    this.getChapterDetails();
     this.getAllTutorials();
   }
 
-  addChapter() {
+  async updateChapter() {
     const { name, tutorial } = this.state;
     const content = draftToHtml(
       convertToRaw(this.state.editorState.getCurrentContent())
     );
-    axios
-      .post(rostemConstants.BASE_URL + "/admin/createChapter", {
-        name: name,
-        content: content,
-        tutorialId: tutorial
-      })
+    rostemConstants.axiosRequest
+      .put(
+        rostemConstants.BASE_URL +
+          "/admin/updateChapter/" +
+          this.props.match.params.chapterId,
+        {
+          name: name,
+          content: content,
+          tutorialId: tutorial
+        }
+      )
       .then(result => {
         this.props.history.push("/admin");
-      })
-      .catch(error => this.setState({ showUniqueNameError: true }));
+      });
   }
 
   submitChapter(e) {
-    let shouldAdd = true;
+    let shouldUpdate = true;
     if (this.state.name === "") {
-      shouldAdd = false;
+      shouldUpdate = false;
       this.setState({ emptyNameError: true });
     }
     if (this.state.tutorial === "") {
+      shouldUpdate = false;
       this.setState({ emptyTutorialError: true });
-      shouldAdd = false;
     }
-    if (shouldAdd === true) {
-      this.addChapter();
+    if (shouldUpdate === true) {
+      this.updateChapter();
     }
   }
 
@@ -142,17 +176,18 @@ class AddChapter extends React.Component {
             <div className={classes.root}>
               <br />
               <Typography component="h1" variant="h5">
-                Add a new chapter
+                Update chapter
               </Typography>
               <br />
               <Divider />
               <br />
               <TextField
                 id="custom-css-standard-input"
-                label="Chapter name"
+                label="New name"
                 type="text"
                 fullWidth
                 required
+                value={this.state.name}
                 error={this.state.emptyNameError ? true : false}
                 placeholder={
                   this.state.emptyNameError ? "Chapter name can't be blank" : ""
@@ -168,7 +203,7 @@ class AddChapter extends React.Component {
               )}
 
               <FormControl fullWidth>
-                <InputLabel>Tutorial</InputLabel>
+                <InputLabel>New tutorial</InputLabel>
                 <Select
                   value={this.state.tutorial}
                   onChange={this.onTutorialChange.bind(this)}
@@ -218,4 +253,4 @@ class AddChapter extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(AddChapter));
+export default withRouter(withStyles(styles)(EditChapter));

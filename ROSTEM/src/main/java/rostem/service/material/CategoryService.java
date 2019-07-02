@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import rostem.model.dto.request.RequestCategory;
 import rostem.model.dto.response.ResponseCategory;
 import rostem.model.entities.Category;
+import rostem.model.entities.Material;
 import rostem.model.users.RostemUser;
 import rostem.repository.materials.CategoryRepository;
 import rostem.repository.users.RostemUserRepository;
@@ -30,11 +31,14 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final RostemUserRepository rostemUserRepository;
+    private final TutorialService tutorialService;
 
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository, RostemUserRepository rostemUserRepository) {
+    public CategoryService(CategoryRepository categoryRepository, RostemUserRepository rostemUserRepository,
+            TutorialService tutorialService) {
         this.categoryRepository = categoryRepository;
         this.rostemUserRepository = rostemUserRepository;
+        this.tutorialService = tutorialService;
     }
 
     @Transactional
@@ -102,8 +106,21 @@ public class CategoryService {
             if (!findCategoryById(id)) {
                 throw new RostemException(CATEGORY_NOT_FOUND);
             } else {
+                Category category = categoryRepository.findCategoryById(id);
+                deleteFavoriteCategory(category);
+                tutorialService.deleteTutorials(
+                        category.getTutorials().stream().map(Material::getId).collect(Collectors.toList()));
                 categoryRepository.deleteById(id);
             }
+        }
+    }
+
+    private void deleteFavoriteCategory(Category category) {
+        List<RostemUser> rostemUsers = rostemUserRepository.findAll();
+
+        for (RostemUser rostemUser : rostemUsers) {
+            rostemUser.getFavoriteCategories().remove(category);
+            rostemUserRepository.save(rostemUser);
         }
     }
 

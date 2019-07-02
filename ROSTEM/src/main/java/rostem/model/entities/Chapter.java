@@ -50,7 +50,7 @@ public class Chapter extends Material {
     @ManyToMany(mappedBy = "likedChapters")
     private List<RostemUser> userLikes;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter")
     @OrderBy(value = "creationDate asc")
     private List<Comment> comments;
 

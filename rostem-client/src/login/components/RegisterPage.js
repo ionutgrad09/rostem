@@ -13,6 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import HomeHeader from "../../commons/components/HomeHeader";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   boxRoot: {
@@ -48,12 +49,14 @@ class RegisterPage extends React.Component {
       password: "",
       confirmPassword: "",
       username: "",
-      bio: ""
+      bio: "",
+      showCircularBar: false,
+      showError: false
     };
   }
 
   onEmailChange(e) {
-    this.setState({ email: e.target.value });
+    this.setState({ showError: false, email: e.target.value });
     this.clearValidationError("email");
   }
 
@@ -95,10 +98,13 @@ class RegisterPage extends React.Component {
   }
 
   success() {
-    this.setState({ open: true });
+    this.setState({ showCircularBar: false, open: true });
   }
 
   register(email, username, password, bio) {
+    this.setState({
+      showCircularBar: true
+    });
     const transport = axios.create({
       withCredentials: true
     });
@@ -111,6 +117,9 @@ class RegisterPage extends React.Component {
       })
       .then(res => {
         this.success();
+      })
+      .catch(error => {
+        this.setState({ showError: true, showCircularBar: false });
       });
   }
 
@@ -241,6 +250,11 @@ class RegisterPage extends React.Component {
                 onChange={this.onEmailChange.bind(this)}
                 placeholder={emailError ? emailError : ""}
                 error={emailError ? true : false}
+                helperText={
+                  this.state.showError && (
+                    <p style={{ color: "red" }}>Email already in use!</p>
+                  )
+                }
               />
 
               <TextField
@@ -286,7 +300,9 @@ class RegisterPage extends React.Component {
                 className={classes.textField}
                 margin="normal"
               />
-
+              {this.state.showError && (
+                <Typography variant="h6">Error </Typography>
+              )}
               <div className={classes.actionButtons}>
                 <Button
                   type="submit"
@@ -301,6 +317,14 @@ class RegisterPage extends React.Component {
               <Link color="secondary" href="/login" variant="body2">
                 Already got an account? Log In.
               </Link>
+              <br />
+              <br />
+              {this.state.showCircularBar && (
+                <CircularProgress
+                  className={classes.progress}
+                  color="secondary"
+                />
+              )}
             </div>
           </Box>
         </center>

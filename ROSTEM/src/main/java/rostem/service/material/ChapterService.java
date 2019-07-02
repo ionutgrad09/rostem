@@ -71,6 +71,17 @@ public class ChapterService<T extends Serializable> {
     }
 
     @Transactional
+    public ResponseChapter getChapterById(Long id) {
+        logger.info("[CHAPTER] Get chapter by id");
+
+        if (!findChapterById(id)) {
+            throw new RostemException(CHAPTER_NOT_FOUND);
+        } else {
+            return map(chapterRepository.findChapterById(id));
+        }
+    }
+
+    @Transactional
     public List<ResponseChapter> getLikedChapters(String email) {
         logger.info("[CHAPTER] Get all liked chapters by user: " + email);
 
@@ -212,6 +223,7 @@ public class ChapterService<T extends Serializable> {
                 throw new RostemException(CHAPTER_NOT_FOUND);
             } else {
                 Chapter chapter = chapterRepository.findChapterById(id);
+                chapter.getComments().forEach(comment -> this.deleteComment(comment.getId()));
                 deleteFromUserTodoAndDone(chapter);
                 chapterRepository.deleteById(id);
             }
@@ -235,6 +247,8 @@ public class ChapterService<T extends Serializable> {
 
         if (!findChapterById(id)) {
             throw new RostemException(CHAPTER_NOT_FOUND);
+        } else if (!findTutorialById(requestChapter.getTutorialId())) {
+            throw new RostemException(TUTORIAL_NOT_FOUND);
         } else {
             Chapter chapter = map(requestChapter);
             chapter.setId(id);
@@ -262,10 +276,8 @@ public class ChapterService<T extends Serializable> {
 
     private void addCategoryName(List<ResponseChapter> responseChapters) {
         try {
-            responseChapters.forEach(chapter -> {
-                chapter.setCategoryName(
-                        tutorialRepository.findTutorialByName(chapter.getTutorialName()).getCategory().getName());
-            });
+            responseChapters.forEach(chapter -> chapter.setCategoryName(
+                    tutorialRepository.findTutorialByName(chapter.getTutorialName()).getCategory().getName()));
         } catch (Exception e) {
             throw new RostemException(TUTORIAL_NOT_FOUND);
         }
@@ -462,6 +474,13 @@ public class ChapterService<T extends Serializable> {
         }
     }
 
+    @Transactional
+    public void deleteComment(Long id) {
+        if (findCommentById(id)) {
+            commentRepository.deleteById(id);
+        }
+    }
+
     private boolean findUserByEmail(String email) {
         return rostemUserRepository.findByEmail(email) != null;
     }
@@ -476,5 +495,9 @@ public class ChapterService<T extends Serializable> {
 
     private boolean findChapterByName(String name) {
         return chapterRepository.findChapterByName(name) != null;
+    }
+
+    private boolean findCommentById(Long id) {
+        return commentRepository.findCommentById(id) != null;
     }
 }

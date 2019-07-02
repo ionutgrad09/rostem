@@ -145,7 +145,7 @@ class CategoriesTable extends React.Component {
             onAdd={this.handleAddCategory.bind(this)}
             onDelete={this.handleDeleteCategories.bind(this)}
             tableName="Categories"
-            numSelected={selected.length}
+            itemsSelected={selected}
           />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} aria-labelledby="tableTitle">

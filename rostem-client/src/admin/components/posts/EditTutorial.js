@@ -6,14 +6,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as rostemConstants from "../../../constants/constants";
-import axios from "axios";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import { withStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   root: {
@@ -23,7 +20,7 @@ const styles = theme => ({
   }
 });
 
-class AddTutorial extends React.Component {
+class EditTutorial extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,11 +28,11 @@ class AddTutorial extends React.Component {
       emptyNameError: false,
       emptyCategoryError: false,
       open: false,
-      errors: [],
       name: "",
       description: "",
+      id: null,
       categories: [],
-      category: ""
+      category: null
     };
   }
 
@@ -55,29 +52,17 @@ class AddTutorial extends React.Component {
     this.setState({ category: e.target.value, emptyCategoryError: false });
   }
 
-  async getAllCategories() {
-    await axios.get(rostemConstants.BASE_URL + "/categories").then(result => {
-      let res = result.data;
-      if (res.status === "false") {
-        console.log("Error getting categories");
-      } else {
-        this.setState({ categories: res.object.objects });
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getAllCategories();
-  }
-
-  addTutorial() {
-    const { name, description, category } = this.state;
-    axios
-      .post(rostemConstants.BASE_URL + "/admin/createTutorial", {
-        name: name,
-        description: description,
-        categoryId: category
-      })
+  updateTutorial() {
+    const { category, name, description } = this.state;
+    rostemConstants.axiosRequest
+      .put(
+        rostemConstants.BASE_URL + "/admin/updateTutorial/" + this.state.id,
+        {
+          name: name,
+          description: description,
+          categoryId: category
+        }
+      )
       .then(response => {
         if (response.status === false) {
         } else {
@@ -86,22 +71,61 @@ class AddTutorial extends React.Component {
         }
       })
       .catch(error => {
-        this.setState({ showUniqueNameError: true });
+        this.setState({
+          showUniqueNameError: true
+        });
       });
   }
 
+  async getTutorialDetails() {
+    rostemConstants.axiosRequest
+      .get(
+        rostemConstants.BASE_URL + "/tutorials/details/" + this.props.tutorialId
+      )
+      .then(response => {
+        if (response.status === false) {
+        } else {
+          this.setState({
+            name: response.data.object.name,
+            description: response.data.object.description,
+            id: response.data.object.id
+          });
+          console.log(this.state);
+        }
+      });
+  }
+
+  async getAllCategories() {
+    await rostemConstants.axiosRequest
+      .get(rostemConstants.BASE_URL + "/categories")
+      .then(result => {
+        let res = result.data;
+        if (res.status === "false") {
+          console.log("Error getting categories");
+        } else {
+          this.setState({ categories: res.object.objects });
+        }
+      });
+  }
+
+  componentDidMount() {
+    this.getAllCategories();
+    this.getTutorialDetails();
+  }
+
   submitTutorial(e) {
-    let shouldAdd = true;
+    var shouldUpdate = true;
     if (this.state.name === "") {
+      shouldUpdate = false;
       this.setState({ emptyNameError: true });
-      shouldAdd = false;
     }
-    if (this.state.category === "") {
+    if (this.state.category === null) {
+      shouldUpdate = false;
       this.setState({ emptyCategoryError: true });
-      shouldAdd = false;
     }
-    if (shouldAdd === true) {
-      this.addTutorial();
+
+    if (shouldUpdate === true) {
+      this.updateTutorial();
     }
   }
 
@@ -109,9 +133,8 @@ class AddTutorial extends React.Component {
     this.setState({
       open: false,
       emptyNameError: false,
-      emptyCategoryError: false,
       showUniqueNameError: false,
-      errors: []
+      emptyCategoryError: false
     });
   };
 
@@ -120,35 +143,30 @@ class AddTutorial extends React.Component {
   };
 
   render() {
-    const { categories } = this.state;
     const { classes } = this.props;
     return (
       <div>
-        <Fab
-          size="small"
-          color="secondary"
-          aria-label="Add"
-          onClick={this.handleOpen}
-        >
-          <AddIcon />
-        </Fab>
+        <Button variant="contained" color="secondary" onClick={this.handleOpen}>
+          EDIT
+        </Button>
         <Dialog open={this.state.open} onClose={this.handleClose}>
-          <DialogTitle variant="h2">New tutorial</DialogTitle>
+          <DialogTitle variant="h2">Edit tutorial</DialogTitle>
           <DialogContent>
             <div className={classes.root}>
               <TextField
                 id="custom-css-standard-input"
                 label="Tutorial name"
                 type="text"
+                value={this.state.name}
                 fullWidth
                 required
-                onChange={this.onNameChange.bind(this)}
                 error={this.state.emptyNameError ? true : false}
                 placeholder={
                   this.state.emptyNameError
                     ? "Tutorial name can't be blank"
                     : ""
                 }
+                onChange={this.onNameChange.bind(this)}
               />
 
               {this.state.showUniqueNameError && (
@@ -163,16 +181,21 @@ class AddTutorial extends React.Component {
                 label="Description"
                 type="text"
                 margin="normal"
+                multiline
+                rowsMax="4"
+                value={this.state.description}
                 fullWidth
                 onChange={this.onDescriptionChange.bind(this)}
               />
+              <br />
+
               <FormControl fullWidth>
                 <InputLabel>Category</InputLabel>
                 <Select
                   value={this.state.category}
                   onChange={this.onCategoryChange.bind(this)}
                 >
-                  {categories.map(c => (
+                  {this.state.categories.map(c => (
                     <MenuItem value={c.id}>{c.name}</MenuItem>
                   ))}
                 </Select>
@@ -193,7 +216,7 @@ class AddTutorial extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.submitTutorial.bind(this)} color="secondary">
-              Add
+              Save
             </Button>
           </DialogActions>
         </Dialog>
@@ -202,4 +225,4 @@ class AddTutorial extends React.Component {
   }
 }
 
-export default withStyles(styles)(AddTutorial);
+export default withStyles(styles)(EditTutorial);

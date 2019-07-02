@@ -152,7 +152,7 @@ class TutorialsTable extends React.Component {
             onAdd={this.handleAddTutorial.bind(this)}
             onDelete={this.handleDeleteTutorials.bind(this)}
             tableName="Tutorials"
-            numSelected={selected.length}
+            itemsSelected={selected}
           />
           <div className={classes.tableWrapper}>
             <Table className={classes.table} aria-labelledby="tableTitle">

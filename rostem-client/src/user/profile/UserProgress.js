@@ -40,7 +40,7 @@ class UserProgress extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1,
+      value: null,
       categories: [],
       tutorials: []
     };
@@ -91,7 +91,7 @@ class UserProgress extends React.Component {
             >
               {this.state.categories.map(category => (
                 <FormControlLabel
-                  value={category.id}
+                  value={category.name}
                   control={<Radio />}
                   label={category.name}
                   labelPlacement="end"
@@ -102,7 +102,7 @@ class UserProgress extends React.Component {
           <div>
             <TutorialProgress
               userEmail={this.props.userEmail}
-              categoryId={this.state.value}
+              categoryName={this.state.value}
             />
           </div>
         </Box>

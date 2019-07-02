@@ -27,7 +27,7 @@ public class Tutorial extends Material {
     @JoinColumn(name = "CATEGORY_ID", nullable = false)
     private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutorial", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutorial")
     private List<Chapter> chapters;
 
     @Override
