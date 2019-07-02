@@ -93,6 +93,7 @@ class SuggestionsPosts extends React.Component {
                       }
                     />
                     <ChapterWrapper
+                      userEmail={this.props.userEmail}
                       chapter={chapter}
                       updatePosts={this.getRecentChapters.bind(this)}
                     />
@@ -103,8 +104,7 @@ class SuggestionsPosts extends React.Component {
               <div className={classes.emptyMessage}>
                 <center>
                   <Typography variant="h5">
-                    Mark at least one category as favorite <br /> to get free
-                    suggestions...
+                    No suggestions for you right now..
                   </Typography>
                 </center>
               </div>

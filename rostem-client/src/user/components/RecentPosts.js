@@ -92,6 +92,7 @@ class RecentPosts extends React.Component {
                       }
                     />
                     <ChapterWrapper
+                      userEmail={this.props.userEmail}
                       chapter={chapter}
                       updatePosts={this.getRecentChapters.bind(this)}
                     />

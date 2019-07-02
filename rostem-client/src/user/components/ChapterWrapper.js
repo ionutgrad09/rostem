@@ -54,7 +54,10 @@ class RecentPosts extends React.Component {
           maxHeight={"md"}
         >
           <DialogContent>
-            <ChapterView chapter={this.props.chapter} />
+            <ChapterView
+              userEmail={this.props.userEmail}
+              chapter={this.props.chapter}
+            />
           </DialogContent>
         </Dialog>
       </div>

@@ -19,6 +19,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
 import WorkIcon from "@material-ui/icons/Work";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
   root: {
@@ -140,7 +141,13 @@ class SimpleTutorial extends React.Component {
                 );
               })
             ) : (
-              <div>No chapters for this tutorial!</div>
+              <div>
+                <center>
+                  <Typography variant="h6">
+                    No chapters added yet for this tutorial...
+                  </Typography>
+                </center>
+              </div>
             )}
           </List>
         </Collapse>

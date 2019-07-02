@@ -87,4 +87,16 @@ public class RegisterService {
         }
         return INVALID_ACCOUNT_KEY;
     }
+
+    public void testAddUser(RostemUser rostemUser) {
+        if(rostemUserRepository.findByEmail(rostemUser.getEmail()) == null) {
+            rostemUserRepository.save(rostemUser);
+        }
+    }
+
+    public void testAddAdmin(RostemAdmin rostemAdmin) {
+        if(adminUserRepository.findByEmail(rostemAdmin.getEmail()) == null) {
+            adminUserRepository.save(rostemAdmin);
+        }
+    }
 }

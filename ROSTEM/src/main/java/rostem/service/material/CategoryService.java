@@ -37,6 +37,7 @@ public class CategoryService {
         this.rostemUserRepository = rostemUserRepository;
     }
 
+    @Transactional
     public ResponseCategory getCategoryById(Long id) {
         logger.info("[CATEGORY] Searching for category: " + id);
 
@@ -47,6 +48,7 @@ public class CategoryService {
         }
     }
 
+    @Transactional
     public List<ResponseCategory> getAllCategories(String email) {
         logger.info("[CATEGORY] Get all categories");
         List<ResponseCategory> responseCategories = categoryRepository.findAll()
@@ -58,6 +60,7 @@ public class CategoryService {
         return responseCategories;
     }
 
+    @Transactional
     public List<ResponseCategory> getAllCategoriesForAdmin() {
         logger.info("[CATEGORY] Get all categories");
         return categoryRepository.findAll()

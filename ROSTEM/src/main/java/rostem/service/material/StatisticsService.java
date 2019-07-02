@@ -144,7 +144,7 @@ public class StatisticsService {
                 List<ResponseTutorialProgress> responseTutorialProgresses = this
                         .getTutorialProgress(email, category.getId());
                 for (ResponseTutorialProgress responseTutorialProgress : responseTutorialProgresses) {
-                    if (responseTutorialProgress.getPercentage() < 20) {
+                    if (responseTutorialProgress.getPercentage() < 60) {
                         tutorials.add(tutorialRepository.findTutorialByName(responseTutorialProgress.getName()));
                     }
                 }

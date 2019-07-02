@@ -66,7 +66,6 @@ class UserProgress extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({
       value: event.target.value
     });
@@ -86,8 +85,6 @@ class UserProgress extends React.Component {
             <br />
 
             <RadioGroup
-              aria-label="position"
-              name="position"
               onChange={this.handleChange.bind(this)}
               value={this.state.value}
               className={classes.group}

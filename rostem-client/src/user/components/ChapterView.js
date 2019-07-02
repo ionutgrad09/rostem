@@ -20,7 +20,7 @@ import ReactHtmlParser, {
 
 const styles = theme => ({
   boxRoot: {
-    width: 1000,
+    maxWidth: 870,
     minWidth: 300,
     height: "auto"
   },
@@ -35,19 +35,11 @@ const styles = theme => ({
     alignItems: "flex-start"
   },
   content: {
-    width: 900,
+    maxWidth: 850,
+    minWidth: 280,
     wordWrap: "break-all"
   }
 });
-
-const isValidUrl = string => {
-  try {
-    new URL(string);
-    return true;
-  } catch (_) {
-    return false;
-  }
-};
 
 class ChapterView extends React.Component {
   constructor(props) {

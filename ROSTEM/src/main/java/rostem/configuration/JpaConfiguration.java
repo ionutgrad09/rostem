@@ -24,8 +24,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableCaching
 public class JpaConfiguration {
-    // Should we use Mysql( == false) or Postgres (== true)
-    private Boolean isProduction = false;
+
+    private Boolean isProduction = null;
 
     @Value("${db.jdbcUrl}")
     private String jdbcUrl;
@@ -73,18 +73,17 @@ public class JpaConfiguration {
     public EntityManagerFactory entityManagerFactory() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 
-//        // Checks if we're running on Heroku so that we can change the db to Postgres
-//        if(isProduction == null) {
-//            isProduction = System.getenv("IS_PRODUCTION") != null
-//                    && System.getenv("IS_PRODUCTION").equals("TRUE");
-//        }
-//
-//        if(isProduction) {
-//            vendorAdapter.setDatabase(Database.POSTGRESQL);
-//        }
-//        else{
-//            vendorAdapter.setDatabase(Database.MYSQL);
-//        }
+        if(isProduction == null) {
+            isProduction = System.getenv("IS_PRODUCTION") != null
+                    && System.getenv("IS_PRODUCTION").equals("TRUE");
+        }
+
+        if(isProduction) {
+            vendorAdapter.setDatabase(Database.POSTGRESQL);
+        }
+        else{
+            vendorAdapter.setDatabase(Database.MYSQL);
+        }
 
         vendorAdapter.setDatabase(Database.POSTGRESQL);
         vendorAdapter.setGenerateDdl(generateDDL);

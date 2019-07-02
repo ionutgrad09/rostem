@@ -1,30 +1,18 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import MenuAppBar from "../../commons/components/MenuHeader";
-import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import { withRouter } from "react-router-dom";
 import * as constants from "../../constants/constants.js";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import EmptyChapterView from "./EmptyChapterView";
 import ChapterView from "./ChapterView";
-import PriorityHighRounded from "@material-ui/icons/PriorityHighRounded";
-import Tooltip from "@material-ui/core/Tooltip";
-import CheckBoxRounded from "@material-ui/icons/CheckBoxRounded";
 import SimpleTutorial from "./SimpleTutorial";
 
 const styles = theme => ({
@@ -177,17 +165,29 @@ class TutorialsView extends React.Component {
             </Paper>
             <div className={classes.tutorials}>
               <Grid item>
-                <div>
-                  <List dense={false} disablePadding>
-                    {this.state.shownTutorials.map(tutorial => (
-                      <SimpleTutorial
-                        userEmail={this.state.userEmail}
-                        tutorial={tutorial}
-                        clickChapter={this.handleChapterClick.bind(this)}
-                      />
-                    ))}
-                  </List>
-                </div>
+                {this.state.shownTutorials.length > 0 ? (
+                  <div>
+                    <List dense={false} disablePadding>
+                      {this.state.shownTutorials.map(tutorial => (
+                        <SimpleTutorial
+                          userEmail={this.state.userEmail}
+                          tutorial={tutorial}
+                          clickChapter={this.handleChapterClick.bind(this)}
+                        />
+                      ))}
+                    </List>
+                  </div>
+                ) : (
+                  <Paper square>
+                    <center>
+                      <br />
+                      <br />
+                      <Typography variant="h5">No tutorials yet..</Typography>
+                      <br />
+                      <br />
+                    </center>
+                  </Paper>
+                )}
               </Grid>
             </div>
           </div>

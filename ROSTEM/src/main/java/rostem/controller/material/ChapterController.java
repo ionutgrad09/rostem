@@ -55,7 +55,7 @@ public class ChapterController {
             @RequestBody @Validated RequestActionChapter requestActionChapter) {
         try {
             List<ResponseChapter> chapters = chapterService.getChaptersForTutorial(requestActionChapter);
-            return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
+                return ResponseBuilder.encode(HttpStatus.OK, chapters, 0, chapters.size(), chapters.size());
         } catch (RostemException e) {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
