@@ -2,6 +2,7 @@ package rostem.model.entities;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +50,7 @@ public class Chapter extends Material {
     @ManyToMany(mappedBy = "likedChapters")
     private List<RostemUser> userLikes;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy(value = "creationDate asc")
     private List<Comment> comments;
 

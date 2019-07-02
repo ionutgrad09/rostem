@@ -46,7 +46,7 @@ class UsersTable extends React.Component {
     selected: [],
     data: [],
     page: 0,
-    rowsPerPage: 5
+    rowsPerPage: 8
   };
 
   async getAllUsers() {

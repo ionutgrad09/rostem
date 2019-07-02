@@ -224,6 +224,7 @@ public class ChapterService<T extends Serializable> {
         for (RostemUser rostemUser : rostemUsers) {
             rostemUser.getDoneChapters().remove(chapter);
             rostemUser.getTodoChapters().remove(chapter);
+            rostemUser.getLikedChapters().remove(chapter);
             rostemUserRepository.save(rostemUser);
         }
     }

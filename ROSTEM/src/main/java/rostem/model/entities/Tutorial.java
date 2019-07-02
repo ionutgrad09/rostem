@@ -1,6 +1,7 @@
 package rostem.model.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -24,10 +25,9 @@ public class Tutorial extends Material {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CATEGORY_ID", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutorial")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutorial", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Chapter> chapters;
 
     @Override

@@ -24,6 +24,7 @@ import rostem.model.dto.request.BatchDeleteTutorials;
 import rostem.model.dto.request.BatchDeleteUsers;
 import rostem.model.dto.request.RequestCategory;
 import rostem.model.dto.request.RequestChapter;
+import rostem.model.dto.request.RequestRostemUser;
 import rostem.model.dto.request.RequestTutorial;
 import rostem.model.dto.response.ResponseChapter;
 import rostem.model.dto.response.ResponseRostemUser;
@@ -92,6 +93,23 @@ public class AdminController {
             return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
+    @ApiOperation(value = "Update user by email",
+            response = Response.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "The user was updated."),
+            @ApiResponse(code = 400, message = "The user does not exist.")
+    })
+    @PutMapping(path = "/users")
+    public ResponseEntity<Response> updateUser(@RequestBody RequestRostemUser requestRostemUser) {
+        try {
+            rostemUserService.updateUser(requestRostemUser);
+            return ResponseBuilder.encode(HttpStatus.OK);
+        } catch (RostemException e) {
+            return ResponseBuilder.encode(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
 
     @ApiOperation(value = "Create a new category",
             response = Response.class)

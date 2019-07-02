@@ -51,6 +51,7 @@ class RecentPosts extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
           maxWidth={"md"}
+          scroll="paper"
           maxHeight={"md"}
         >
           <DialogContent>

@@ -1,6 +1,7 @@
 package rostem.model.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -16,7 +17,7 @@ import rostem.model.users.RostemUser;
 @Table(name = "CATEGORIES")
 public class Category extends Material {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tutorial> tutorials;
 
     @ManyToMany(mappedBy = "favoriteCategories")

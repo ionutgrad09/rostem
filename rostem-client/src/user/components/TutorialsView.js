@@ -14,6 +14,7 @@ import Box from "@material-ui/core/Box";
 import EmptyChapterView from "./EmptyChapterView";
 import ChapterView from "./ChapterView";
 import SimpleTutorial from "./SimpleTutorial";
+import { Divider } from "@material-ui/core";
 
 const styles = theme => ({
   box: {
@@ -156,11 +157,14 @@ class TutorialsView extends React.Component {
                 onChange={this.onSearchChange.bind(this)}
               />
             </Paper>
+
             <Paper square className={classes.categoryTitle} elevation={1}>
               <center>
+                <br />
                 <Typography variant="h4">
                   {this.props.match.params.categoryName}
                 </Typography>
+                <br />
               </center>
             </Paper>
             <div className={classes.tutorials}>

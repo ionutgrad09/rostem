@@ -20,9 +20,10 @@ import ReactHtmlParser, {
 
 const styles = theme => ({
   boxRoot: {
-    maxWidth: 870,
+    width: 1000,
     minWidth: 300,
-    height: "auto"
+    height: "auto",
+    marginTop: 25
   },
   root: {
     padding: 25
@@ -35,7 +36,7 @@ const styles = theme => ({
     alignItems: "flex-start"
   },
   content: {
-    maxWidth: 850,
+    width: 960,
     minWidth: 280,
     wordWrap: "break-all"
   }
