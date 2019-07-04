@@ -34,6 +34,7 @@ public class UtilController {
     private long category1;
     private long tutorial1;
     private long tutorial2;
+    private long tutorial3;
 
     @Autowired
     public UtilController(TutorialService tutorialService, CategoryService categoryService,
@@ -65,6 +66,7 @@ public class UtilController {
 
         requestCategory.setName("Web development");
         requestCategory.setDescription("Learn JS, React and Angular");
+        categoryService.createCategory(requestCategory);
 
         requestCategory.setName("Spring Framework");
         requestCategory.setDescription("Learn everything about Spring Framework.");
@@ -74,8 +76,12 @@ public class UtilController {
         requestCategory.setDescription(".NET Framework at its best.");
         categoryService.createCategory(requestCategory);
 
-        requestCategory.setName("Science & engineering");
-        requestCategory.setDescription("All you need to know about science & engineering.");
+        requestCategory.setName("Science");
+        requestCategory.setDescription("All you need to know about science.");
+        categoryService.createCategory(requestCategory);
+
+        requestCategory.setName("Engineering");
+        requestCategory.setDescription("All you need to know about engineering.");
         categoryService.createCategory(requestCategory);
 
     }
@@ -98,7 +104,7 @@ public class UtilController {
 
         requestTutorial.setName("Algebra2");
         requestTutorial.setDescription("All you need to know about Algebra2");
-        tutorialService.createTutorial(requestTutorial);
+        tutorial3 = tutorialService.createTutorial(requestTutorial).getId();
 
         requestTutorial.setName("Geometry");
         requestTutorial.setDescription("All you need to know about Geometry");
@@ -165,40 +171,41 @@ public class UtilController {
                         + "<p>\uD83D\uDE00\uD83D\uDE01\uD83D\uDE0C\uD83D\uDE3A\uD83D\uDC7B\uD83D\uDE07\uD83D\uDE37</p>\n");
         chapterService.createChapter(requestChapter);
 
-//        requestChapter.setName("Factors and multiples");
-//        requestChapter.setContent("Learn about factors and multiples and how they relate to each other.");
-//        chapterService.createChapter(requestChapter);
-//
-//        requestChapter.setName("Fractions");
-//        requestChapter.setContent(
-//                "A fraction (from Latin fractus, \"broken\") represents a part of a whole or, more generally,"
-//                        + " any number of equal parts. When spoken in everyday English.");
-//        chapterService.createChapter(requestChapter);
-//
-//        requestChapter.setName("Decimals");
-//        requestChapter.setContent(
-//                "The decimal numeral system (also called base-ten positional numeral system, and occasionally"
-//                        + " called denary) is the standard system for denoting integer and non-integer numbers.");
-//        chapterService.createChapter(requestChapter);
-//
-//        requestChapter.setTutorialId(tutorial2);
-//
-//        requestChapter.setName("Trigonometry with right triangles");
-//        requestChapter.setContent("Learn about trigonometry with right triangles.");
-//        chapterService.createChapter(requestChapter);
-//
-//        requestChapter.setName("Trigonometric equations and identities");
-//        requestChapter.setContent("Trigonometric equations and identities.");
-//        chapterService.createChapter(requestChapter);
+        requestChapter.setTutorialId(tutorial3);
+        requestChapter.setName("Factors and multiples2");
+        requestChapter.setContent("Learn about factors and multiples and how they relate to each other.");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Fractions2");
+        requestChapter.setContent(
+                "A fraction (from Latin fractus, \"broken\") represents a part of a whole or, more generally,"
+                        + " any number of equal parts. When spoken in everyday English.");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Decimals2");
+        requestChapter.setContent(
+                "The decimal numeral system (also called base-ten positional numeral system, and occasionally"
+                        + " called denary) is the standard system for denoting integer and non-integer numbers.");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setTutorialId(tutorial2);
+
+        requestChapter.setName("Trigonometry with right triangles2");
+        requestChapter.setContent("Learn about trigonometry with right triangles.");
+        chapterService.createChapter(requestChapter);
+
+        requestChapter.setName("Trigonometric equations and identities2");
+        requestChapter.setContent("Trigonometric equations and identities.");
+        chapterService.createChapter(requestChapter);
     }
 
     private void addUsers() {
-        RostemUser rostemUser1 = new RostemUser("ionut1@i.i",
+        RostemUser rostemUser1 = new RostemUser("ionut1@gmail.com",
                 "$2a$10$xqlzlMI5bBS/i75sjB9bIu1RJ8otRYm3mASRqOgjBJumflJHiicAi", "ionut1", "bio1");
-        RostemUser rostemUser2 = new RostemUser("ionut2@i.i",
+        RostemUser rostemUser2 = new RostemUser("ionut2@gmail.com",
                 "$2a$10$xqlzlMI5bBS/i75sjB9bIu1RJ8otRYm3mASRqOgjBJumflJHiicAi", "ionut2", "bio2");
 
-        RostemAdmin admin1 = new RostemAdmin("admin@i.i",
+        RostemAdmin admin1 = new RostemAdmin("admin@gmail.com",
                 "$2a$10$xqlzlMI5bBS/i75sjB9bIu1RJ8otRYm3mASRqOgjBJumflJHiicAi");
 
         this.registerService.testAddAdmin(admin1);

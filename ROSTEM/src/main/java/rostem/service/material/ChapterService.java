@@ -305,10 +305,12 @@ public class ChapterService<T extends Serializable> {
         Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
 
-        chapter.getTodoUserList().add(rostemUser);
-        rostemUser.getTodoChapters().add(chapter);
-        chapterRepository.save(chapter);
-        rostemUserRepository.save(rostemUser);
+        if (!rostemUser.getTodoChapters().contains(chapter)) {
+            chapter.getTodoUserList().add(rostemUser);
+            rostemUser.getTodoChapters().add(chapter);
+            chapterRepository.save(chapter);
+            rostemUserRepository.save(rostemUser);
+        }
     }
 
     @Transactional
@@ -319,10 +321,12 @@ public class ChapterService<T extends Serializable> {
         Chapter chapter = chapterRepository.findChapterById(id);
         RostemUser rostemUser = rostemUserRepository.findByEmail(email);
 
-        chapter.getDoneUserList().add(rostemUser);
-        rostemUser.getDoneChapters().add(chapter);
-        chapterRepository.save(chapter);
-        rostemUserRepository.save(rostemUser);
+        if (!rostemUser.getDoneChapters().contains(chapter)) {
+            chapter.getDoneUserList().add(rostemUser);
+            rostemUser.getDoneChapters().add(chapter);
+            chapterRepository.save(chapter);
+            rostemUserRepository.save(rostemUser);
+        }
     }
 
     private void checkForUserAndChapter(String email, Long id) {

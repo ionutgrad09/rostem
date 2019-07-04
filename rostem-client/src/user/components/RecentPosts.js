@@ -60,7 +60,7 @@ class RecentPosts extends React.Component {
     return (
       <Box bgcolor="primary.main" className={classes.root}>
         <center>
-          <Typography variant="h6">Recent Posts</Typography>
+          <Typography variant="h6">Recent added chapters</Typography>
         </center>
         <Divider />
         <div>

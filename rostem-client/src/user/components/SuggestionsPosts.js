@@ -15,7 +15,7 @@ const styles = theme => ({
   root: {
     marginTop: 25,
     width: 500,
-    height: 350,
+    height: 320,
     overflow: "auto"
   },
   title: {

@@ -15,6 +15,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   boxRoot: {
@@ -60,7 +61,8 @@ class UserAccount extends React.Component {
       photo: null,
       creationDate: null,
       badges: [],
-      tabValue: 0
+      tabValue: 0,
+      showCircularBar: false
     };
   }
 
@@ -109,7 +111,7 @@ class UserAccount extends React.Component {
             email: res.object.email,
             username: res.object.username,
             bio: res.object.bio,
-            photo: res.object.photo,
+            showCircularBar: false,
             creationDate: res.object.registrationDate.substr(
               0,
               res.object.registrationDate.indexOf(".")
@@ -125,8 +127,7 @@ class UserAccount extends React.Component {
   }
 
   async updateDetails() {
-    const email = this.props.userEmail;
-    const data = new FormData();
+    this.setState({ showCircularBar: true });
     await constants.axiosRequest
       .put(constants.BASE_URL + "/users/update", {
         email: this.state.email,
@@ -248,6 +249,12 @@ class UserAccount extends React.Component {
                       Save changes
                     </Button>
                   </div>
+                  {this.state.showCircularBar && (
+                    <CircularProgress
+                      className={classes.progress}
+                      color="secondary"
+                    />
+                  )}
                 </div>
               )}{" "}
               {this.state.tabValue === 1 && (

@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import MenuOutlined from "@material-ui/icons/MenuOutlined";
 import * as constants from "../../constants/constants";
 
@@ -61,6 +61,10 @@ class MenuAppBar extends React.Component {
     this.props.history.push("/categories");
   };
 
+  handleSwagger = () => {
+    this.props.history.push("/swagger");
+  };
+
   render() {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
@@ -112,6 +116,16 @@ class MenuAppBar extends React.Component {
                   {this.props.username !== "ADMINISTRATOR" && (
                     <MenuItem onClick={this.handleProfile.bind(this)}>
                       Profile
+                    </MenuItem>
+                  )}
+                  {this.props.username === "ADMINISTRATOR" && (
+                    <MenuItem>
+                      <a
+                        target="_blank"
+                        href={constants.BASE_URL + "/swagger-ui.html"}
+                      >
+                        API Doc
+                      </a>
                     </MenuItem>
                   )}
                   <MenuItem onClick={this.handleLogout.bind(this)}>

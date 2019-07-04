@@ -27,7 +27,7 @@ import rostem.service.authentication.AuthenticationService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true)
 @ComponentScan("rostem")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -91,9 +91,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/swagger-ui.html").permitAll()
+                    .antMatchers("/swagger-ui.html").hasAuthority("ROLE_ADMIN")
                     .antMatchers("/login").permitAll()
-                    //.antMatchers("/admin/*").hasAuthority("ROLE_ADMIN")
                     .antMatchers("/").authenticated()
                 .and()
                     .formLogin()

@@ -1,0 +1,3 @@
+2019-07-03 14:11:35,968 INFO org.springframework.boot.StartupInfoLogger [main] Starting CategoryServiceTests on ROgradi04 with PID 22376 (started by gradi in C:\ubb\licenta\rostem\ROSTEM)
+2019-07-03 14:11:35,971 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-07-03 14:11:35,973 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default

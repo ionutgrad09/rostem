@@ -86,7 +86,8 @@ public class StatisticsService {
         });
 
         return categories.stream().limit(STATISTICS_COUNTER)
-                .map(c -> new ResponseStatisticsCategory(getCategoryPercentage(c), c.getTutorials().size(), c.getName(), c.getUsers().size()))
+                .map(c -> new ResponseStatisticsCategory(getCategoryPercentage(c), c.getTutorials().size(), c.getName(),
+                        c.getUsers().size()))
                 .collect(
                         Collectors.toList());
     }
@@ -175,7 +176,7 @@ public class StatisticsService {
             }
         }
         Collections.shuffle(finalChapters);
-        List<ResponseChapter> responseChapters = finalChapters.stream().limit(3).map(ChapterMapper::map)
+        List<ResponseChapter> responseChapters = finalChapters.stream().limit(5).map(ChapterMapper::map)
                 .collect(Collectors.toList());
         this.addCategoryName(responseChapters);
         this.markedAsTodo(email, responseChapters);
@@ -230,7 +231,7 @@ public class StatisticsService {
             }
             responseTutorialProgress.setDoneChapters(counter);
             responseTutorialProgress.setPercentage(
-                    noChapters == 0 ? 0 : (float) (counter * 100) / noChapters);
+                    noChapters == 0 ? 0 : Float.valueOf(String.format("%.2f", (float) (counter * 100) / noChapters)));
             responseTutorialProgresses.add(responseTutorialProgress);
         }
 

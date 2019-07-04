@@ -57,6 +57,14 @@ const routing = (
         component={alreadyLoggedIn(ActivateAccountView)}
       />
       <Route exact path="/badRequest" component={Forbidden} />
+
+      <Route
+        path="/swagger"
+        component={() => {
+          window.location.href = "https://google.com";
+          return null;
+        }}
+      />
     </MuiThemeProvider>
   </Router>
 );
