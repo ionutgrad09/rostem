@@ -51,8 +51,7 @@ public class EmailService {
         msg.setSubject("ROSTEM register - noreply");
         msg.setSentDate(new Date());
         msg.setText("Dear " + u.getUsername() + ", thank you for registering to ROSTEM platform.\n" +
-                "Use this link to activate your account: " + url + u.getId() + " \n" +
-                "Activation code: " + u.getId() + " \n");
+                "Activation link: " + url + u.getId() + " \n");
         msg.setHeader("XPriority", "1");
         Transport.send(msg);
         logger.info("Mail has been sent successfully");

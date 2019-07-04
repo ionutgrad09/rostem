@@ -1,0 +1,566 @@
+2019-07-04 09:06:15,261 INFO org.springframework.boot.StartupInfoLogger [main] Starting RostemApplication on ROgradi04 with PID 24552 (C:\ubb\licenta\rostem\ROSTEM\out\production\classes started by gradi in C:\ubb\licenta\rostem\ROSTEM)
+2019-07-04 09:06:15,267 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2019-07-04 09:06:15,268 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-07-04 09:06:16,767 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-07-04 09:06:16,904 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 124ms. Found 8 repository interfaces.
+2019-07-04 09:06:17,568 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$31b50dd4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:17,575 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:17,579 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@56476c16' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:17,584 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$5689b086] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:17,589 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:17,642 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9907459a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-04 09:06:18,229 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2019-07-04 09:06:18,249 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2019-07-04 09:06:18,258 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2019-07-04 09:06:18,258 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-04 09:06:18,266 INFO org.apache.juli.logging.DirectJDKLog [main] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Zulu\zulu-8\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;C:\Program Files\dotnet\;%M2_HOME%\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;C:\Program Files\dotnet\;%M2_HOME%\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Microsoft HPC Pack 2012\Bin\;C:\Python27\;C:\Python27\Scripts;c:\program files (x86)\common files\oracle\java\javapath;c:\programdata\oracle\java\javapath;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0\;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\system32;c:\windows\sy;C:\Users\gradi.CORPDOM\AppData\Local\Microsoft\WindowsApps;C:\Users\gradi.CORPDOM\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Zulu\zulu-8;-Xms512m -Xmx1524m;%M2_PATH%\bin;C:\work\apache-maven-3.3.9\bin;C:\Users\gradi.CORPDOM\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\JetBrains\PyCharm 2018.3.2\bin;C:\MinGW\bin;C:\GnuWin32\bin;C:\Users\gradi.CORPDOM\AppData\Roaming\npm;C:\Program Files\heroku\bin;.]
+2019-07-04 09:06:18,491 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2019-07-04 09:06:18,492 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3158 ms
+2019-07-04 09:06:18,666 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-04 09:06:18,934 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-04 09:06:19,030 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-04 09:06:19,158 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.7.Final}
+2019-07-04 09:06:19,162 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-04 09:06:19,450 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-04 09:06:19,911 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2019-07-04 09:06:20,071 INFO org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl [main] HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+java.lang.reflect.InvocationTargetException: null
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl.useContextualLobCreation(LobCreatorBuilderImpl.java:113)
+	at org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl.makeLobCreatorBuilder(LobCreatorBuilderImpl.java:54)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentImpl.<init>(JdbcEnvironmentImpl.java:271)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:114)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:94)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:179)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:119)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:904)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:935)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at rostem.configuration.JpaConfiguration.entityManagerFactory(JpaConfiguration.java:96)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$209810ba.CGLIB$entityManagerFactory$2(<generated>)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$209810ba$$FastClassBySpringCGLIB$$bf9d8e39.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:363)
+	at rostem.configuration.JpaConfiguration$$EnhancerBySpringCGLIB$$209810ba.entityManagerFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:622)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:367)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:110)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:662)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:479)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:312)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:131)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1648)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1400)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:575)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1244)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:857)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:760)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1154)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1244)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:857)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:760)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1154)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:392)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:538)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:235)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:193)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:188)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:170)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:89)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:234)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:54)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5120)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1382)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1372)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:907)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:831)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1382)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1372)
+	at java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:907)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:423)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:933)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:398)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:106)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:86)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:415)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:174)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:181)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:154)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:540)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at rostem.RostemApplication.main(RostemApplication.java:12)
+Caused by: java.sql.SQLFeatureNotSupportedException: Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented.
+	at org.postgresql.Driver.notImplemented(Driver.java:688)
+	at org.postgresql.jdbc.PgConnection.createClob(PgConnection.java:1269)
+	... 149 common frames omitted
+2019-07-04 09:06:20,086 INFO org.hibernate.type.BasicTypeRegistry [main] HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@5a8d676e
+2019-07-04 09:06:21,689 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-07-04 09:06:22,531 DEBUG org.springframework.web.filter.GenericFilterBean [main] Filter 'badRequestFilter' configured for use
+2019-07-04 09:06:23,409 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-07-04 09:06:23,749 INFO springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-07-04 09:06:24,074 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1016b44e, org.springframework.security.web.context.SecurityContextPersistenceFilter@659e003e, org.springframework.security.web.header.HeaderWriterFilter@5e8a678a, org.springframework.web.filter.CorsFilter@6c6c93f8, org.springframework.security.web.authentication.logout.LogoutFilter@3da6950f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@345af277, org.springframework.security.web.session.ConcurrentSessionFilter@64245ca9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@59509393, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16e0afab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@20ad64c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38e88e13, org.springframework.security.web.session.SessionManagementFilter@4d3bde85, org.springframework.security.web.access.ExceptionTranslationFilter@35a2ea5a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6bbac73d]
+2019-07-04 09:06:24,272 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-04 09:06:24,817 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2019-07-04 09:06:24,844 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2019-07-04 09:06:24,889 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2019-07-04 09:06:25,209 INFO springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator [main] Generating unique operation named: updateUserUsingPUT_1
+2019-07-04 09:06:25,239 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2019-07-04 09:06:25,287 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-04 09:06:25,292 INFO org.springframework.boot.StartupInfoLogger [main] Started RostemApplication in 10.849 seconds (JVM running for 13.097)
+2019-07-04 09:06:31,538 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-04 09:06:31,539 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-07-04 09:06:31,551 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 12 ms
+2019-07-04 09:06:31,697 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Searching for user admin@gmail.com in databases
+2019-07-04 09:06:31,734 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-2] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-04 09:06:31,924 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Found user, all ok
+2019-07-04 09:06:32,033 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-2] [INFO] A login request was successful
+2019-07-04 09:06:39,640 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-3] [ADMIN] Get all users
+2019-07-04 09:06:39,650 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-07-04 09:06:39,651 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Get all tutorial
+2019-07-04 09:06:39,652 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Get all chapters.
+2019-07-04 09:06:39,781 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-07-04 09:06:39,783 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Get all chapters.
+2019-07-04 09:06:40,020 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:06:40,672 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-6] [ADMIN] Get all users
+2019-07-04 09:06:47,646 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 09:06:50,992 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-7] [ADMIN] Get all users
+2019-07-04 09:06:54,852 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] Trying to delete user with email: ionut1@gmail.com
+2019-07-04 09:06:54,862 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] User with email ionut1@gmail.com was deleted successfully
+2019-07-04 09:06:54,862 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] Trying to delete user with email: ionut2@gmail.com
+2019-07-04 09:06:54,892 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] User with email ionut2@gmail.com was deleted successfully
+2019-07-04 09:06:54,935 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-9] [ADMIN] Get all users
+2019-07-04 09:06:55,850 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-07-04 09:06:59,649 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 40
+2019-07-04 09:06:59,662 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 59
+2019-07-04 09:06:59,669 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 42
+2019-07-04 09:06:59,695 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 43
+2019-07-04 09:06:59,702 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 44
+2019-07-04 09:06:59,708 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 60
+2019-07-04 09:06:59,717 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 45
+2019-07-04 09:06:59,721 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 49
+2019-07-04 09:06:59,725 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 50
+2019-07-04 09:06:59,730 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 61
+2019-07-04 09:06:59,733 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 62
+2019-07-04 09:06:59,738 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 46
+2019-07-04 09:06:59,742 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 47
+2019-07-04 09:06:59,746 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to delete chapter 48
+2019-07-04 09:06:59,750 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 63
+2019-07-04 09:06:59,755 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 64
+2019-07-04 09:06:59,759 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to delete tutorial 65
+2019-07-04 09:06:59,764 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 41
+2019-07-04 09:06:59,772 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 42
+2019-07-04 09:06:59,778 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 43
+2019-07-04 09:06:59,784 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 44
+2019-07-04 09:06:59,790 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Trying to delete category 45
+2019-07-04 09:06:59,855 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:07:00,564 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-07-04 09:07:00,564 INFO rostem.service.material.TutorialService [http-nio-8080-exec-4] [TUTORIAL] Get all tutorial
+2019-07-04 09:07:01,758 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Get all chapters.
+2019-07-04 09:07:15,418 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category Math
+2019-07-04 09:07:15,499 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category Web development
+2019-07-04 09:07:15,502 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category Spring Framework
+2019-07-04 09:07:15,505 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category .NET Framework
+2019-07-04 09:07:15,509 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category Science
+2019-07-04 09:07:15,511 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Trying to add a new category Engineering
+2019-07-04 09:07:15,513 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Pre-algebra
+2019-07-04 09:07:15,527 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Trigonometry
+2019-07-04 09:07:15,532 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Algebra1
+2019-07-04 09:07:15,537 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Algebra2
+2019-07-04 09:07:15,542 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Geometry
+2019-07-04 09:07:15,546 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Statistics & Probability
+2019-07-04 09:07:15,551 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to add a new tutorial Differential equations
+2019-07-04 09:07:15,555 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Ratios
+2019-07-04 09:07:15,572 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Decimals
+2019-07-04 09:07:15,578 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Arithmetic operations
+2019-07-04 09:07:15,584 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Trigonometric identities and equalities
+2019-07-04 09:07:15,589 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Factors and multiples2
+2019-07-04 09:07:15,595 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Fractions2
+2019-07-04 09:07:15,599 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Decimals2
+2019-07-04 09:07:15,603 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Trigonometry with right triangles2
+2019-07-04 09:07:15,609 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to add a new chapter Trigonometric equations and identities2
+2019-07-04 09:12:38,737 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m19s728ms524µs829ns).
+2019-07-04 09:12:43,216 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-07-04 09:12:43,216 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Get all tutorial
+2019-07-04 09:12:59,284 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Get all chapters.
+2019-07-04 09:13:19,873 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:13:19,873 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Get all tutorial
+2019-07-04 09:13:20,942 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 09:13:21,505 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-7] [ADMIN] Get all users
+2019-07-04 09:13:32,279 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-6] [loadUserByUsername] Searching for user ionut2@gmail.com in databases
+2019-07-04 09:13:32,281 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-6] [loadUserByUsername] Found user, all ok
+2019-07-04 09:13:32,380 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-6] [INFO] A login request was successful
+2019-07-04 09:13:32,456 INFO rostem.service.material.CategoryService [http-nio-8080-exec-10] [CATEGORY] Get all categories
+2019-07-04 09:13:32,474 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:13:38,084 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:13:38,180 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:13:38,180 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:13:38,180 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:13:38,181 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:13:38,183 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:13:38,184 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:13:38,196 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:13:40,385 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:13:41,554 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:13:57,371 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [USER_CATEGORY] Trying to get favorites categories for user ionut2@gmail.com
+2019-07-04 09:13:57,371 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Get all todo chapters for user: ionut2@gmail.com
+2019-07-04 09:13:57,371 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Get all done chapters for user: ionut2@gmail.com
+2019-07-04 09:13:59,833 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-07-04 09:14:05,208 INFO rostem.service.material.MessageService [http-nio-8080-exec-3] [MESSAGE] Getting all messages sent by ionut2@gmail.com
+2019-07-04 09:14:05,208 INFO rostem.service.material.MessageService [http-nio-8080-exec-2] [MESSAGE] Getting all messages received by ionut2@gmail.com
+2019-07-04 09:14:36,685 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Searching for user ionut1@gmail.com in databases
+2019-07-04 09:14:36,687 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Found user, all ok
+2019-07-04 09:14:36,776 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-9] [INFO] A login request was successful
+2019-07-04 09:14:36,867 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-07-04 09:14:36,884 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:14:39,462 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:14:39,560 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:14:39,565 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:14:39,565 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:14:39,569 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:14:39,573 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:14:39,577 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:14:39,575 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:14:40,776 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:14:41,778 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all comments for chapter 54
+2019-07-04 09:14:43,339 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all comments for chapter 54
+2019-07-04 09:14:43,343 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [USER_CHAPTER] Trying to set a chapter as done for user ionut1@gmail.com
+2019-07-04 09:14:44,124 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all comments for chapter 58
+2019-07-04 09:14:45,465 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [USER_CHAPTER] Trying to set a chapter as done for user ionut1@gmail.com
+2019-07-04 09:14:45,466 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all comments for chapter 58
+2019-07-04 09:14:47,131 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:14:47,962 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [USER_CHAPTER] Trying to set a chapter as done for user ionut1@gmail.com
+2019-07-04 09:14:47,963 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:14:49,303 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:14:49,727 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:14:50,539 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:14:51,524 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:14:57,240 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:20:06,592 INFO rostem.service.authentication.EmailService [http-nio-8080-exec-2] Mail has been sent successfully
+2019-07-04 09:20:26,341 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-07-04 09:20:26,343 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-9] [loadUserByUsername] Found user, all ok
+2019-07-04 09:20:26,432 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-9] [INFO] A login request was successful
+2019-07-04 09:20:26,509 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-07-04 09:20:26,529 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:20:44,947 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [USER_CATEGORY] Trying to add set a category as favorite for user ionutgrad101@gmail.com
+2019-07-04 09:20:47,691 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:20:47,808 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:20:47,815 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:20:47,816 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:20:47,820 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:20:47,827 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:20:47,834 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:20:47,834 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:20:55,639 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:20:59,332 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:21:19,190 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:21:19,195 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [USER_CHAPTER] Trying to set a chapter as done for user ionutgrad101@gmail.com
+2019-07-04 09:21:21,142 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:21:21,821 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:21:33,308 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:21:36,662 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:01,951 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [USER_CATEGORY] Trying to get favorites categories for user ionutgrad101@gmail.com
+2019-07-04 09:22:01,952 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Get all done chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:22:01,954 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Get all todo chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:22:05,855 INFO rostem.service.material.TutorialService [http-nio-8080-exec-5] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:22:05,943 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:05,945 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:22:05,946 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:22:05,952 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:22:05,954 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:22:05,954 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:22:05,960 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:22:08,865 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [USER_CATEGORY] Trying to get favorites categories for user ionutgrad101@gmail.com
+2019-07-04 09:22:08,866 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Get all todo chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:22:08,866 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Get all done chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:22:15,171 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-07-04 09:22:37,951 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 09:22:37,970 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:22:38,779 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:22:38,871 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:38,874 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:22:38,874 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:22:38,874 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:22:38,876 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:22:38,878 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:22:38,885 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:22:39,593 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:40,507 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all comments for chapter 52
+2019-07-04 09:22:42,581 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all comments for chapter 52
+2019-07-04 09:22:42,583 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [USER_CHAPTER] Trying to set a chapter as done for user ionutgrad101@gmail.com
+2019-07-04 09:22:44,134 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:22:45,537 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [USER_CHAPTER] Trying to set a chapter as done for user ionutgrad101@gmail.com
+2019-07-04 09:22:45,538 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:22:46,981 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:47,406 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:22:51,961 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Get all categories
+2019-07-04 09:23:10,911 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-07-04 09:23:10,917 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:23:19,589 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:23:22,000 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:23:22,005 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:23:22,061 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:23:36,047 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:23:36,902 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all comments for chapter 59
+2019-07-04 09:23:36,961 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all comments for chapter 54
+2019-07-04 09:23:49,376 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:23:49,446 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:23:49,449 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:23:49,451 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:23:49,453 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:23:49,456 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:23:49,458 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:23:49,464 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:23:50,877 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:23:52,459 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:24:16,753 INFO rostem.service.material.MessageService [http-nio-8080-exec-10] [MESSAGE] Trying to add a new message.
+2019-07-04 09:24:42,046 INFO rostem.service.material.MessageService [http-nio-8080-exec-2] [MESSAGE] Getting all messages received by ionutgrad101@gmail.com
+2019-07-04 09:24:42,046 INFO rostem.service.material.MessageService [http-nio-8080-exec-3] [MESSAGE] Getting all messages sent by ionutgrad101@gmail.com
+2019-07-04 09:24:58,180 INFO rostem.service.material.MessageService [http-nio-8080-exec-6] [MESSAGE] Trying to add a new message.
+2019-07-04 09:24:59,829 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-07-04 09:25:00,656 INFO rostem.service.material.MessageService [http-nio-8080-exec-9] [MESSAGE] Getting all messages sent by ionutgrad101@gmail.com
+2019-07-04 09:25:00,659 INFO rostem.service.material.MessageService [http-nio-8080-exec-1] [MESSAGE] Getting all messages received by ionutgrad101@gmail.com
+2019-07-04 09:25:17,530 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Searching for user admin@gmail.com in databases
+2019-07-04 09:25:17,533 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Found user, all ok
+2019-07-04 09:25:17,624 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-2] [INFO] A login request was successful
+2019-07-04 09:25:17,756 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-7] [ADMIN] Get all users
+2019-07-04 09:25:46,365 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] Trying to delete user with email: ionut2@gmail.com
+2019-07-04 09:25:46,366 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] User with email ionut2@gmail.com was deleted successfully
+2019-07-04 09:25:46,398 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-10] [ADMIN] Get all users
+2019-07-04 09:25:47,479 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:25:48,928 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Searching for category: 49
+2019-07-04 09:25:56,142 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 09:25:56,144 INFO rostem.service.material.TutorialService [http-nio-8080-exec-6] [TUTORIAL] Get all tutorial
+2019-07-04 09:25:57,526 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-07-04 09:25:57,527 INFO rostem.service.material.TutorialService [http-nio-8080-exec-3] [TUTORIAL] Get tutorial by id
+2019-07-04 09:25:59,691 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Get all chapters.
+2019-07-04 09:26:07,288 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Get all tutorial
+2019-07-04 09:26:42,624 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to add a new chapter new chapter name
+2019-07-04 09:26:42,739 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-4] [ADMIN] Get all users
+2019-07-04 09:26:44,357 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Get all chapters.
+2019-07-04 09:26:48,135 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Get all tutorial
+2019-07-04 09:26:48,135 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Get chapter by id
+2019-07-04 09:26:52,991 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-1] [ADMIN] Get all users
+2019-07-04 09:28:00,872 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-07-04 09:28:00,873 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Found user, all ok
+2019-07-04 09:28:00,965 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-2] [INFO] A login request was successful
+2019-07-04 09:28:01,041 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:28:01,047 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:28:05,825 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 60
+2019-07-04 09:28:09,664 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all comments for chapter 60
+2019-07-04 09:28:09,668 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:28:09,721 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all comments for chapter 60
+2019-07-04 09:38:12,234 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:38:12,336 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:38:12,340 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:38:12,345 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:38:12,349 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:38:12,353 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:38:12,354 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:38:12,369 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:38:21,173 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:38:23,114 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:38:40,169 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [USER_CHAPTER] Trying to set a chapter as liked by user ionutgrad101@gmail.com
+2019-07-04 09:38:40,211 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:39:27,021 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [USER_CATEGORY] Trying to get favorites categories for user ionutgrad101@gmail.com
+2019-07-04 09:39:27,025 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Get all todo chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:39:27,025 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Get all done chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:39:32,080 INFO rostem.service.material.TutorialService [http-nio-8080-exec-8] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:39:32,180 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:39:32,184 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:39:32,186 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:39:32,188 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:39:32,190 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:39:32,192 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:39:32,198 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:39:34,533 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [USER_CATEGORY] Trying to get favorites categories for user ionutgrad101@gmail.com
+2019-07-04 09:39:34,533 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Get all todo chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:39:34,533 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Get all done chapters for user: ionutgrad101@gmail.com
+2019-07-04 09:39:40,173 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:40:20,122 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-07-04 09:40:35,034 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-07-04 09:40:35,056 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:40:57,570 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-07-04 09:40:57,633 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:41:00,089 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:41:00,090 INFO rostem.service.material.CategoryService [http-nio-8080-exec-5] [CATEGORY] Get all categories
+2019-07-04 09:41:02,076 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:41:02,077 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-07-04 09:41:03,348 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-07-04 09:41:03,380 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:41:04,610 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:41:04,613 INFO rostem.service.material.CategoryService [http-nio-8080-exec-2] [CATEGORY] Get all categories
+2019-07-04 09:41:13,602 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:41:13,702 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:41:13,704 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:41:13,709 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:41:13,713 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:41:13,716 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:41:13,716 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:41:13,721 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:41:14,317 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:41:15,488 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all comments for chapter 51
+2019-07-04 09:41:20,610 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all comments for chapter 53
+2019-07-04 09:42:06,062 INFO rostem.service.material.MessageService [http-nio-8080-exec-5] [MESSAGE] Getting all messages sent by ionutgrad101@gmail.com
+2019-07-04 09:42:06,062 INFO rostem.service.material.MessageService [http-nio-8080-exec-1] [MESSAGE] Getting all messages received by ionutgrad101@gmail.com
+2019-07-04 09:42:37,804 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Searching for user admin@gmail.com in databases
+2019-07-04 09:42:37,808 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-2] [loadUserByUsername] Found user, all ok
+2019-07-04 09:42:37,902 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-2] [INFO] A login request was successful
+2019-07-04 09:42:38,041 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-9] [ADMIN] Get all users
+2019-07-04 09:43:13,850 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 09:43:21,059 INFO rostem.service.material.CategoryService [http-nio-8080-exec-7] [CATEGORY] Get all categories
+2019-07-04 09:43:21,060 INFO rostem.service.material.TutorialService [http-nio-8080-exec-10] [TUTORIAL] Get all tutorial
+2019-07-04 09:43:23,863 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Get all chapters.
+2019-07-04 09:43:30,893 INFO rostem.service.material.TutorialService [http-nio-8080-exec-1] [TUTORIAL] Get all tutorial
+2019-07-04 09:44:15,888 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to add a new chapter add
+2019-07-04 09:44:16,046 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-4] [ADMIN] Get all users
+2019-07-04 09:44:52,906 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-6] [loadUserByUsername] Searching for user ionutgrad101@gmail.com in databases
+2019-07-04 09:44:52,908 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-6] [loadUserByUsername] Found user, all ok
+2019-07-04 09:44:53,003 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-6] [INFO] A login request was successful
+2019-07-04 09:44:53,084 INFO rostem.service.material.CategoryService [http-nio-8080-exec-3] [CATEGORY] Get all categories
+2019-07-04 09:44:53,106 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Getting latest created chapters..
+2019-07-04 09:44:54,281 INFO rostem.service.material.TutorialService [http-nio-8080-exec-2] [TUTORIAL] Trying to get all tutorials for category Math
+2019-07-04 09:44:54,368 INFO rostem.service.material.ChapterService [http-nio-8080-exec-1] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:44:54,373 INFO rostem.service.material.ChapterService [http-nio-8080-exec-8] [CHAPTER] Trying to get all chapters for tutorial 67
+2019-07-04 09:44:54,376 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all chapters for tutorial 68
+2019-07-04 09:44:54,382 INFO rostem.service.material.ChapterService [http-nio-8080-exec-4] [CHAPTER] Trying to get all chapters for tutorial 71
+2019-07-04 09:44:54,382 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Trying to get all chapters for tutorial 69
+2019-07-04 09:44:54,382 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to get all chapters for tutorial 70
+2019-07-04 09:44:54,387 INFO rostem.service.material.ChapterService [http-nio-8080-exec-7] [CHAPTER] Trying to get all chapters for tutorial 72
+2019-07-04 09:44:55,083 INFO rostem.service.material.ChapterService [http-nio-8080-exec-3] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:44:55,696 INFO rostem.service.material.ChapterService [http-nio-8080-exec-10] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:44:56,045 INFO rostem.service.material.ChapterService [http-nio-8080-exec-5] [CHAPTER] Trying to get all chapters for tutorial 66
+2019-07-04 09:44:56,982 INFO rostem.service.material.ChapterService [http-nio-8080-exec-2] [CHAPTER] Trying to get all comments for chapter 61
+2019-07-04 09:45:02,382 INFO rostem.service.material.MessageService [http-nio-8080-exec-8] [MESSAGE] Getting all messages sent by ionutgrad101@gmail.com
+2019-07-04 09:45:02,383 INFO rostem.service.material.MessageService [http-nio-8080-exec-7] [MESSAGE] Getting all messages received by ionutgrad101@gmail.com
+2019-07-04 09:45:03,046 INFO rostem.service.material.CategoryService [http-nio-8080-exec-6] [CATEGORY] Get all categories
+2019-07-04 09:45:28,717 INFO rostem.service.material.MessageService [http-nio-8080-exec-1] [MESSAGE] Getting all messages received by ionutgrad101@gmail.com
+2019-07-04 09:45:28,717 INFO rostem.service.material.MessageService [http-nio-8080-exec-2] [MESSAGE] Getting all messages sent by ionutgrad101@gmail.com
+2019-07-04 11:37:58,927 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h51m20s163ms483µs35ns).
+2019-07-04 11:50:07,675 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-8] [loadUserByUsername] Searching for user admin@gmail.com in databases
+2019-07-04 11:50:07,699 INFO rostem.service.authentication.AuthenticationService [http-nio-8080-exec-8] [loadUserByUsername] Found user, all ok
+2019-07-04 11:50:07,798 DEBUG rostem.configuration.LoginHandlers.LoginSuccessHandler [http-nio-8080-exec-8] [INFO] A login request was successful
+2019-07-04 11:50:07,965 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-6] [ADMIN] Get all users
+2019-07-04 11:50:13,392 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-10] [ADMIN] Trying to delete user with email: ionutgrad101@gmail.com
+2019-07-04 11:50:13,393 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-10] [ADMIN] User with email ionutgrad101@gmail.com was deleted successfully
+2019-07-04 11:50:13,393 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-10] [ADMIN] Trying to delete user with email: ionut1@gmail.com
+2019-07-04 11:50:13,399 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-10] [ADMIN] User with email ionut1@gmail.com was deleted successfully
+2019-07-04 11:50:13,432 INFO rostem.service.users.RostemUserService [http-nio-8080-exec-5] [ADMIN] Get all users
+2019-07-04 11:50:14,643 INFO rostem.service.material.CategoryService [http-nio-8080-exec-1] [CATEGORY] Get all categories
+2019-07-04 11:50:18,961 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 46
+2019-07-04 11:50:18,970 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 66
+2019-07-04 11:50:18,974 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 51
+2019-07-04 11:50:18,984 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 52
+2019-07-04 11:50:18,988 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 53
+2019-07-04 11:50:18,993 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 61
+2019-07-04 11:50:18,996 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 67
+2019-07-04 11:50:19,002 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 54
+2019-07-04 11:50:19,004 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 58
+2019-07-04 11:50:19,007 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 59
+2019-07-04 11:50:19,011 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 60
+2019-07-04 11:50:19,013 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 68
+2019-07-04 11:50:19,016 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 69
+2019-07-04 11:50:19,020 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 55
+2019-07-04 11:50:19,022 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 56
+2019-07-04 11:50:19,024 INFO rostem.service.material.ChapterService [http-nio-8080-exec-9] [CHAPTER] Trying to delete chapter 57
+2019-07-04 11:50:19,027 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 70
+2019-07-04 11:50:19,029 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 71
+2019-07-04 11:50:19,031 INFO rostem.service.material.TutorialService [http-nio-8080-exec-9] [TUTORIAL] Trying to delete tutorial 72
+2019-07-04 11:50:19,032 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 47
+2019-07-04 11:50:19,037 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 48
+2019-07-04 11:50:19,040 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 49
+2019-07-04 11:50:19,043 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 50
+2019-07-04 11:50:19,046 INFO rostem.service.material.CategoryService [http-nio-8080-exec-9] [CATEGORY] Trying to delete category 51
+2019-07-04 11:50:19,075 INFO rostem.service.material.CategoryService [http-nio-8080-exec-4] [CATEGORY] Get all categories
+2019-07-04 11:50:20,172 INFO rostem.service.material.CategoryService [http-nio-8080-exec-8] [CATEGORY] Get all categories
+2019-07-04 11:50:20,174 INFO rostem.service.material.TutorialService [http-nio-8080-exec-7] [TUTORIAL] Get all tutorial
+2019-07-04 11:50:21,433 INFO rostem.service.material.ChapterService [http-nio-8080-exec-6] [CHAPTER] Get all chapters.
+2019-07-04 11:52:56,574 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-26] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-07-04 11:52:56,602 INFO com.zaxxer.hikari.HikariDataSource [Thread-26] HikariPool-1 - Shutdown initiated...
+2019-07-04 11:52:56,677 INFO com.zaxxer.hikari.HikariDataSource [Thread-26] HikariPool-1 - Shutdown completed.

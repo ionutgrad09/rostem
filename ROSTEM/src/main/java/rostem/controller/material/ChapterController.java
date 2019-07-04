@@ -151,11 +151,11 @@ public class ChapterController {
         }
     }
 
-    @ApiOperation(value = "Get all comments for a chapter",
+    @ApiOperation(value = "Get random chapters",
             response = Response.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "The comments were returned."),
-            @ApiResponse(code = 400, message = "The chapter does not exist.")
+            @ApiResponse(code = 200, message = "The chapters were returned."),
+            @ApiResponse(code = 400, message = "The user does not exist.")
     })
     @GetMapping(path = "/random/{email}")
     public ResponseEntity<Response> getRandomChapters(@PathVariable("email") String email) {
